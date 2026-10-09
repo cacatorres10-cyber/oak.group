@@ -114,7 +114,7 @@
     visibility:hidden;
   }
   .nav.is-scrolled{
-    background:rgba(10,10,11,.94);backdrop-filter:blur(10px);border-color:var(--border-on-ink);
+    background:rgba(10,10,11,.97);border-color:var(--border-on-ink);
     opacity:1;
     visibility:visible;
   }
@@ -166,8 +166,8 @@
   .mobile-menu .btn{margin-top:28px;align-self:flex-start;flex:none;}
 
   /* ============ HERO (full-bleed zoom) ============ */
-  .hero-expand{position:relative;height:480vh;padding-block:0;}
-  @media (max-width:640px){ .hero-expand{height:360vh;} }
+  .hero-expand{position:relative;height:250vh;padding-block:0;}
+  @media (max-width:640px){ .hero-expand{height:170vh;} }
   .hero-sticky{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;background:#000;}
   .hero-media{position:absolute;inset:0;transform:scale(1);transform-origin:50% 50%;will-change:transform;}
   .hero-media img,.hero-media video{width:100%;height:100%;object-fit:cover;display:block;}
@@ -461,8 +461,8 @@
 <section class="hero-expand" id="heroExpand">
   <div class="hero-sticky" id="heroSticky">
     <div class="hero-media" id="heroMedia">
-      <img id="heroImg" src="assets/hero-garden-aircon-summerhouse.jpg" alt="Air conditioning installation and timber summer house in an East London back garden" />
-      <video id="heroVideo" muted playsinline preload="auto">
+      <img id="heroImg" fetchpriority="high" decoding="async" src="assets/hero-garden-aircon-summerhouse.jpg" alt="Air conditioning installation and timber summer house in an East London back garden" />
+      <video id="heroVideo" muted playsinline preload="auto" poster="assets/hero-garden-aircon-summerhouse.jpg">
         <source src="assets/hero-dolly.mp4" type="video/mp4">
       </video>
     </div>
@@ -557,7 +557,7 @@
 
     <div class="svc-rows">
       <div class="svc-row reveal">
-        <div class="svc-media"><span class="svc-tag">01 &middot; Residential</span><img src="assets/aircon-install-residential.jpg" alt="Engineer installing a wall-mounted split air conditioning unit in a British living room"></div>
+        <div class="svc-media"><span class="svc-tag">01 &middot; Residential</span><img loading="lazy" decoding="async" width="1600" height="893" src="assets/aircon-install-residential.jpg" alt="Engineer installing a wall-mounted split air conditioning unit in a British living room"></div>
         <div class="svc-text">
           <span class="svc-num">New Installation</span>
           <h4>Sized to the Room, Not the Brochure</h4>
@@ -566,7 +566,7 @@
       </div>
 
       <div class="svc-row reverse reveal">
-        <div class="svc-media"><span class="svc-tag">02 &middot; Commercial</span><img src="assets/aircon-commercial-pub.jpg" alt="Commercial air conditioning condenser units outside an East London pub"></div>
+        <div class="svc-media"><span class="svc-tag">02 &middot; Commercial</span><img loading="lazy" decoding="async" width="1600" height="893" src="assets/aircon-commercial-pub.jpg" alt="Commercial air conditioning condenser units outside an East London pub"></div>
         <div class="svc-text">
           <span class="svc-num">Hospitality &amp; Business Fit-Outs</span>
           <h4>Fitted Around Opening Hours</h4>
@@ -575,7 +575,7 @@
       </div>
 
       <div class="svc-row reveal">
-        <div class="svc-media"><span class="svc-tag">03 &middot; Ongoing</span><img src="assets/aircon-maintenance.jpg" alt="HVAC engineer servicing an outdoor air conditioning condenser unit"></div>
+        <div class="svc-media"><span class="svc-tag">03 &middot; Ongoing</span><img loading="lazy" decoding="async" width="1600" height="893" src="assets/aircon-maintenance.jpg" alt="HVAC engineer servicing an outdoor air conditioning condenser unit"></div>
         <div class="svc-text">
           <span class="svc-num">Maintenance Contracts</span>
           <h4>Serviced Before It Fails, Not After</h4>
@@ -603,7 +603,7 @@
 
     <div class="svc-rows">
       <div class="svc-row reveal">
-        <div class="svc-media"><span class="svc-tag">01 &middot; Highest Demand</span><img src="assets/summerhouse.jpg" alt="Cedar-clad timber summer house in an Essex back garden"></div>
+        <div class="svc-media"><span class="svc-tag">01 &middot; Highest Demand</span><img loading="lazy" decoding="async" width="1600" height="893" src="assets/summerhouse.jpg" alt="Cedar-clad timber summer house in an Essex back garden"></div>
         <div class="svc-text">
           <span class="svc-num">Summer Houses</span>
           <h4>A Room Outside, Not a Shed With a Window</h4>
@@ -612,7 +612,7 @@
       </div>
 
       <div class="svc-row reverse reveal">
-        <div class="svc-media"><span class="svc-tag">02</span><img src="assets/landscaping.jpg" alt="Completed garden landscaping with patio, decking and planting"></div>
+        <div class="svc-media"><span class="svc-tag">02</span><img loading="lazy" decoding="async" width="1600" height="893" src="assets/landscaping.jpg" alt="Completed garden landscaping with patio, decking and planting"></div>
         <div class="svc-text">
           <span class="svc-num">Landscaping</span>
           <h4>Specified for the Plot, Not the Catalogue</h4>
@@ -621,7 +621,7 @@
       </div>
 
       <div class="svc-row reveal">
-        <div class="svc-media"><span class="svc-tag">03</span><img src="assets/refurbishment.jpg" alt="British kitchen mid refurbishment with new cabinets being fitted"></div>
+        <div class="svc-media"><span class="svc-tag">03</span><img loading="lazy" decoding="async" width="1600" height="893" src="assets/refurbishment.jpg" alt="British kitchen mid refurbishment with new cabinets being fitted"></div>
         <div class="svc-text">
           <span class="svc-num">Refurbishments</span>
           <h4>One Point of Contact, Start to Finish</h4>
@@ -630,7 +630,7 @@
       </div>
 
       <div class="svc-row reverse reveal">
-        <div class="svc-media"><span class="svc-tag">04</span><img src="assets/media-wall.jpg" alt="Built-in media wall with recessed TV and electric fireplace"></div>
+        <div class="svc-media"><span class="svc-tag">04</span><img loading="lazy" decoding="async" width="1600" height="893" src="assets/media-wall.jpg" alt="Built-in media wall with recessed TV and electric fireplace"></div>
         <div class="svc-text">
           <span class="svc-num">Media Walls</span>
           <h4>Recessed, Not Bolted On</h4>
@@ -639,7 +639,7 @@
       </div>
 
       <div class="svc-row reveal">
-        <div class="svc-media"><span class="svc-tag">05</span><img src="assets/extension.jpg" alt="Single-storey rear extension nearing completion with bi-fold doors"></div>
+        <div class="svc-media"><span class="svc-tag">05</span><img loading="lazy" decoding="async" width="1600" height="893" src="assets/extension.jpg" alt="Single-storey rear extension nearing completion with bi-fold doors"></div>
         <div class="svc-text">
           <span class="svc-num">Extensions</span>
           <h4>The Price Quoted Is the Price Paid</h4>
@@ -918,7 +918,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="footer-logo" href="#top"><img src="assets/logo-oak-white.png" alt="OAK Construction &amp; Project Management Limited" width="260" height="125"></a>
+        <a class="footer-logo" href="#top"><img loading="lazy" decoding="async" src="assets/logo-oak-white.png" alt="OAK Construction &amp; Project Management Limited" width="260" height="125"></a>
         <p>Air conditioning and residential construction, based in West Horndon, Essex. Two trades, one point of contact.</p>
       </div>
       <div class="footer-col">
@@ -982,43 +982,65 @@
   var heroCopy = document.getElementById('heroCopy');
   var heroScrollcue = document.getElementById('heroScrollcue');
 
+  // Phones and data-saver: play the clip on a loop instead of scrubbing it with the scroll
+  var touchOnly = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  var saveData = !!(navigator.connection && navigator.connection.saveData);
+  var scrubVideo = !touchOnly && !saveData && !reduceMotion;
+
   var videoReady = false;
   heroVideo.addEventListener('loadeddata', function(){
     videoReady = true;
     heroVideo.style.display = 'block';
     heroImg.style.display = 'none';
+    if(!scrubVideo){
+      heroVideo.loop = true;
+      var p = heroVideo.play(); if(p && p.catch){ p.catch(function(){}); }
+    }
   });
   heroVideo.addEventListener('error', function(){ videoReady = false; });
+  if(saveData){ heroVideo.removeAttribute('autoplay'); heroVideo.preload = 'none'; }
 
   function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
 
-  function updateHero(){
-    if(reduceMotion){ return; }
-    var rect = heroExpand.getBoundingClientRect();
-    var total = heroExpand.offsetHeight - window.innerHeight;
-    var progress = total > 0 ? clamp(-rect.top / total, 0, 1) : 0;
-
-    heroMedia.style.transform = 'scale(' + (1 + progress*0.3) + ')';
-    heroCopy.style.opacity = String(clamp(1 - progress*1.15, 0, 1));
-    heroCopy.style.transform = 'scale(' + (1 + progress*0.12) + ') translateY(' + (-progress*20) + 'px)';
-    heroScrollcue.style.opacity = String(clamp(1 - progress*3.2, 0, 1));
-
-    if(videoReady && heroVideo.duration && isFinite(heroVideo.duration)){
-      try{ heroVideo.currentTime = progress * heroVideo.duration; }catch(e){}
-    }
+  // Layout is measured once (and on resize), never inside the scroll handler
+  var heroTop = 0, heroTotal = 1;
+  function measureHero(){
+    heroTop = heroExpand.getBoundingClientRect().top + window.scrollY;
+    heroTotal = Math.max(1, heroExpand.offsetHeight - window.innerHeight);
   }
 
-  var ticking = false;
-  function onScrollHero(){
-    if(!ticking){
-      window.requestAnimationFrame(function(){ updateHero(); ticking=false; });
-      ticking = true;
+  var lastProgress = -1, videoTarget = 0, videoShown = 0, rafId = 0;
+
+  function renderHero(){
+    rafId = 0;
+    var progress = clamp((window.scrollY - heroTop) / heroTotal, 0, 1);
+    if(progress !== lastProgress){
+      lastProgress = progress;
+      heroMedia.style.transform = 'scale(' + (1 + progress*0.22) + ')';
+      heroCopy.style.opacity = String(clamp(1 - progress*1.4, 0, 1));
+      heroCopy.style.transform = 'translate3d(0,' + (-progress*40) + 'px,0)';
+      heroScrollcue.style.opacity = String(clamp(1 - progress*3.2, 0, 1));
+      videoTarget = progress;
+    }
+    // Ease the video toward the scroll position and only seek when the decoder is free
+    if(scrubVideo && videoReady && isFinite(heroVideo.duration)){
+      videoShown += (videoTarget - videoShown) * 0.18;
+      var t = videoShown * (heroVideo.duration - 0.05);
+      if(!heroVideo.seeking && Math.abs(heroVideo.currentTime - t) > 0.03){
+        heroVideo.currentTime = t;
+      }
+      if(Math.abs(videoTarget - videoShown) > 0.001){ requestHero(); }
     }
   }
+  function requestHero(){ if(!rafId){ rafId = window.requestAnimationFrame(renderHero); } }
+
   if(!reduceMotion){
-    document.addEventListener('scroll', onScrollHero, {passive:true});
-    window.addEventListener('resize', onScrollHero);
-    updateHero();
+    measureHero();
+    document.addEventListener('scroll', requestHero, {passive:true});
+    window.addEventListener('resize', function(){ measureHero(); requestHero(); });
+    window.addEventListener('load', function(){ measureHero(); requestHero(); });
+    heroVideo.addEventListener('loadeddata', requestHero);
+    requestHero();
   }
 
   /* ---------- REVEAL ON SCROLL ---------- */
@@ -1057,7 +1079,7 @@
     var card = document.createElement('div');
     card.className = 'cf-card';
     var img = document.createElement('img');
-    img.src = slide.src; img.alt = slide.title; img.draggable = false;
+    img.src = slide.src; img.alt = slide.title; img.draggable = false; img.loading = 'lazy'; img.decoding = 'async';
     card.appendChild(img);
     stage.appendChild(card);
     return card;
