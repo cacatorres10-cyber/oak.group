@@ -1,0 +1,1240 @@
+<title>OAK Group</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --ink:#0A0A0B;
+    --paper:#FFFFFF;
+    --surface:#FFFFFF;
+    --surface-2:#F6F6F7;
+    --text:#141415;
+    --text-muted:#56575B;
+    --text-on-ink:#F4F4F4;
+    --text-on-ink-muted:#9B9B9E;
+    --border:#E6E6E8;
+    --border-on-ink:#28282A;
+    --red:#D4121B;
+    --red-dark:#A20E15;
+    --red-tint:#FCE9EA;
+    --focus:#D4121B;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--text);
+    font-family:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Big Shoulders Display','Arial Narrow',sans-serif;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.01em;
+    line-height:.94;
+    color:var(--ink);
+    text-wrap:balance;
+    margin:0;
+  }
+
+  p{margin:0;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font:inherit;color:inherit;}
+
+  :focus-visible{outline:3px solid var(--focus);outline-offset:3px;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:.74rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+
+  .container{
+    max-width:1240px;
+    margin-inline:auto;
+    padding-inline:20px;
+  }
+  @media (min-width:768px){ .container{padding-inline:40px;} }
+
+  section{padding-block:72px;}
+  @media (min-width:1024px){ section{padding-block:120px;} }
+
+  .section-head{
+    display:flex;flex-direction:column;gap:14px;
+    max-width:720px;margin-bottom:52px;
+  }
+  .section-head .eyebrow{color:var(--red);}
+  .section-head h2{font-size:clamp(2.2rem,4.6vw,3.6rem);}
+  .section-head p{color:var(--text-muted);font-size:1.05rem;max-width:56ch;}
+  .on-ink .section-head p{color:var(--text-on-ink-muted);}
+  .on-ink .section-head h2{color:#fff;}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:15px 26px;border-radius:2px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.85rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;
+    border:1px solid transparent;cursor:pointer;
+    min-height:48px;
+    transition:transform .18s ease, background-color .18s ease, border-color .18s ease, color .18s ease;
+    text-decoration:none;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-red{background:var(--red);color:#fff;}
+  .btn-red:hover{background:var(--red-dark);}
+  .btn-white{background:#fff;color:var(--ink);}
+  .btn-white:hover{background:#e9e9e9;}
+  .btn-ghost-ink{border-color:rgba(244,244,244,.4);color:#fff;}
+  .btn-ghost-ink:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+  .btn-outline{border-color:var(--ink);color:var(--ink);background:transparent;}
+  .btn-outline:hover{background:var(--ink);color:#fff;}
+  .btn svg{width:17px;height:17px;flex:none;}
+
+  .dot{width:7px;height:7px;border-radius:50%;flex:none;background:var(--red);}
+
+  /* ============ NAV ============ */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding-top:env(safe-area-inset-top,0px);
+    transition:background-color .3s ease, border-color .3s ease, opacity .3s ease;
+    border-bottom:1px solid transparent;
+    opacity:0;
+    visibility:hidden;
+  }
+  .nav.is-scrolled{
+    background:rgba(10,10,11,.94);backdrop-filter:blur(10px);border-color:var(--border-on-ink);
+    opacity:1;
+    visibility:visible;
+  }
+  .nav-row{display:flex;align-items:center;justify-content:space-between;padding-block:18px;}
+  .brand{display:flex;align-items:center;gap:10px;line-height:1;color:#fff;text-decoration:none;}
+  .brand-chip{width:10px;height:26px;background:var(--red);flex:none;}
+  .brand-icon{height:34px;width:auto;flex:none;}
+  .hero-logo{width:clamp(84px,11vw,124px);height:auto;margin-bottom:22px;filter:drop-shadow(0 4px 18px rgba(0,0,0,.45));}
+  .footer-logo{display:inline-block;}
+  .footer-logo img{width:240px;max-width:100%;height:auto;}
+  .brand-text{display:flex;flex-direction:column;gap:1px;}
+  .brand-mark{font-family:'Big Shoulders Display';font-weight:800;font-size:1.5rem;letter-spacing:.02em;text-transform:uppercase;}
+  .brand-sub{font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-on-ink-muted);}
+
+  .nav-links{display:none;align-items:center;gap:32px;}
+  .nav-links a{
+    font-family:'IBM Plex Mono';font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--text-on-ink-muted);text-decoration:none;
+    padding-block:4px;border-bottom:1px solid transparent;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .nav-links a:hover{color:#fff;border-color:var(--red);}
+  @media (min-width:960px){ .nav-links{display:flex;} }
+
+  .nav-actions{display:flex;align-items:center;gap:14px;}
+  .nav-cta{display:none;}
+  @media (min-width:960px){ .nav-cta{display:inline-flex;} }
+
+  .burger{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:46px;height:46px;border-radius:2px;border:1px solid var(--border-on-ink);
+    background:transparent;color:#fff;cursor:pointer;
+  }
+  @media (min-width:960px){ .burger{display:none;} }
+  .burger svg{width:20px;height:20px;}
+
+  .mobile-menu{
+    position:fixed;inset:0;z-index:99;background:var(--ink);
+    display:flex;flex-direction:column;overflow-y:auto;
+    padding:calc(96px + env(safe-area-inset-top,0px)) 24px calc(40px + env(safe-area-inset-bottom,0px));
+    gap:4px;
+    transform:translateY(-100%);transition:transform .35s ease;
+  }
+  .mobile-menu.is-open{transform:translateY(0);}
+  .mobile-menu a{
+    font-family:'Big Shoulders Display';font-size:2rem;text-transform:uppercase;font-weight:700;
+    color:#fff;text-decoration:none;padding-block:14px;border-bottom:1px solid var(--border-on-ink);
+  }
+  .mobile-menu .btn{margin-top:28px;align-self:flex-start;flex:none;}
+
+  /* ============ HERO (full-bleed zoom) ============ */
+  .hero-expand{position:relative;height:480vh;padding-block:0;}
+  @media (max-width:640px){ .hero-expand{height:360vh;} }
+  .hero-sticky{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;background:#000;}
+  .hero-media{position:absolute;inset:0;transform:scale(1);transform-origin:50% 50%;will-change:transform;}
+  .hero-media img,.hero-media video{width:100%;height:100%;object-fit:cover;display:block;}
+  .hero-media video{display:none;}
+  .hero-vignette{
+    position:absolute;inset:0;pointer-events:none;
+    background:
+      linear-gradient(180deg,rgba(8,8,9,.78) 0%,rgba(8,8,9,.22) 42%,rgba(8,8,9,.82) 100%),
+      linear-gradient(180deg,rgba(212,18,27,.24) 0%,rgba(212,18,27,0) 22%);
+  }
+  .hero-copy{
+    position:absolute;inset:0;z-index:3;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:0 20px;
+    will-change:transform,opacity;
+  }
+  .hero-eyebrow{color:var(--text-on-ink-muted);margin-bottom:18px;}
+  .hero-title{
+    font-size:clamp(3.2rem,14vw,9rem);color:#fff;line-height:.88;
+    display:flex;align-items:center;gap:.22em;
+  }
+  .hero-title .chip{width:.14em;height:.74em;background:var(--red);display:inline-block;}
+  .hero-sub{margin-top:24px;max-width:48ch;color:#EDEDEE;font-size:1.08rem;}
+  .hero-ctas{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+
+  .hero-scrollcue{
+    position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:3;
+    display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text-on-ink-muted);
+    font-family:'IBM Plex Mono';font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+    transition:opacity .3s ease;
+  }
+  .hero-scrollcue .line{width:1px;height:34px;background:linear-gradient(180deg,var(--red),transparent);animation:scrollpulse 1.8s ease-in-out infinite;}
+  @keyframes scrollpulse{0%,100%{opacity:.3;}50%{opacity:1;}}
+  @media (prefers-reduced-motion:reduce){ .hero-scrollcue{display:none;} .hero-expand{height:100vh;} }
+
+  /* ============ BELIEF ============ */
+  .belief{background:var(--surface);}
+  .belief-grid{display:grid;gap:40px;}
+  @media (min-width:860px){ .belief-grid{grid-template-columns:1fr 1.1fr;align-items:start;gap:72px;} }
+  .belief-kicker{font-size:clamp(1.7rem,2.7vw,2.2rem);font-family:'Big Shoulders Display';font-weight:700;text-transform:none;letter-spacing:0;line-height:1.14;color:var(--ink);}
+  .belief-kicker mark{background:none;color:var(--red);}
+  .belief-body p{color:var(--text-muted);font-size:1.08rem;margin-bottom:18px;}
+  .belief-body strong{color:var(--ink);font-weight:600;}
+
+  /* ============ PILLARS ============ */
+  .pillars{background:var(--surface-2);}
+  .pillar-grid{display:grid;gap:2px;background:var(--border);border:1px solid var(--border);}
+  @media (min-width:860px){ .pillar-grid{grid-template-columns:1fr 1fr;} }
+  .pillar{padding:40px 32px;display:flex;flex-direction:column;gap:22px;}
+  .pillar-ac{background:#fff;}
+  .pillar-build{background:var(--ink);color:#fff;}
+  .pillar-icon{width:54px;height:54px;border:1.5px solid var(--red);display:flex;align-items:center;justify-content:center;color:var(--red);}
+  .pillar-icon svg{width:27px;height:27px;}
+  .pillar h3{font-size:clamp(1.6rem,2.4vw,2rem);}
+  .pillar-build h3{color:#fff;}
+  .pillar-list{display:flex;flex-direction:column;gap:14px;}
+  .pillar-list li{display:flex;gap:12px;font-size:.98rem;line-height:1.55;}
+  .pillar-ac .pillar-list li{color:var(--text-muted);}
+  .pillar-build .pillar-list li{color:var(--text-on-ink-muted);}
+  .pillar-list svg{width:17px;height:17px;flex:none;margin-top:3px;color:var(--red);}
+  .pillar-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:auto;padding-top:16px;border-top:1px solid var(--border);}
+  .pillar-build .pillar-foot{border-top-color:var(--border-on-ink);}
+  .pillar-area{font-family:'IBM Plex Mono';font-size:.74rem;}
+  .pillar-ac .pillar-area{color:var(--text-muted);}
+  .pillar-build .pillar-area{color:var(--text-on-ink-muted);}
+  .pillar-link{display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono';font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;text-decoration:none;font-weight:500;color:var(--red);}
+  .pillar-link svg{width:15px;height:15px;transition:transform .2s ease;}
+  .pillar-link:hover svg{transform:translateX(3px);}
+
+  /* ============ DETAIL (photo/text alternating rows) ============ */
+  .detail-ac{background:var(--surface);}
+  .detail-build{background:var(--ink);}
+  .detail-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:52px;}
+  .detail-head .heading-block{max-width:640px;}
+  .detail-head .eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:12px;color:var(--red);}
+  .detail-head h2{font-size:clamp(2.1rem,4.2vw,3.2rem);margin-bottom:14px;}
+  .detail-build .detail-head h2{color:#fff;}
+  .detail-head p{font-size:1.03rem;}
+  .detail-ac .detail-head p{color:var(--text-muted);}
+  .detail-build .detail-head p{color:var(--text-on-ink-muted);}
+
+  .coverage-chip{
+    font-family:'IBM Plex Mono';font-size:.82rem;
+    border:1px solid var(--border);padding:14px 18px;
+    display:flex;flex-direction:column;gap:4px;min-width:230px;background:var(--surface-2);color:var(--text);
+  }
+  .coverage-chip b{font-family:'Big Shoulders Display';font-size:1.05rem;text-transform:uppercase;font-weight:700;letter-spacing:.02em;color:var(--red);}
+  .detail-build .coverage-chip{background:#141415;border-color:var(--border-on-ink);color:var(--text-on-ink);}
+
+  .svc-rows{display:flex;flex-direction:column;}
+  .svc-row{
+    display:grid;grid-template-columns:1fr;gap:24px;
+    padding-block:36px;border-top:1px solid var(--border);
+  }
+  .detail-build .svc-row{border-top-color:var(--border-on-ink);}
+  .svc-rows .svc-row:last-child{border-bottom:1px solid var(--border);}
+  .detail-build .svc-rows .svc-row:last-child{border-bottom-color:var(--border-on-ink);}
+  @media (min-width:800px){
+    .svc-row{grid-template-columns:5fr 7fr;align-items:center;gap:56px;padding-block:48px;}
+    .svc-row.reverse{grid-template-columns:7fr 5fr;}
+    .svc-row.reverse .svc-media{order:2;}
+    .svc-row.reverse .svc-text{order:1;}
+  }
+  .svc-media{position:relative;overflow:hidden;aspect-ratio:4/3;border:1px solid var(--border);}
+  .detail-build .svc-media{border-color:var(--border-on-ink);}
+  .svc-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .svc-row:hover .svc-media img{transform:scale(1.04);}
+  .svc-tag{position:absolute;top:14px;left:14px;background:var(--red);color:#fff;font-family:'IBM Plex Mono';font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:6px 11px;}
+  .svc-text{display:flex;flex-direction:column;gap:14px;}
+  .svc-num{font-family:'IBM Plex Mono';font-size:.78rem;color:var(--red);}
+  .svc-text h4{font-size:clamp(1.5rem,2.4vw,2.1rem);}
+  .detail-ac .svc-text h4{color:var(--ink);}
+  .detail-build .svc-text h4{color:#fff;}
+  .svc-text p{font-size:1rem;line-height:1.65;}
+  .detail-ac .svc-text p{color:var(--text-muted);}
+  .detail-build .svc-text p{color:var(--text-on-ink-muted);}
+
+  /* ============ GALLERY / COVERFLOW ============ */
+  .gallery{background:var(--ink);color:#fff;}
+  .cf-wrap{width:100%;--cf-card:clamp(170px,30vw,300px);}
+  .cf-frame{position:relative;cursor:grab;overflow:hidden;padding-block:24px;outline:none;touch-action:pan-y;perspective:calc(var(--cf-card) * 2.6);}
+  .cf-frame:active{cursor:grabbing;}
+  .cf-stage{position:relative;height:var(--cf-card);transform-style:preserve-3d;}
+  .cf-card{position:absolute;left:50%;top:0;width:var(--cf-card);aspect-ratio:1/1;overflow:hidden;background:#1a1a1a;will-change:transform;box-shadow:0 20px 40px -18px rgba(0,0,0,.7);}
+  .cf-card img{width:100%;height:100%;object-fit:cover;user-select:none;-webkit-user-drag:none;}
+  .cf-caption{margin-top:28px;text-align:center;}
+  .cf-caption p.cf-title{font-family:'Big Shoulders Display';font-size:1.4rem;text-transform:uppercase;font-weight:700;}
+  .cf-caption p.cf-sub{font-family:'IBM Plex Mono';font-size:.78rem;color:var(--text-on-ink-muted);margin-top:4px;letter-spacing:.04em;}
+  .cf-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:22px;}
+  .cf-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--border-on-ink);background:transparent;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s ease, border-color .2s ease;}
+  .cf-nav button:hover{background:var(--red);border-color:var(--red);}
+  .cf-nav button svg{width:18px;height:18px;}
+  .cf-dots{display:flex;gap:8px;}
+  .cf-dots button{width:7px;height:7px;border-radius:50%;background:#fff;opacity:.25;padding:0;border:none;cursor:pointer;}
+  .cf-dots button[aria-current="true"]{opacity:1;background:var(--red);}
+
+  /* ============ WHY ============ */
+  .why{background:var(--surface);}
+  .why-grid{display:grid;gap:28px;}
+  @media (min-width:860px){ .why-grid{grid-template-columns:repeat(3,1fr);} }
+  .why-card{display:flex;flex-direction:column;gap:14px;padding-top:20px;border-top:3px solid var(--red);}
+  .why-card .num{font-family:'IBM Plex Mono';font-size:.78rem;color:var(--text-muted);}
+  .why-card h3{font-size:1.4rem;}
+  .why-card p{color:var(--text-muted);font-size:.98rem;}
+
+  /* ============ PROCESS ============ */
+  .process{background:var(--ink);color:#fff;}
+  .process-grid{display:grid;gap:0;border-top:1px solid var(--border-on-ink);}
+  @media (min-width:860px){ .process-grid{grid-template-columns:repeat(4,1fr);} }
+  .process-step{padding:28px 22px;border-bottom:1px solid var(--border-on-ink);position:relative;}
+  @media (min-width:860px){ .process-step{border-right:1px solid var(--border-on-ink);} .process-step:last-child{border-right:none;} }
+  .process-step .num{font-family:'Big Shoulders Display';font-size:2.4rem;font-weight:800;color:var(--red);display:block;margin-bottom:14px;}
+  .process-step h4{font-size:1.15rem;text-transform:uppercase;margin-bottom:10px;color:#fff;}
+  .process-step p{color:var(--text-on-ink-muted);font-size:.92rem;}
+
+  /* ============ COVERAGE ============ */
+  .coverage{background:var(--surface-2);}
+  .coverage-grid{display:grid;gap:2px;background:var(--border);border:1px solid var(--border);}
+  @media (min-width:860px){ .coverage-grid{grid-template-columns:1fr 1fr;} }
+  .coverage-card{padding:32px;display:flex;flex-direction:column;gap:18px;}
+  .coverage-card.cov-ac{background:#fff;}
+  .coverage-card.cov-build{background:var(--ink);color:#fff;}
+  .coverage-card h3{display:flex;align-items:center;gap:10px;font-size:1.5rem;}
+  .coverage-card h3 svg{width:22px;height:22px;color:var(--red);}
+  .coverage-rows{display:flex;flex-direction:column;gap:10px;}
+  .coverage-row{display:flex;justify-content:space-between;gap:12px;padding-block:10px;border-bottom:1px dashed var(--border);font-size:.95rem;}
+  .cov-build .coverage-row{border-bottom-color:var(--border-on-ink);}
+  .cov-ac .coverage-row span:first-child{color:var(--text-muted);}
+  .cov-build .coverage-row span:first-child{color:var(--text-on-ink-muted);}
+  .coverage-row span:last-child{font-family:'IBM Plex Mono';font-size:.85rem;text-align:right;}
+  .borough-pills{display:flex;flex-wrap:wrap;gap:8px;}
+  .borough-pills span{font-family:'IBM Plex Mono';font-size:.74rem;border:1px solid var(--border-on-ink);padding:5px 10px;color:var(--text-on-ink-muted);}
+  .coverage-card.cov-ac p.fine{color:var(--text-muted);}
+  .coverage-card.cov-build p.fine{color:var(--text-on-ink-muted);}
+  p.fine{font-size:.82rem;}
+
+  /* ============ FINAL CTA ============ */
+  .final-cta{background:var(--red);color:#fff;text-align:center;}
+  .final-cta h2{color:#fff;font-size:clamp(2.3rem,5.2vw,4.2rem);margin-bottom:18px;}
+  .final-cta p{color:rgba(255,255,255,.88);max-width:56ch;margin-inline:auto;font-size:1.08rem;}
+  .final-cta .btn{margin-top:32px;}
+  .final-cta .fine{margin-top:16px;font-family:'IBM Plex Mono';font-size:.78rem;color:rgba(255,255,255,.75);}
+  .final-cta .eyebrow{color:rgba(255,255,255,.75);}
+
+  [hidden]{display:none !important;}
+  /* ============ QUOTE FORM ============ */
+  .final-cta{text-align:left;}
+  .quote-grid{display:grid;gap:44px;}
+  .quote-grid > *{min-width:0;}
+  @media (min-width:960px){ .quote-grid{grid-template-columns:1fr 1.25fr;gap:64px;align-items:start;} .quote-intro{position:sticky;top:110px;} }
+  .final-cta .quote-intro p{margin-inline:0;}
+  .final-cta .quote-intro h2{margin-top:14px;}
+  .quote-how{list-style:none;margin:32px 0 0;padding:0;display:flex;flex-direction:column;gap:2px;}
+  .quote-how li{display:flex;gap:16px;align-items:baseline;padding:14px 0;border-top:1px solid rgba(255,255,255,.28);font-size:1rem;}
+  .quote-how li > span:first-child{font-family:'IBM Plex Mono';font-size:.78rem;color:rgba(255,255,255,.7);}
+  .quote-form{background:#fff;color:var(--text);padding:28px 22px;display:flex;flex-direction:column;gap:18px;box-shadow:0 30px 60px -30px rgba(0,0,0,.45);}
+  @media (min-width:640px){ .quote-form{padding:40px 36px;} }
+  .qf-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--border);}
+  .final-cta .qf-head .eyebrow{color:var(--red);}
+  .qf-head p{font-size:.82rem;color:var(--text-muted);}
+  .qf-row{display:grid;gap:18px;}
+  @media (min-width:640px){ .qf-row{grid-template-columns:1fr 1fr;} }
+  .qf-field{display:flex;flex-direction:column;gap:7px;min-width:0;border:0;padding:0;margin:0;}
+  .qf-field label,.qf-field legend{font-family:'IBM Plex Mono';font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);font-weight:500;padding:0;margin-bottom:7px;}
+  .qf-field label{margin-bottom:0;}
+  .qf-field input,.qf-field select,.qf-field textarea{
+    width:100%;font:inherit;font-size:16px;color:var(--text);background:var(--surface-2);
+    border:1px solid var(--border);border-radius:2px;padding:12px 14px;min-height:48px;
+    transition:border-color .18s ease, background-color .18s ease;
+  }
+  .qf-field textarea{resize:vertical;min-height:130px;line-height:1.5;}
+  .qf-field input:focus,.qf-field select:focus,.qf-field textarea:focus{outline:none;border-color:var(--ink);background:#fff;}
+  .qf-field input::placeholder,.qf-field textarea::placeholder{color:#9a9a9e;}
+  .qf-field .is-invalid,.qf-field.is-invalid .qf-chips span{border-color:var(--red) !important;}
+  .qf-chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .qf-chips label{cursor:pointer;margin:0;}
+  .qf-chips input{position:absolute;opacity:0;width:1px;height:1px;}
+  .qf-chips span{display:inline-block;font-family:'IBM Plex Sans';font-size:.88rem;text-transform:none;letter-spacing:0;padding:9px 14px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);transition:all .15s ease;}
+  .qf-chips input:checked + span{background:var(--ink);border-color:var(--ink);color:#fff;}
+  .qf-chips input:focus-visible + span{outline:3px solid var(--focus);outline-offset:2px;}
+  .final-cta .quote-form p{color:var(--text);max-width:none;margin:0;font-size:.92rem;}
+  .final-cta .quote-form .qf-head p,.final-cta .quote-form .qf-alt{color:var(--text-muted);}
+  .final-cta .quote-form .qf-error{color:var(--red);font-weight:500;}
+  .final-cta .qf-submit{width:100%;margin-top:6px;}
+  .qf-done{background:var(--red-tint);border-left:3px solid var(--red);padding:14px 16px;font-size:.92rem;display:flex;flex-direction:column;gap:6px;}
+  .qf-alt{color:var(--text-muted);}
+  .qf-alt a,.qf-alt button{color:var(--red);font-weight:600;cursor:pointer;background:none;border:0;padding:0;text-decoration:underline;font-size:inherit;}
+
+  /* ============ FOOTER ============ */
+  footer{background:var(--ink);color:var(--text-on-ink-muted);padding-block:56px 32px;}
+  .footer-grid{display:grid;gap:36px;margin-bottom:44px;}
+  @media (min-width:768px){ .footer-grid{grid-template-columns:1.3fr 1fr 1fr;} }
+  .footer-brand .brand{color:#fff;}
+  .footer-brand p{margin-top:14px;max-width:34ch;font-size:.92rem;}
+  .footer-col h5{font-family:'IBM Plex Mono';font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:14px;}
+  .footer-col a{display:block;color:var(--text-on-ink-muted);text-decoration:none;font-size:.92rem;padding-block:6px;}
+  .footer-col a:hover{color:var(--red);}
+  .footer-bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;padding-top:24px;border-top:1px solid var(--border-on-ink);font-family:'IBM Plex Mono';font-size:.74rem;}
+  .footer-bottom a:hover{color:var(--red);}
+
+  /* ============ REVEAL ============ */
+  .reveal{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease;}
+    .reveal.in-view{opacity:1;transform:translateY(0);}
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="siteNav">
+  <div class="container nav-row">
+    <a href="#top" class="brand">
+      <img class="brand-icon" src="assets/logo-oak-icon-white.png" alt="" width="52" height="34">
+      <span class="brand-text">
+        <span class="brand-mark">OAK Group</span>
+        <span class="brand-sub">Air Conditioning &amp; Construction</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#air-conditioning">Air Conditioning</a>
+      <a href="#construction">Construction</a>
+      <a href="#work">Our Work</a>
+      <a href="#coverage">Areas We Cover</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a class="btn btn-red nav-cta" href="#contact">Get a Quote</a>
+      <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg id="burgerIconOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg id="burgerIconClose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="display:none;"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#air-conditioning">Air Conditioning</a>
+  <a href="#construction">Construction</a>
+  <a href="#work">Our Work</a>
+  <a href="#coverage">Areas We Cover</a>
+  <a href="#contact">Contact</a>
+  <a class="btn btn-red" href="#contact">Get a Quote</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<div id="top"></div>
+<section class="hero-expand" id="heroExpand">
+  <div class="hero-sticky" id="heroSticky">
+    <div class="hero-media" id="heroMedia">
+      <img id="heroImg" src="assets/hero-garden-aircon-summerhouse.jpg" alt="Air conditioning installation and timber summer house in an East London back garden" />
+      <video id="heroVideo" muted playsinline preload="auto">
+        <source src="assets/hero-dolly.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-vignette"></div>
+    <div class="hero-copy" id="heroCopy">
+      <img class="hero-logo" src="assets/logo-oak-icon-white.png" alt="OAK Construction &amp; Project Management logo">
+      <p class="hero-eyebrow eyebrow">West Horndon, Essex &middot; Relaunched 2026</p>
+      <h1 class="hero-title">OAK<span class="chip"></span>GROUP</h1>
+      <p class="hero-sub">Air conditioning across London. Construction across East London and Essex. One crew, not subcontractors.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-red" href="#contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>
+          Request a Quote
+        </a>
+        <a class="btn btn-ghost-ink" href="#work">See Our Work</a>
+      </div>
+    </div>
+    <div class="hero-scrollcue" id="heroScrollcue"><span>Scroll</span><span class="line"></span></div>
+  </div>
+</section>
+
+<!-- ============ BELIEF / INTRO ============ -->
+<section class="belief">
+  <div class="container belief-grid">
+    <p class="belief-kicker reveal">Most companies pick one trade and stretch it thin. We run <mark>two</mark>, properly, from the same base.</p>
+    <div class="belief-body">
+      <p class="reveal">One team, two licences: refrigerant handling and building. The engineer who fits your AC and the builder who frames your extension answer to the same phone number.</p>
+      <p class="reveal"><strong>Air conditioning:</strong> London, the Home Counties, further out for commercial. <strong>Construction:</strong> East London and Essex only, residential only. We stick to what we know.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PILLARS ============ -->
+<section class="pillars">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">What We Do</span>
+      <h2>Two Trades. One Standard.</h2>
+      <p>You're talking to the person doing the work, not a call centre.</p>
+    </div>
+  </div>
+  <div class="container" style="padding:0;">
+    <div class="pillar-grid reveal">
+      <div class="pillar pillar-ac">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4.2 6.5 19.8 17.5M19.8 6.5 4.2 17.5"/><path d="m9 2 3 2.4L15 2M9 22l3-2.4 3 2.4M2 9l2.4 3L2 15M22 9l-2.4 3L22 15"/></svg>
+        </div>
+        <h3>Air Conditioning</h3>
+        <ul class="pillar-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Split systems fitted in a day. Cool air by evening.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Annual maintenance contracts. Faults caught before the heatwave.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Residential and commercial: pubs, restaurants, hotels.</li>
+        </ul>
+        <div class="pillar-foot">
+          <span class="pillar-area">London &middot; Home Counties &middot; Nationwide*</span>
+          <a class="pillar-link" href="#air-conditioning">Full details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="pillar pillar-build">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg>
+        </div>
+        <h3>Construction &amp; Outdoor Living</h3>
+        <ul class="pillar-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Cedar-clad summer houses, built to measure.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Landscaping specified for your garden, not a catalogue.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Extensions, refurbishments and media walls, fully managed.</li>
+        </ul>
+        <div class="pillar-foot">
+          <span class="pillar-area">East London &amp; Essex &middot; Residential only</span>
+          <a class="pillar-link" href="#construction">Full details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AIR CONDITIONING DETAIL ============ -->
+<section class="detail-ac" id="air-conditioning">
+  <div class="container">
+    <div class="detail-head">
+      <div class="heading-block reveal">
+        <span class="eyebrow"><span class="dot"></span>Air Conditioning</span>
+        <h2>Installed Right. Kept Running.</h2>
+        <p>The same team that fits your unit services it next spring. No handoffs.</p>
+      </div>
+      <div class="coverage-chip reveal">
+        <b>Coverage</b>
+        London &middot; Home Counties<br>Nationwide for larger commercial projects
+      </div>
+    </div>
+
+    <div class="svc-rows">
+      <div class="svc-row reveal">
+        <div class="svc-media"><span class="svc-tag">01 &middot; Residential</span><img src="assets/aircon-install-residential.jpg" alt="Engineer installing a wall-mounted split air conditioning unit in a British living room"></div>
+        <div class="svc-text">
+          <span class="svc-num">New Installation</span>
+          <h4>Sized to the Room, Not the Brochure</h4>
+          <p>Sized from a proper survey, not a glossy spec sheet. Most installs finished in a day.</p>
+        </div>
+      </div>
+
+      <div class="svc-row reverse reveal">
+        <div class="svc-media"><span class="svc-tag">02 &middot; Commercial</span><img src="assets/aircon-commercial-pub.jpg" alt="Commercial air conditioning condenser units outside an East London pub"></div>
+        <div class="svc-text">
+          <span class="svc-num">Hospitality &amp; Business Fit-Outs</span>
+          <h4>Fitted Around Opening Hours</h4>
+          <p>Fitted around service times. Kitchen stays cool, doors stay open.</p>
+        </div>
+      </div>
+
+      <div class="svc-row reveal">
+        <div class="svc-media"><span class="svc-tag">03 &middot; Ongoing</span><img src="assets/aircon-maintenance.jpg" alt="HVAC engineer servicing an outdoor air conditioning condenser unit"></div>
+        <div class="svc-text">
+          <span class="svc-num">Maintenance Contracts</span>
+          <h4>Serviced Before It Fails, Not After</h4>
+          <p>One scheduled visit a year. Serviced units outlast neglected ones.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONSTRUCTION DETAIL ============ -->
+<section class="detail-build" id="construction">
+  <div class="container">
+    <div class="detail-head">
+      <div class="heading-block reveal">
+        <span class="eyebrow"><span class="dot"></span>Construction</span>
+        <h2>Residential Work, Built for East London &amp; Essex</h2>
+        <p>Residential only, within reach of West Horndon. More of your quote goes into the job, not fuel.</p>
+      </div>
+      <div class="coverage-chip reveal">
+        <b>Coverage</b>
+        East London &amp; Essex<br>Thurrock &middot; Havering &middot; Brentwood
+      </div>
+    </div>
+
+    <div class="svc-rows">
+      <div class="svc-row reveal">
+        <div class="svc-media"><span class="svc-tag">01 &middot; Highest Demand</span><img src="assets/summerhouse.jpg" alt="Cedar-clad timber summer house in an Essex back garden"></div>
+        <div class="svc-text">
+          <span class="svc-num">Summer Houses</span>
+          <h4>A Room Outside, Not a Shed With a Window</h4>
+          <p>Insulated, cedar-clad, wired for power. Usable in January, not just July.</p>
+        </div>
+      </div>
+
+      <div class="svc-row reverse reveal">
+        <div class="svc-media"><span class="svc-tag">02</span><img src="assets/landscaping.jpg" alt="Completed garden landscaping with patio, decking and planting"></div>
+        <div class="svc-text">
+          <span class="svc-num">Landscaping</span>
+          <h4>Specified for the Plot, Not the Catalogue</h4>
+          <p>Paving, decking and planting chosen for your garden, not the yard's leftovers.</p>
+        </div>
+      </div>
+
+      <div class="svc-row reveal">
+        <div class="svc-media"><span class="svc-tag">03</span><img src="assets/refurbishment.jpg" alt="British kitchen mid refurbishment with new cabinets being fitted"></div>
+        <div class="svc-text">
+          <span class="svc-num">Refurbishments</span>
+          <h4>One Point of Contact, Start to Finish</h4>
+          <p>Kitchens, bathrooms, full refits. One phone number, not four trades.</p>
+        </div>
+      </div>
+
+      <div class="svc-row reverse reveal">
+        <div class="svc-media"><span class="svc-tag">04</span><img src="assets/media-wall.jpg" alt="Built-in media wall with recessed TV and electric fireplace"></div>
+        <div class="svc-text">
+          <span class="svc-num">Media Walls</span>
+          <h4>Recessed, Not Bolted On</h4>
+          <p>TV and fire recessed flush into the wall. Cables hidden, finish clean.</p>
+        </div>
+      </div>
+
+      <div class="svc-row reveal">
+        <div class="svc-media"><span class="svc-tag">05</span><img src="assets/extension.jpg" alt="Single-storey rear extension nearing completion with bi-fold doors"></div>
+        <div class="svc-text">
+          <span class="svc-num">Extensions</span>
+          <h4>The Price Quoted Is the Price Paid</h4>
+          <p>Foundation to plaster, fully project-managed. The quote doesn't move.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY / COVERFLOW ============ -->
+<section class="gallery" id="work">
+  <div class="container on-ink">
+    <div class="section-head reveal">
+      <span class="eyebrow">Recent Work</span>
+      <h2>On Site, East London &amp; Essex</h2>
+      <p>A look at completed air conditioning and construction projects. Drag the carousel, or use the arrows.</p>
+    </div>
+    <div class="cf-wrap reveal">
+      <div class="cf-frame" id="cfFrame" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Recent work gallery">
+        <div class="cf-stage" id="cfStage"></div>
+      </div>
+      <div class="cf-caption">
+        <p class="cf-title" id="cfTitle"></p>
+        <p class="cf-sub" id="cfSub"></p>
+      </div>
+      <div class="cf-nav">
+        <button id="cfPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="cf-dots" id="cfDots"></div>
+        <button id="cfNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY ============ -->
+<section class="why">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why People Call Us Back</span>
+      <h2>No Middlemen, No Guesswork</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <span class="num">01</span>
+        <h3>Based where we work</h3>
+        <p>Less time on the road, more of your quote in the job.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="num">02</span>
+        <h3>Two trades, one roof</h3>
+        <p>One company for both. Nobody blames someone else's work.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="num">03</span>
+        <h3>You call David, not a script</h3>
+        <p>You reach the person who schedules the work, not a queue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process">
+  <div class="container on-ink">
+    <div class="section-head reveal">
+      <span class="eyebrow">How It Starts</span>
+      <h2>Four Steps, No Surprises</h2>
+      <p>The same process whether it's a single AC unit or a full extension.</p>
+    </div>
+  </div>
+  <div class="container" style="padding:0;">
+    <div class="process-grid reveal">
+      <div class="process-step">
+        <span class="num">01</span>
+        <h4>Get in Touch</h4>
+        <p>Fill in the quote form with what needs doing and where. We'll tell you honestly if it's a job for us.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">02</span>
+        <h4>Site Visit &amp; Fixed Quote</h4>
+        <p>We look at the job before pricing it. The number doesn't move.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">03</span>
+        <h4>Work Scheduled Around You</h4>
+        <p>A start date agreed in advance, not a rough window you have to chase.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">04</span>
+        <h4>Aftercare</h4>
+        <p>Maintenance contracts offered where relevant for AC. Snagging handled directly for construction work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COVERAGE ============ -->
+<section class="coverage" id="coverage">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Areas We Cover</span>
+      <h2>Where We Actually Work</h2>
+      <p>Two trades, two different footprints. Honest about both.</p>
+    </div>
+  </div>
+  <div class="container" style="padding:0;">
+    <div class="coverage-grid reveal">
+      <div class="coverage-card cov-ac">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4.2 6.5 19.8 17.5M19.8 6.5 4.2 17.5"/></svg>Air Conditioning</h3>
+        <div class="coverage-rows">
+          <div class="coverage-row"><span>Core area</span><span>London</span></div>
+          <div class="coverage-row"><span>Extended area</span><span>Home Counties</span></div>
+          <div class="coverage-row"><span>Larger projects</span><span>Nationwide*</span></div>
+          <div class="coverage-row"><span>Property type</span><span>Residential + Commercial</span></div>
+        </div>
+        <p class="fine">*Subject to project size. Commercial work includes pubs, restaurants, hotels and other hospitality venues.</p>
+      </div>
+      <div class="coverage-card cov-build">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11"/></svg>Construction</h3>
+        <div class="coverage-rows">
+          <div class="coverage-row"><span>Core area</span><span>East London &amp; Essex</span></div>
+          <div class="coverage-row"><span>Property type</span><span>Residential only</span></div>
+        </div>
+        <div class="borough-pills">
+          <span>Thurrock</span><span>Havering</span><span>Brentwood</span>
+        </div>
+        <p class="fine">Not currently insured for commercial construction work, so we keep to what we can stand behind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta" id="contact">
+  <div class="container quote-grid">
+    <div class="quote-intro">
+      <span class="eyebrow reveal">Get Started</span>
+      <h2 class="reveal">Get a Straight Answer on Price</h2>
+      <p class="reveal">Tell us what needs doing and where. We'll tell you honestly whether it's a job for us, and what it costs.</p>
+      <ol class="quote-how reveal">
+        <li><span>01</span><span class="qh-t">Fill in the form with as much detail as you can.</span></li>
+        <li><span>02</span><span class="qh-t">Your email app opens with the message already written.</span></li>
+        <li><span>03</span><span class="qh-t">Just press <b>Send</b>. That's it.</span></li>
+      </ol>
+      <p class="fine reveal">info@oakgroup.ltd &middot; usually answered within one working day</p>
+    </div>
+
+    <form class="quote-form reveal" id="quoteForm" novalidate>
+      <div class="qf-head">
+        <span class="eyebrow">Quote Request</span>
+        <p>Fields marked <b>*</b> are required.</p>
+      </div>
+
+      <div class="qf-row">
+        <div class="qf-field">
+          <label for="qName">Full name *</label>
+          <input id="qName" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="qf-field">
+          <label for="qPhone">Phone *</label>
+          <input id="qPhone" name="phone" type="tel" autocomplete="tel" required>
+        </div>
+      </div>
+
+      <div class="qf-row">
+        <div class="qf-field">
+          <label for="qEmail">Email *</label>
+          <input id="qEmail" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="qf-field">
+          <label for="qPostcode">Postcode / town *</label>
+          <input id="qPostcode" name="postcode" type="text" autocomplete="postal-code" placeholder="e.g. RM14, Brentwood" required>
+        </div>
+      </div>
+
+      <fieldset class="qf-field">
+        <legend>Service needed *</legend>
+        <div class="qf-chips">
+          <label><input type="checkbox" name="service" value="Air conditioning – new installation"><span>AC installation</span></label>
+          <label><input type="checkbox" name="service" value="Air conditioning – maintenance / service"><span>AC maintenance</span></label>
+          <label><input type="checkbox" name="service" value="Air conditioning – repair / fault"><span>AC repair</span></label>
+          <label><input type="checkbox" name="service" value="Summer house"><span>Summer house</span></label>
+          <label><input type="checkbox" name="service" value="Landscaping"><span>Landscaping</span></label>
+          <label><input type="checkbox" name="service" value="Refurbishment"><span>Refurbishment</span></label>
+          <label><input type="checkbox" name="service" value="Media wall"><span>Media wall</span></label>
+          <label><input type="checkbox" name="service" value="Extension"><span>Extension</span></label>
+          <label><input type="checkbox" name="service" value="Other"><span>Other</span></label>
+        </div>
+      </fieldset>
+
+      <div class="qf-row">
+        <div class="qf-field">
+          <label for="qProperty">Property type *</label>
+          <select id="qProperty" name="property" required>
+            <option value="">Select…</option>
+            <option>House</option>
+            <option>Flat / apartment</option>
+            <option>Pub / restaurant / hotel</option>
+            <option>Office / shop</option>
+            <option>Other commercial</option>
+          </select>
+        </div>
+        <div class="qf-field">
+          <label for="qTimeframe">When do you need it? *</label>
+          <select id="qTimeframe" name="timeframe" required>
+            <option value="">Select…</option>
+            <option>As soon as possible</option>
+            <option>Within 1 month</option>
+            <option>1–3 months</option>
+            <option>3+ months</option>
+            <option>Just getting prices</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="qf-row">
+        <div class="qf-field">
+          <label for="qSize">Size / quantity</label>
+          <input id="qSize" name="size" type="text" placeholder="e.g. 3 bedrooms, 4m × 3m garden room">
+        </div>
+        <div class="qf-field">
+          <label for="qBudget">Rough budget</label>
+          <select id="qBudget" name="budget">
+            <option value="">Prefer not to say</option>
+            <option>Under £2,000</option>
+            <option>£2,000 – £5,000</option>
+            <option>£5,000 – £15,000</option>
+            <option>£15,000 – £40,000</option>
+            <option>£40,000+</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="qf-field">
+        <label for="qDetails">Describe the job *</label>
+        <textarea id="qDetails" name="details" rows="5" required placeholder="What needs doing, what's there now, any access issues, photos you can send after, etc."></textarea>
+      </div>
+
+      <div class="qf-row">
+        <div class="qf-field">
+          <label for="qContact">Best way to reach you</label>
+          <select id="qContact" name="contact">
+            <option>Phone call</option>
+            <option>Email</option>
+            <option>WhatsApp / text</option>
+          </select>
+        </div>
+        <div class="qf-field">
+          <label for="qVisit">Best time for a site visit</label>
+          <input id="qVisit" name="visit" type="text" placeholder="e.g. weekday mornings">
+        </div>
+      </div>
+
+      <p class="qf-error" id="qfError" role="alert" hidden></p>
+
+      <button class="btn btn-red qf-submit" type="submit">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>
+        Create My Quote Email
+      </button>
+
+      <div class="qf-done" id="qfDone" hidden>
+        <p><b>Your email is ready.</b> Check the window that just opened and press <b>Send</b>.</p>
+        <p class="qf-alt">Didn't open? Send it with:
+          <a id="qfGmail" target="_blank" rel="noopener">Gmail</a> &middot;
+          <a id="qfOutlook" target="_blank" rel="noopener">Outlook</a> &middot;
+          <button type="button" id="qfCopy">Copy message</button>
+        </p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="footer-logo" href="#top"><img src="assets/logo-oak-white.png" alt="OAK Construction &amp; Project Management Limited" width="260" height="125"></a>
+        <p>Air conditioning and residential construction, based in West Horndon, Essex. Two trades, one point of contact.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Air Conditioning</h5>
+        <a href="#air-conditioning">Installation</a>
+        <a href="#air-conditioning">Maintenance Contracts</a>
+        <a href="#coverage">Coverage Area</a>
+      </div>
+      <div class="footer-col">
+        <h5>Construction</h5>
+        <a href="#construction">Summer Houses</a>
+        <a href="#construction">Landscaping</a>
+        <a href="#construction">Extensions &amp; Refurbishments</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="yearNow">2026</span> OAK Group Limited</span>
+      <a href="mailto:info@oakgroup.ltd" style="text-decoration:none;">info@oakgroup.ltd</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.getElementById('yearNow').textContent = new Date().getFullYear();
+
+  /* ---------- NAV ---------- */
+  var nav = document.getElementById('siteNav');
+  function onScrollNav(){
+    if(window.scrollY > 40){ nav.classList.add('is-scrolled'); }
+    else{ nav.classList.remove('is-scrolled'); }
+  }
+  document.addEventListener('scroll', onScrollNav, {passive:true});
+  onScrollNav();
+
+  var burger = document.getElementById('burgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  var burgerIconOpen = document.getElementById('burgerIconOpen');
+  var burgerIconClose = document.getElementById('burgerIconClose');
+  function setMenuOpen(open){
+    mobileMenu.classList.toggle('is-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true':'false');
+    burgerIconOpen.style.display = open ? 'none' : 'block';
+    burgerIconClose.style.display = open ? 'block' : 'none';
+  }
+  burger.addEventListener('click', function(){
+    setMenuOpen(!mobileMenu.classList.contains('is-open'));
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ setMenuOpen(false); });
+  });
+
+  /* ---------- HERO: full-bleed scroll zoom ---------- */
+  var heroExpand = document.getElementById('heroExpand');
+  var heroMedia = document.getElementById('heroMedia');
+  var heroImg = document.getElementById('heroImg');
+  var heroVideo = document.getElementById('heroVideo');
+  var heroCopy = document.getElementById('heroCopy');
+  var heroScrollcue = document.getElementById('heroScrollcue');
+
+  var videoReady = false;
+  heroVideo.addEventListener('loadeddata', function(){
+    videoReady = true;
+    heroVideo.style.display = 'block';
+    heroImg.style.display = 'none';
+  });
+  heroVideo.addEventListener('error', function(){ videoReady = false; });
+
+  function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
+
+  function updateHero(){
+    if(reduceMotion){ return; }
+    var rect = heroExpand.getBoundingClientRect();
+    var total = heroExpand.offsetHeight - window.innerHeight;
+    var progress = total > 0 ? clamp(-rect.top / total, 0, 1) : 0;
+
+    heroMedia.style.transform = 'scale(' + (1 + progress*0.3) + ')';
+    heroCopy.style.opacity = String(clamp(1 - progress*1.15, 0, 1));
+    heroCopy.style.transform = 'scale(' + (1 + progress*0.12) + ') translateY(' + (-progress*20) + 'px)';
+    heroScrollcue.style.opacity = String(clamp(1 - progress*3.2, 0, 1));
+
+    if(videoReady && heroVideo.duration && isFinite(heroVideo.duration)){
+      try{ heroVideo.currentTime = progress * heroVideo.duration; }catch(e){}
+    }
+  }
+
+  var ticking = false;
+  function onScrollHero(){
+    if(!ticking){
+      window.requestAnimationFrame(function(){ updateHero(); ticking=false; });
+      ticking = true;
+    }
+  }
+  if(!reduceMotion){
+    document.addEventListener('scroll', onScrollHero, {passive:true});
+    window.addEventListener('resize', onScrollHero);
+    updateHero();
+  }
+
+  /* ---------- REVEAL ON SCROLL ---------- */
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('in-view'); io.unobserve(entry.target); }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in-view'); });
+  }
+
+  /* ---------- COVERFLOW CAROUSEL ---------- */
+  var SLIDES = [
+    {src:'assets/hero-garden-aircon-summerhouse.jpg', title:'Garden AC & Summer House', sub:'Essex, residential'},
+    {src:'assets/aircon-install-residential.jpg', title:'Residential Split System', sub:'Air conditioning install'},
+    {src:'assets/aircon-commercial-pub.jpg', title:'Commercial AC Fit-Out', sub:'East London, hospitality'},
+    {src:'assets/aircon-maintenance.jpg', title:'Scheduled Maintenance', sub:'Annual service visit'},
+    {src:'assets/summerhouse.jpg', title:'Cedar-Clad Summer House', sub:'Garden room, Essex'},
+    {src:'assets/landscaping.jpg', title:'Garden Landscaping', sub:'Patio, decking & planting'},
+    {src:'assets/refurbishment.jpg', title:'Kitchen Refurbishment', sub:'Full room refit'},
+    {src:'assets/extension.jpg', title:'Rear Extension', sub:'Single-storey, bi-fold doors'},
+    {src:'assets/media-wall.jpg', title:'Media Wall Refurbishment', sub:'Living room refit'}
+  ];
+
+  var stage = document.getElementById('cfStage');
+  var frame = document.getElementById('cfFrame');
+  var titleEl = document.getElementById('cfTitle');
+  var subEl = document.getElementById('cfSub');
+  var dotsWrap = document.getElementById('cfDots');
+  var count = SLIDES.length;
+
+  var cards = SLIDES.map(function(slide){
+    var card = document.createElement('div');
+    card.className = 'cf-card';
+    var img = document.createElement('img');
+    img.src = slide.src; img.alt = slide.title; img.draggable = false;
+    card.appendChild(img);
+    stage.appendChild(card);
+    return card;
+  });
+
+  SLIDES.forEach(function(_, i){
+    var dot = document.createElement('button');
+    dot.setAttribute('aria-label', 'Go to slide '+(i+1));
+    dot.addEventListener('click', function(){ goTo(i); });
+    dotsWrap.appendChild(dot);
+  });
+  var dots = Array.prototype.slice.call(dotsWrap.children);
+
+  var pos = 0, target = 0, rafId = null, cardWidth = 0, selected = 0;
+
+  function indexAt(p){ return ((Math.round(p) % count) + count) % count; }
+
+  function paint(){
+    if(!cardWidth) return;
+    var gap = 0.12;
+    var pitch = cardWidth * (1+gap);
+    cards.forEach(function(card, i){
+      var offset = i - pos;
+      offset = ((offset % count) + count) % count;
+      if(offset > count/2) offset -= count;
+      var distance = Math.abs(offset);
+      var ramp = Math.pow(distance, 0.58);
+      var tilt = Math.min(46*ramp, 80) * Math.sign(offset);
+      card.style.transform = 'translateX(calc(-50% + '+(offset*pitch)+'px)) translateZ('+(-0.62*cardWidth*ramp)+'px) rotateY('+(-tilt)+'deg)';
+      var edge = Math.min(1, Math.max(0, count/2 - distance));
+      card.style.opacity = String(Math.max(0, 1 - 0.12*distance) * edge);
+      card.style.zIndex = String(100 - Math.round(distance));
+    });
+  }
+
+  function updateCaption(){
+    var s = SLIDES[selected];
+    titleEl.textContent = s.title;
+    subEl.textContent = s.sub;
+    dots.forEach(function(d,i){ d.setAttribute('aria-current', i===selected ? 'true':'false'); });
+  }
+
+  function settle(t){
+    if(rafId) cancelAnimationFrame(rafId);
+    target = t;
+    selected = indexAt(t);
+    updateCaption();
+    function step(){
+      var remaining = target - pos;
+      if(Math.abs(remaining) < 0.0006){ pos = target; paint(); rafId=null; return; }
+      pos += remaining * 0.16;
+      paint();
+      rafId = requestAnimationFrame(step);
+    }
+    rafId = requestAnimationFrame(step);
+  }
+
+  function goTo(i){
+    var t = i + Math.round((target - i)/count)*count;
+    settle(t);
+  }
+  function nudge(by){ settle(Math.round(target)+by); }
+
+  function measure(){
+    cardWidth = cards[0].offsetWidth;
+    paint();
+  }
+  if('ResizeObserver' in window){
+    new ResizeObserver(measure).observe(frame);
+  } else {
+    window.addEventListener('resize', measure);
+  }
+  measure();
+  updateCaption();
+
+  document.getElementById('cfPrev').addEventListener('click', function(){ nudge(-1); });
+  document.getElementById('cfNext').addEventListener('click', function(){ nudge(1); });
+  frame.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowLeft'){ e.preventDefault(); nudge(-1); }
+    if(e.key === 'ArrowRight'){ e.preventDefault(); nudge(1); }
+  });
+
+  var drag = null;
+  frame.addEventListener('pointerdown', function(e){
+    if(rafId) cancelAnimationFrame(rafId);
+    frame.setPointerCapture(e.pointerId);
+    drag = {id:e.pointerId, x:e.clientX, pos:pos};
+    target = pos;
+  });
+  frame.addEventListener('pointermove', function(e){
+    if(!drag || drag.id !== e.pointerId) return;
+    var pitch = cardWidth * 1.12;
+    if(!pitch) return;
+    pos = drag.pos - (e.clientX - drag.x)/pitch;
+    var idx = indexAt(pos);
+    if(idx !== selected){ selected = idx; updateCaption(); }
+    paint();
+  });
+  function endDrag(e){
+    if(!drag || drag.id !== e.pointerId) return;
+    drag = null;
+    settle(Math.round(pos));
+  }
+  frame.addEventListener('pointerup', endDrag);
+  frame.addEventListener('pointercancel', endDrag);
+
+  /* ---------- QUOTE FORM -> PRE-WRITTEN EMAIL ---------- */
+  var QUOTE_TO = 'info@oakgroup.ltd';
+  var form = document.getElementById('quoteForm');
+  var errEl = document.getElementById('qfError');
+  var doneEl = document.getElementById('qfDone');
+  var lastBody = '';
+
+  function val(name){ var el = form.elements[name]; return el ? String(el.value || '').trim() : ''; }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    form.querySelectorAll('.is-invalid').forEach(function(el){ el.classList.remove('is-invalid'); });
+
+    var services = Array.prototype.slice.call(form.querySelectorAll('input[name="service"]:checked')).map(function(c){ return c.value; });
+    var missing = [];
+    ['name','phone','email','postcode','property','timeframe','details'].forEach(function(n){
+      var el = form.elements[n];
+      if(!val(n)){ el.classList.add('is-invalid'); missing.push(el); }
+    });
+    if(val('email') && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val('email'))){ form.elements.email.classList.add('is-invalid'); missing.push(form.elements.email); }
+    var serviceSet = form.querySelector('fieldset.qf-field');
+    serviceSet.classList.toggle('is-invalid', services.length === 0);
+
+    if(missing.length || !services.length){
+      errEl.textContent = 'Please complete the highlighted fields' + (!services.length ? ' and pick at least one service.' : '.');
+      errEl.hidden = false;
+      (missing[0] || serviceSet.querySelector('input')).focus();
+      return;
+    }
+    errEl.hidden = true;
+
+    var subject = 'Quote Request – ' + services.join(', ') + ' – ' + val('postcode');
+    var lines = [
+      'Hello OAK Group,',
+      '',
+      "I'd like to request a quote for the following work:",
+      '',
+      '— JOB —',
+      'Service(s): ' + services.join(', '),
+      'Property type: ' + val('property'),
+      'Location: ' + val('postcode'),
+      'Timeframe: ' + val('timeframe')
+    ];
+    if(val('size')) lines.push('Size / quantity: ' + val('size'));
+    if(val('budget')) lines.push('Rough budget: ' + val('budget'));
+    lines.push('', '— DETAILS —', val('details'), '',
+      '— MY CONTACT —',
+      'Name: ' + val('name'),
+      'Phone: ' + val('phone'),
+      'Email: ' + val('email'),
+      'Best way to reach me: ' + val('contact'));
+    if(val('visit')) lines.push('Best time for a site visit: ' + val('visit'));
+    lines.push('', 'Thanks,', val('name'));
+
+    var body = lines.join('\n');
+    lastBody = body;
+    var s = encodeURIComponent(subject), b = encodeURIComponent(body);
+
+    document.getElementById('qfGmail').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + QUOTE_TO + '&su=' + s + '&body=' + b;
+    document.getElementById('qfOutlook').href = 'https://outlook.live.com/mail/0/deeplink/compose?to=' + QUOTE_TO + '&subject=' + s + '&body=' + b;
+    doneEl.hidden = false;
+
+    window.location.href = 'mailto:' + QUOTE_TO + '?subject=' + s + '&body=' + b;
+  });
+
+  document.getElementById('qfCopy').addEventListener('click', function(){
+    var btn = this;
+    var text = 'To: ' + QUOTE_TO + '\n\n' + lastBody;
+    function ok(){ btn.textContent = 'Copied!'; setTimeout(function(){ btn.textContent = 'Copy message'; }, 2000); }
+    if(navigator.clipboard){ navigator.clipboard.writeText(text).then(ok, function(){}); }
+  });
+
+})();
+</script>
