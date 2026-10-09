@@ -462,7 +462,7 @@
   <div class="hero-sticky" id="heroSticky">
     <div class="hero-media" id="heroMedia">
       <img id="heroImg" fetchpriority="high" decoding="async" src="assets/hero-garden-aircon-summerhouse.jpg" alt="Air conditioning installation and timber summer house in an East London back garden" />
-      <video id="heroVideo" muted playsinline preload="auto" poster="assets/hero-garden-aircon-summerhouse.jpg">
+      <video id="heroVideo" muted playsinline preload="none" poster="assets/hero-garden-aircon-summerhouse.jpg">
         <source src="assets/hero-dolly.mp4" type="video/mp4">
       </video>
     </div>
@@ -987,18 +987,28 @@
   var saveData = !!(navigator.connection && navigator.connection.saveData);
   var scrubVideo = !touchOnly && !saveData && !reduceMotion;
 
+  // Reduced motion or data-saver: keep the still photo and never load the clip
+  var useVideo = !reduceMotion && !saveData;
   var videoReady = false;
-  heroVideo.addEventListener('loadeddata', function(){
-    videoReady = true;
-    heroVideo.style.display = 'block';
-    heroImg.style.display = 'none';
+  if(useVideo){
+    heroVideo.addEventListener('loadeddata', function(){
+      videoReady = true;
+      heroVideo.style.display = 'block';
+      heroImg.style.display = 'none';
+    });
+    heroVideo.addEventListener('error', function(){ videoReady = false; });
+    heroVideo.preload = 'auto';
+    heroVideo.load();
     if(!scrubVideo){
       heroVideo.loop = true;
+      heroVideo.autoplay = true;
       var p = heroVideo.play(); if(p && p.catch){ p.catch(function(){}); }
     }
-  });
-  heroVideo.addEventListener('error', function(){ videoReady = false; });
-  if(saveData){ heroVideo.removeAttribute('autoplay'); heroVideo.preload = 'none'; }
+  } else {
+    heroVideo.preload = 'none';
+    heroVideo.removeAttribute('src');
+    while(heroVideo.firstChild){ heroVideo.removeChild(heroVideo.firstChild); }
+  }
 
   function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
 
