@@ -1258,29 +1258,35 @@
     errEl.hidden = true;
 
     var subject = 'Quote Request – ' + services.join(', ') + ' – ' + val('postcode');
+    // Each field on its own line with a bullet and a blank line between sections.
+    // CRLF line breaks: some phone mail apps (Gmail app) drop plain \n from mailto links;
+    // the bullets keep it readable even if an app still merges the lines.
+    var SEP = '━━━━━━━━━━━━━━━━━━';
     var lines = [
       'Hello OAK Group,',
       '',
-      "I'd like to request a quote for the following work:",
+      "I'd like to request a quote for the following work.",
       '',
-      '— JOB —',
-      'Service(s): ' + services.join(', '),
-      'Property type: ' + val('property'),
-      'Location: ' + val('postcode'),
-      'Timeframe: ' + val('timeframe')
+      SEP,
+      '🔧 THE JOB',
+      SEP,
+      '• Service(s): ' + services.join(', '),
+      '• Property type: ' + val('property'),
+      '• Location: ' + val('postcode'),
+      '• Timeframe: ' + val('timeframe')
     ];
-    if(val('size')) lines.push('Size / quantity: ' + val('size'));
-    if(val('budget')) lines.push('Rough budget: ' + val('budget'));
-    lines.push('', '— DETAILS —', val('details'), '',
-      '— MY CONTACT —',
-      'Name: ' + val('name'),
-      'Phone: ' + val('phone'),
-      'Email: ' + val('email'),
-      'Best way to reach me: ' + val('contact'));
-    if(val('visit')) lines.push('Best time for a site visit: ' + val('visit'));
+    if(val('size')) lines.push('• Size / quantity: ' + val('size'));
+    if(val('budget')) lines.push('• Rough budget: ' + val('budget'));
+    lines.push('', SEP, '📝 DETAILS', SEP, val('details'), '',
+      SEP, '📞 MY CONTACT', SEP,
+      '• Name: ' + val('name'),
+      '• Phone: ' + val('phone'),
+      '• Email: ' + val('email'),
+      '• Best way to reach me: ' + val('contact'));
+    if(val('visit')) lines.push('• Best time for a site visit: ' + val('visit'));
     lines.push('', 'Thanks,', val('name'));
 
-    var body = lines.join('\n');
+    var body = lines.join('\r\n');
     lastBody = body;
 
     var s = encodeURIComponent(subject), b = encodeURIComponent(body);
