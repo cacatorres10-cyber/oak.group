@@ -1217,7 +1217,7 @@
     yahoo:   ['yahoo.com','yahoo.co.uk','ymail.com','rocketmail.com','btinternet.com','btopenworld.com','talk21.com']
   };
   function composeUrl(kind, s, b, from){
-    if(kind === 'gmail')   return 'https://mail.google.com/mail/?view=cm&fs=1&to=' + QUOTE_TO + '&su=' + s + '&body=' + b + (from ? '&authuser=' + encodeURIComponent(from) : '');
+    if(kind === 'gmail')   return 'https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=' + QUOTE_TO + '&su=' + s + '&body=' + b;
     if(kind === 'outlook') return 'https://outlook.live.com/mail/0/deeplink/compose?to=' + QUOTE_TO + '&subject=' + s + '&body=' + b;
     if(kind === 'office')  return 'https://outlook.office.com/mail/deeplink/compose?to=' + QUOTE_TO + '&subject=' + s + '&body=' + b;
     if(kind === 'yahoo')   return 'https://compose.mail.yahoo.com/?to=' + QUOTE_TO + '&subject=' + s + '&body=' + b;
@@ -1296,7 +1296,14 @@
     var title = document.getElementById('qfDoneTitle'), text = document.getElementById('qfDoneText'), lead = document.getElementById('qfAltLead');
     doneEl.hidden = false;
 
-    if(kind){
+    // Phones/tablets: mailto opens the Gmail / Mail app straight on a ready draft (like a WhatsApp link).
+    var isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Mac/.test(navigator.platform));
+    if(isMobile){
+      title.textContent = 'Your message is ready.';
+      text.innerHTML = 'Your email app opened with everything written. Just press <b>Send</b>.';
+      lead.textContent = "Didn't open?";
+      window.location.href = composeUrl('mailto', s, b);
+    } else if(kind){
       var win = window.open(composeUrl(kind, s, b, from), '_blank');
       if(win) win.opener = null;
       title.textContent = 'Your ' + names[kind] + ' is open with the message ready.';
