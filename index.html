@@ -401,6 +401,8 @@
   .final-cta .qf-submit{width:100%;margin-top:6px;}
   .qf-done{background:var(--red-tint);border-left:3px solid var(--red);padding:14px 16px;font-size:.92rem;display:flex;flex-direction:column;gap:6px;}
   .qf-alt{color:var(--text-muted);}
+  .qf-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
+  .qf-submit[disabled]{opacity:.7;cursor:wait;}
   .qf-alt a,.qf-alt button{color:var(--red);font-weight:600;cursor:pointer;background:none;border:0;padding:0;text-decoration:underline;font-size:inherit;}
 
   /* ============ FOOTER ============ */
@@ -792,8 +794,8 @@
       <p class="reveal">Tell us what needs doing and where. We'll tell you honestly whether it's a job for us, and what it costs.</p>
       <ol class="quote-how reveal">
         <li><span>01</span><span class="qh-t">Fill in the form with as much detail as you can.</span></li>
-        <li><span>02</span><span class="qh-t">Your email app opens with the message already written.</span></li>
-        <li><span>03</span><span class="qh-t">Just press <b>Send</b>. That's it.</span></li>
+        <li><span>02</span><span class="qh-t">Press <b>Send</b>. It goes straight to our inbox.</span></li>
+        <li><span>03</span><span class="qh-t">We call or email you back, usually within one working day.</span></li>
       </ol>
       <p class="fine reveal">info@oakgroup.ltd &middot; usually answered within one working day</p>
     </div>
@@ -904,15 +906,21 @@
         </div>
       </div>
 
+      <input type="text" name="_honey" class="qf-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
       <p class="qf-error" id="qfError" role="alert" hidden></p>
 
       <button class="btn btn-red qf-submit" type="submit">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>
-        Create My Quote Email
+        <span class="qf-label">Send My Quote Request</span>
       </button>
 
+      <div class="qf-done" id="qfSent" role="status" hidden>
+        <p><b>Thank you, your request has been sent.</b> We'll be in touch soon, usually within one working day.</p>
+      </div>
+
       <div class="qf-done" id="qfDone" hidden>
-        <p><b>Your email is ready.</b> Check the window that just opened and press <b>Send</b>.</p>
+        <p><b>We couldn't send it from the website just now.</b> Your email app should have opened with the message ready, so just press <b>Send</b>.</p>
         <p class="qf-alt">Didn't open? Send it with:
           <a id="qfGmail" target="_blank" rel="noopener">Gmail</a> &middot;
           <a id="qfOutlook" target="_blank" rel="noopener">Outlook</a> &middot;
@@ -1206,8 +1214,10 @@
   frame.addEventListener('pointerup', endDrag);
   frame.addEventListener('pointercancel', endDrag);
 
-  /* ---------- QUOTE FORM -> PRE-WRITTEN EMAIL ---------- */
+  /* ---------- QUOTE FORM -> SENT DIRECTLY (FormSubmit), EMAIL APP AS FALLBACK ---------- */
   var QUOTE_TO = 'info@oakgroup.ltd';
+  var QUOTE_ENDPOINT = 'https://formsubmit.co/ajax/' + QUOTE_TO;
+  var sentEl = document.getElementById('qfSent');
   var form = document.getElementById('quoteForm');
   var errEl = document.getElementById('qfError');
   var doneEl = document.getElementById('qfDone');
@@ -1262,14 +1272,55 @@
 
     var body = lines.join('\n');
     lastBody = body;
-    var s = encodeURIComponent(subject), b = encodeURIComponent(body);
 
+    if(val('_honey')) return;
+    var btn = form.querySelector('.qf-submit'), label = btn.querySelector('.qf-label');
+    btn.disabled = true; label.textContent = 'Sending…';
+    doneEl.hidden = true; sentEl.hidden = true;
+
+    var payload = {
+      _subject: subject,
+      _template: 'box',
+      _captcha: 'false',
+      _replyto: val('email'),
+      'Service(s)': services.join(', '),
+      'Property type': val('property'),
+      'Location': val('postcode'),
+      'Timeframe': val('timeframe'),
+      'Size / quantity': val('size') || '-',
+      'Rough budget': val('budget') || '-',
+      'Details': val('details'),
+      'Name': val('name'),
+      'Phone': val('phone'),
+      'Email': val('email'),
+      'Best way to reach': val('contact'),
+      'Best time for a site visit': val('visit') || '-'
+    };
+
+    fetch(QUOTE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function(r){ return r.json(); }).then(function(res){
+      if(!(res && (res.success === true || res.success === 'true'))) throw new Error(res && res.message);
+      form.reset();
+      sentEl.hidden = false;
+      label.textContent = 'Request Sent';
+      setTimeout(function(){ btn.disabled = false; label.textContent = 'Send My Quote Request'; }, 4000);
+    }).catch(function(){
+      btn.disabled = false; label.textContent = 'Send My Quote Request';
+      openEmailApp(subject, body);
+    });
+  });
+
+  function openEmailApp(subject, body){
+    var s = encodeURIComponent(subject), b = encodeURIComponent(body);
     document.getElementById('qfGmail').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + QUOTE_TO + '&su=' + s + '&body=' + b;
     document.getElementById('qfOutlook').href = 'https://outlook.live.com/mail/0/deeplink/compose?to=' + QUOTE_TO + '&subject=' + s + '&body=' + b;
     doneEl.hidden = false;
 
     window.location.href = 'mailto:' + QUOTE_TO + '?subject=' + s + '&body=' + b;
-  });
+  }
 
   document.getElementById('qfCopy').addEventListener('click', function(){
     var btn = this;
