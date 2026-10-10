@@ -1004,6 +1004,10 @@
   var useVideo = !reduceMotion && !saveData;
   var videoReady = false;
   if(useVideo){
+    // Portrait screens get a full-res vertical crop, so the clip stays sharp instead of upscaling a slice of the wide one
+    if(window.matchMedia('(max-width: 820px) and (orientation: portrait)').matches){
+      heroVideo.querySelector('source').src = 'assets/hero-dolly-mobile.mp4';
+    }
     heroVideo.addEventListener('loadeddata', function(){
       videoReady = true;
       heroVideo.style.display = 'block';
