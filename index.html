@@ -344,6 +344,7 @@
   .detail-ac .svc-text h4{color:var(--ink);}
   .detail-build .svc-text h4{color:#fff;}
   .svc-text p{font-size:1rem;line-height:1.65;}
+  .svc-text .svc-more{align-self:flex-start;margin-top:4px;}
   .detail-ac .svc-text p{color:var(--text-muted);}
   .detail-build .svc-text p{color:var(--text-on-ink-muted);}
 
@@ -627,6 +628,7 @@
           <span class="svc-num">New Installation</span>
           <h4>Sized to the Room, Not the Brochure</h4>
           <p>Sized from a proper survey, not a glossy spec sheet. Most installs finished in a day.</p>
+          <a class="pillar-link svc-more" href="air-conditioning-installation/">AC installation in detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
 
@@ -636,6 +638,7 @@
           <span class="svc-num">Hospitality &amp; Business Fit-Outs</span>
           <h4>Fitted Around Opening Hours</h4>
           <p>Fitted around service times. Kitchen stays cool, doors stay open.</p>
+          <a class="pillar-link svc-more" href="commercial-air-conditioning/">Commercial AC in detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
 
@@ -645,6 +648,7 @@
           <span class="svc-num">Maintenance Contracts</span>
           <h4>Serviced Before It Fails, Not After</h4>
           <p>One scheduled visit a year. Serviced units outlast neglected ones.</p>
+          <a class="pillar-link svc-more" href="air-conditioning-maintenance/">Servicing in detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </div>
@@ -673,6 +677,7 @@
           <span class="svc-num">Garden Rooms &amp; Summer Houses</span>
           <h4>A Room Outside, Not a Shed With a Window</h4>
           <p>Insulated, cedar-clad, wired for power. Usable in January, not just July.</p>
+          <a class="pillar-link svc-more" href="garden-rooms/">Garden rooms in detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
 
@@ -682,6 +687,7 @@
           <span class="svc-num">Landscaping</span>
           <h4>Specified for the Plot, Not the Catalogue</h4>
           <p>Paving, decking and planting chosen for your garden, not the yard's leftovers.</p>
+          <a class="pillar-link svc-more" href="landscaping/">Landscaping in detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
 
@@ -691,6 +697,7 @@
           <span class="svc-num">Refurbishments</span>
           <h4>One Point of Contact, Start to Finish</h4>
           <p>Kitchens, bathrooms, full refits. One phone number, not four trades.</p>
+          <a class="pillar-link svc-more" href="refurbishments/">Refurbishments in detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
 
@@ -700,6 +707,7 @@
           <span class="svc-num">Media Walls</span>
           <h4>Recessed, Not Bolted On</h4>
           <p>TV and fire recessed flush into the wall. Cables hidden, finish clean.</p>
+          <a class="pillar-link svc-more" href="media-walls/">Media walls in detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
 
@@ -709,6 +717,7 @@
           <span class="svc-num">Extensions</span>
           <h4>The Price Quoted Is the Price Paid</h4>
           <p>Foundation to plaster, fully project-managed. The quote doesn't move.</p>
+          <a class="pillar-link svc-more" href="house-extensions/">Extensions in detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </div>
@@ -887,7 +896,7 @@
           <label><input type="checkbox" name="service" value="Air conditioning – new installation"><span>AC installation</span></label>
           <label><input type="checkbox" name="service" value="Air conditioning – maintenance / service"><span>AC maintenance</span></label>
           <label><input type="checkbox" name="service" value="Air conditioning – repair / fault"><span>AC repair</span></label>
-          <label><input type="checkbox" name="service" value="Summer house"><span>Summer house</span></label>
+          <label><input type="checkbox" name="service" value="Garden room / summer house"><span>Garden room</span></label>
           <label><input type="checkbox" name="service" value="Landscaping"><span>Landscaping</span></label>
           <label><input type="checkbox" name="service" value="Refurbishment"><span>Refurbishment</span></label>
           <label><input type="checkbox" name="service" value="Media wall"><span>Media wall</span></label>
@@ -991,15 +1000,17 @@
       </div>
       <div class="footer-col">
         <h5>Air Conditioning</h5>
-        <a href="#air-conditioning">Installation</a>
-        <a href="#air-conditioning">Maintenance Contracts</a>
-        <a href="#coverage">Coverage Area</a>
+        <a href="air-conditioning-installation/">AC Installation</a>
+        <a href="air-conditioning-maintenance/">AC Servicing &amp; Maintenance</a>
+        <a href="commercial-air-conditioning/">Commercial AC</a>
       </div>
       <div class="footer-col">
         <h5>Construction</h5>
-        <a href="#construction">Summer Houses</a>
-        <a href="#construction">Landscaping</a>
-        <a href="#construction">Extensions &amp; Refurbishments</a>
+        <a href="garden-rooms/">Garden Rooms</a>
+        <a href="house-extensions/">Extensions</a>
+        <a href="refurbishments/">Refurbishments</a>
+        <a href="landscaping/">Landscaping</a>
+        <a href="media-walls/">Media Walls</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1291,6 +1302,29 @@
   var errEl = document.getElementById('qfError');
   var doneEl = document.getElementById('qfDone');
   var lastBody = '';
+
+  // Service pages link here as ?service=garden-room(&property=...), so the right chip is already ticked
+  var PREFILL = {
+    'ac-install': 'Air conditioning – new installation',
+    'ac-maintenance': 'Air conditioning – maintenance / service',
+    'ac-repair': 'Air conditioning – repair / fault',
+    'garden-room': 'Garden room / summer house',
+    'landscaping': 'Landscaping',
+    'refurbishment': 'Refurbishment',
+    'media-wall': 'Media wall',
+    'extension': 'Extension'
+  };
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var chip = PREFILL[params.get('service')];
+    if(chip){
+      form.querySelectorAll('input[name="service"]').forEach(function(c){ if(c.value === chip) c.checked = true; });
+    }
+    var prop = params.get('property');
+    if(prop){
+      Array.prototype.forEach.call(form.elements.property.options, function(o){ if(o.text === prop) form.elements.property.value = o.text; });
+    }
+  } catch(err){}
 
   function val(name){ var el = form.elements[name]; return el ? String(el.value || '').trim() : ''; }
 
