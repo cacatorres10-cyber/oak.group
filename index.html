@@ -28,13 +28,21 @@
   "name": "OAK Group",
   "legalName": "OAK Construction & Project Management Limited",
   "url": "https://www.oakgroup.company/",
+  "alternateName": "Oak Construction and Project Management Limited",
   "email": "info@oakgroup.ltd",
+  "telephone": "+44 7413 965823",
+  "openingHours": "Mo-Su 00:00-23:59",
+  "sameAs": [
+    "https://www.instagram.com/group.oak/",
+    "https://www.facebook.com/people/Oak-Group-Company/61595795720572/"
+  ],
   "logo": "https://www.oakgroup.company/assets/logo-oak-dark.png",
   "image": "https://www.oakgroup.company/assets/hero-garden-aircon-summerhouse.jpg",
   "description": "Air conditioning installation and maintenance across London and the Home Counties, and residential construction (garden rooms, summer houses, extensions, refurbishments, landscaping, media walls) across East London and Essex.",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "West Horndon",
+    "streetAddress": "Station Road",
+    "addressLocality": "West Horndon, Brentwood",
     "addressRegion": "Essex",
     "postalCode": "CM13 3XL",
     "addressCountry": "GB"
@@ -462,9 +470,12 @@
   /* ============ FOOTER ============ */
   footer{background:var(--ink);color:var(--text-on-ink-muted);padding-block:56px 32px;}
   .footer-grid{display:grid;gap:36px;margin-bottom:44px;}
-  @media (min-width:768px){ .footer-grid{grid-template-columns:1.3fr 1fr 1fr;} }
+  @media (min-width:768px){ .footer-grid{grid-template-columns:1.3fr 1fr 1fr .8fr;} }
   .footer-brand .brand{color:#fff;}
   .footer-brand p{margin-top:14px;max-width:34ch;font-size:.92rem;}
+  .footer-nap{margin-top:14px;font-style:normal;font-size:.88rem;line-height:1.6;color:var(--text-on-ink-muted);}
+  .footer-nap a{color:#fff;text-decoration:none;}
+  .footer-nap a:hover{color:var(--red);}
   .footer-col h5{font-family:'IBM Plex Mono';font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:14px;}
   .footer-col a{display:block;color:var(--text-on-ink-muted);text-decoration:none;font-size:.92rem;padding-block:6px;}
   .footer-col a:hover{color:var(--red);}
@@ -859,7 +870,7 @@
         <li><span>02</span><span class="qh-t">Your email opens in a new tab with the message already written.</span></li>
         <li><span>03</span><span class="qh-t">Just press <b>Send</b>. We reply within one working day.</span></li>
       </ol>
-      <p class="fine reveal">info@oakgroup.ltd &middot; usually answered within one working day</p>
+      <p class="fine reveal"><a href="tel:+447413965823" style="color:inherit;">07413 965823</a> &middot; info@oakgroup.ltd &middot; usually answered within one working day</p>
     </div>
 
     <form class="quote-form reveal" id="quoteForm" novalidate>
@@ -997,6 +1008,7 @@
       <div class="footer-brand">
         <a class="footer-logo" href="#top"><img loading="lazy" decoding="async" src="assets/logo-oak-white.png" alt="OAK Construction &amp; Project Management Limited" width="260" height="125"></a>
         <p>Air conditioning and residential construction, based in West Horndon, Essex. Two trades, one point of contact.</p>
+        <address class="footer-nap">Station Road, West Horndon, Brentwood CM13 3XL<br><a href="tel:+447413965823">07413 965823</a> &middot; <a href="mailto:info@oakgroup.ltd">info@oakgroup.ltd</a></address>
       </div>
       <div class="footer-col">
         <h5>Air Conditioning</h5>
@@ -1012,9 +1024,15 @@
         <a href="landscaping/">Landscaping</a>
         <a href="media-walls/">Media Walls</a>
       </div>
+      <div class="footer-col">
+        <h5>Areas</h5>
+        <a href="brentwood/">Brentwood</a>
+        <a href="upminster/">Upminster</a>
+        <a href="hornchurch/">Hornchurch</a>
+      </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; <span id="yearNow">2026</span> OAK Group Limited</span>
+      <span>&copy; <span id="yearNow">2026</span> OAK Construction &amp; Project Management Limited, trading as OAK Group</span>
       <a href="mailto:info@oakgroup.ltd" style="text-decoration:none;">info@oakgroup.ltd</a>
     </div>
   </div>

@@ -10,7 +10,11 @@ from html import escape
 
 SITE = "https://www.oakgroup.company"
 EMAIL = "info@oakgroup.ltd"
-TODAY = "2026-10-21"
+PHONE = "07413 965823"
+PHONE_INTL = "+447413965823"
+SAME_AS = ["https://www.instagram.com/group.oak/", "https://www.facebook.com/people/Oak-Group-Company/61595795720572/"]
+ADDRESS = {"@type": "PostalAddress", "streetAddress": "Station Road", "addressLocality": "West Horndon, Brentwood", "addressRegion": "Essex", "postalCode": "CM13 3XL", "addressCountry": "GB"}
+TODAY = "2026-10-27"
 
 AC_AREAS = ["London", "Essex", "Brentwood", "Havering", "Thurrock", "Romford", "Hertfordshire", "Kent", "Surrey"]
 BUILD_AREAS = ["West Horndon", "Brentwood", "Upminster", "Hornchurch", "Romford", "Havering", "Thurrock", "Basildon", "Billericay", "East London"]
@@ -405,6 +409,8 @@ PAGES = [
 ]
 
 BY_SLUG = {p["slug"]: p for p in PAGES}
+# Town pages built by _build/areas.py; area pills on every page link to them.
+AREA_LINKS = {"Brentwood": "brentwood", "Upminster": "upminster", "Hornchurch": "hornchurch"}
 AC_SLUGS = [p["slug"] for p in PAGES if p["trade"] == "ac"]
 BUILD_SLUGS = [p["slug"] for p in PAGES if p["trade"] == "build"]
 
@@ -417,6 +423,8 @@ def plain(s):
 
 
 def quote_href(p):
+    if not p.get("service_param"):
+        return "../#contact"
     q = "?service=" + p["service_param"]
     if p.get("property_param"):
         q += "&amp;property=" + p["property_param"].replace(" ", "%20").replace("/", "%2F")
@@ -430,7 +438,7 @@ def mail_href(p):
 
 def schema(p):
     url = f"{SITE}/{p['slug']}/"
-    areas = AC_AREAS if p["trade"] == "ac" else BUILD_AREAS
+    areas = p.get("areas") or (AC_AREAS if p["trade"] == "ac" else BUILD_AREAS)
     graph = [
         {
             "@type": "Service",
@@ -447,7 +455,9 @@ def schema(p):
                 "name": "OAK Group",
                 "url": f"{SITE}/",
                 "email": EMAIL,
-                "address": {"@type": "PostalAddress", "addressLocality": "West Horndon", "addressRegion": "Essex", "postalCode": "CM13 3XL", "addressCountry": "GB"},
+                "telephone": "+44 7413 965823",
+                "sameAs": SAME_AS,
+                "address": ADDRESS,
             },
         },
         {
@@ -484,6 +494,10 @@ def mobile_links():
     return "\n  ".join(['<a href="../">Home</a>'] + links)
 
 
+def area_col():
+    return "\n        ".join(f'<a href="../{slug}/">{town}</a>' for town, slug in AREA_LINKS.items())
+
+
 def footer_col(slugs):
     return "\n        ".join(f'<a href="../{s}/">{BY_SLUG[s]["nav"]}</a>' for s in slugs)
 
@@ -491,8 +505,10 @@ def footer_col(slugs):
 def page(p):
     qh = quote_href(p)
     mh = mail_href(p)
-    areas = AC_AREAS if p["trade"] == "ac" else BUILD_AREAS
-    if p["trade"] == "ac":
+    areas = p.get("areas") or (AC_AREAS if p["trade"] == "ac" else BUILD_AREAS)
+    if p.get("area_title"):
+        area_title, area_text, area_fine = p["area_title"], p["area_text"], p["area_fine"]
+    elif p["trade"] == "ac":
         area_title = "Air Conditioning Across London &amp; the Home Counties"
         area_text = "Homes across London and the Home Counties, and further for larger commercial projects. Based in West Horndon, Essex."
         area_fine = "Not sure if you're in range? Put your postcode in the quote form and we'll tell you straight away."
@@ -516,7 +532,7 @@ def page(p):
         "<details><summary>" + escape(q) + '</summary><div class="answer">'
         + "".join(f"<p>{escape(x)}</p>" for x in a) + "</div></details>"
         for q, a in p["faq"])
-    pills = "".join(f"<span>{a}</span>" for a in areas)
+    pills = "".join(f'<a href="../{AREA_LINKS[a]}/">{a}</a>' if a in AREA_LINKS and AREA_LINKS[a] != p["slug"] else f"<span>{a}</span>" for a in areas)
     related = "\n      ".join(
         f'<a class="related-card" href="../{s}/"><div class="img"><img loading="lazy" decoding="async" src="../assets/{BY_SLUG[s]["img"]}" alt="{BY_SLUG[s]["img_alt"]}"></div>'
         f'<div class="body"><h3>{BY_SLUG[s]["nav"]}</h3>{ICON_ARROW}</div></a>'
@@ -631,7 +647,7 @@ def page(p):
 <aside class="mid-cta">
   <div class="container mid-cta-row">
     <div>
-      <h2>Get a Price for Your {p['nav']}</h2>
+      <h2>{p.get('cta_title') or 'Get a Price for Your ' + p['nav']}</h2>
       <p>Tell us what you need and your postcode. We reply within one working day.</p>
     </div>
     <div class="btns">
@@ -714,7 +730,7 @@ def page(p):
       <a class="btn btn-white" href="{qh}">{ICON_MAIL}Get a Free Quote</a>
       <a class="btn btn-ghost-white" href="{mh}">Email {EMAIL}</a>
     </div>
-    <p class="fine">Usually answered within one working day</p>
+    <p class="fine"><a href="tel:{PHONE_INTL}" style="color:inherit;">{PHONE}</a> &middot; usually answered within one working day</p>
   </div>
 </section>
 </main>
@@ -725,6 +741,7 @@ def page(p):
       <div class="footer-brand">
         <a class="footer-logo" href="../"><img loading="lazy" decoding="async" src="../assets/logo-oak-white.png" alt="OAK Construction &amp; Project Management Limited" width="260" height="125"></a>
         <p>Air conditioning and residential construction, based in West Horndon, Essex. Two trades, one point of contact.</p>
+        <address class="footer-nap">Station Road, West Horndon, Brentwood CM13 3XL<br><a href="tel:{PHONE_INTL}">{PHONE}</a> &middot; <a href="mailto:{EMAIL}">{EMAIL}</a></address>
       </div>
       <div class="footer-col">
         <h5>Air Conditioning</h5>
@@ -734,9 +751,13 @@ def page(p):
         <h5>Construction</h5>
         {footer_col(BUILD_SLUGS)}
       </div>
+      <div class="footer-col">
+        <h5>Areas</h5>
+        {area_col()}
+      </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 OAK Group Limited</span>
+      <span>&copy; 2026 OAK Construction &amp; Project Management Limited, trading as OAK Group</span>
       <a href="mailto:{EMAIL}">{EMAIL}</a>
     </div>
   </div>
@@ -769,7 +790,7 @@ def page(p):
 
 
 def sitemap():
-    urls = [(f"{SITE}/", "1.0")] + [(f"{SITE}/{p['slug']}/", "0.8") for p in PAGES]
+    urls = [(f"{SITE}/", "1.0")] + [(f"{SITE}/{p['slug']}/", "0.8") for p in PAGES] + [(f"{SITE}/{slug}/", "0.7") for slug in AREA_LINKS.values()]
     rows = "\n".join(
         f"  <url>\n    <loc>{u}</loc>\n    <lastmod>{TODAY}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>{pr}</priority>\n  </url>"
         for u, pr in urls)
