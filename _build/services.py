@@ -43,12 +43,9 @@ PAGES = [{'slug': 'air-conditioning',
   'lead': 'We install, service and repair air conditioning and heat pumps that heat your home in winter and cool it in summer. Homes and '
           'businesses in Brentwood, Upminster, West Horndon, Hornchurch, Romford, Billericay and across Essex and East London.',
   'facts': ['Installation', 'Heating &amp; heat pumps', 'Servicing &amp; repairs', 'Homes and businesses'],
-  'img': 'aircon-install-residential.jpg',
+  'img': 'ac-living-room-winter.jpg',
   'img_alt': 'Engineer installing a wall-mounted air conditioning unit in a British living room',
-  'gallery': [('aircon-install-residential.jpg', 'Wall-mounted unit being fitted in a living room'),
-              ('aircon-maintenance.jpg', 'Outdoor unit being serviced'),
-              ('hero-garden-aircon-summerhouse.jpg', 'Outdoor unit on the back wall of an Essex home'),
-              ('aircon-commercial-pub.jpg', 'Commercial units behind a pub')],
+  'gallery': [('ac-living-room-winter.jpg', 'Wall-mounted unit heating a living room on a winter evening'), ('heat-pump-outdoor-frost.jpg', 'Outdoor unit on a frosty morning in Essex'), ('ac-install-bedroom.jpg', 'Installing a split unit in a bedroom'), ('heat-pump-install.jpg', 'Connecting a heat pump outdoor unit'), ('ac-service-gauges.jpg', 'Checking pressures on a yearly service'), ('ac-handover-kitchen.jpg', 'Showing the homeowner the controls'), ('ac-home-office.jpg', 'Split unit in a home office'), ('ac-commercial-pub.jpg', 'Ceiling cassettes in a pub dining room'), ('ac-commercial-roof.jpg', 'Commercial condensers on a flat roof')],
   'kicker': 'One unit, all year. It <mark>heats your home in winter</mark> and cools it in summer.',
   'intro': ['A modern split air conditioner is a heat pump. In winter it pulls heat from the outside air, even on frosty mornings, and '
             'moves it into the room. In summer it does the reverse. For every unit of electricity it uses, it delivers roughly three units '
@@ -149,9 +146,7 @@ PAGES = [{'slug': 'air-conditioning',
           ('Do you build in my area?',
            ['We build in East London and Essex, including Brentwood, Havering and Thurrock. Residential only.'])],
   'related': ['air-conditioning', 'landscaping', 'building-works'],
-  'gallery': [('summerhouse.jpg', 'Cedar-clad garden room in an Essex garden'),
-              ('hero-garden-aircon-summerhouse.jpg', 'Garden room at the end of a back garden'),
-              ('landscaping.jpg', 'Landscaped garden around a new build')]},
+  'gallery': [('garden-room-winter.jpg', 'Garden room with AC, warm in winter'), ('garden-room-office.jpg', 'Garden room used as a home office'), ('garden-room-build.jpg', 'Fitting cedar cladding to a new garden room'), ('summerhouse.jpg', 'Cedar-clad garden room in an Essex garden')]},
  {'slug': 'building-works',
   'trade': 'build',
   'nav': 'Extensions &amp; Refurbs',
@@ -167,9 +162,7 @@ PAGES = [{'slug': 'air-conditioning',
   'facts': ['Extensions', 'Kitchens &amp; bathrooms', 'Media walls', 'Fixed quote after a site visit'],
   'img': 'extension.jpg',
   'img_alt': 'Single-storey rear extension on an Essex home',
-  'gallery': [('extension.jpg', 'Rear extension on an Essex home'),
-              ('refurbishment.jpg', 'Refitted kitchen'),
-              ('media-wall.jpg', 'Media wall with fire and shelving')],
+  'gallery': [('extension-rear.jpg', 'Single-storey rear extension with roof lantern'), ('kitchen-refit.jpg', 'Refitted shaker kitchen'), ('media-wall-evening.jpg', 'Media wall with fire and shelving'), ('extension.jpg', 'Extension on an Essex home')],
   'kicker': 'One phone number from strip-out to finish, <mark>not four different trades</mark>.',
   'intro': ['Most building jobs go wrong in the gaps between trades: the builder blames the plumber, the plumber blames the electrician, '
             'and you chase all of them.',
@@ -238,9 +231,7 @@ PAGES = [{'slug': 'air-conditioning',
            ["Yes. Tell us what you need in the quote form and we'll say honestly if it's a job for us."]),
           ('Which areas do you cover?', ['East London and Essex, including Brentwood, Havering and Thurrock. Residential only.'])],
   'related': ['garden-rooms', 'building-works', 'air-conditioning'],
-  'gallery': [('landscaping.jpg', 'Landscaped garden with paving and planting'),
-              ('summerhouse.jpg', 'Garden room with new paving'),
-              ('hero-garden-aircon-summerhouse.jpg', 'Finished back garden in Essex')]}]
+  'gallery': [('decking-garden.jpg', 'Composite decking with raised planters'), ('landscaping-paving.jpg', 'Laying new paving slabs'), ('landscaping.jpg', 'Finished landscaped garden')]}]
 
 BY_SLUG = {p["slug"]: p for p in PAGES}
 # Real customer reviews only (Google, Checkatrade, WhatsApp with permission). Never invent one.
