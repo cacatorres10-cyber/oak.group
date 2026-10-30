@@ -20,6 +20,7 @@ AC_AREAS = ["London", "Essex", "Brentwood", "Havering", "Thurrock", "Romford", "
 BUILD_AREAS = ["West Horndon", "Brentwood", "Upminster", "Hornchurch", "Romford", "Havering", "Thurrock", "Basildon", "Billericay", "East London"]
 
 ICON_MAIL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>'
+ICON_PHONE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>'
 ICON_ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 
 PROCESS = [
@@ -128,6 +129,68 @@ PAGES = [
              ["London and the Home Counties for homes, and further for larger commercial projects. We're based in West Horndon, Essex."]),
         ],
         "related": ["air-conditioning-maintenance", "commercial-air-conditioning", "garden-rooms"],
+    },
+    {
+        "slug": "heat-pumps",
+        "trade": "ac",
+        "nav": "Heat Pumps",
+        "service_param": "heat-pump",
+        "title": "Heat Pump Installation in Essex | Air Source &amp; Air to Air | OAK Group",
+        "description": "Air source and air to air heat pumps installed and serviced in Essex, Brentwood, Upminster and West Horndon. Sized from a survey of your rooms. Swap storage heaters for heat that works.",
+        "schema_name": "Heat pump installation and servicing",
+        "eyebrow": "Heat Pumps &middot; Installation &amp; Service",
+        "h1": "Heat Pump Installation in <em>Essex</em>",
+        "lead": "A warm home all winter without the storage heater bill. Air source and air to air heat pumps, sized from a survey of your rooms and fitted by local engineers from West Horndon.",
+        "facts": ["Air source &amp; air to air", "Survey before any price", "Service and repairs too"],
+        "img": "aircon-maintenance.jpg",
+        "img_alt": "OAK engineer working on the outdoor unit of a heat pump",
+        "tag": "Winter heating",
+        "kicker": "A heater makes heat. A heat pump <mark>moves it in from outside</mark>, so the same electricity goes about three times further.",
+        "intro": [
+            "Even on a freezing morning there is heat in the outside air. A heat pump collects it and moves it into your rooms. For every unit of electricity it uses, a modern unit delivers roughly three units of heat. That is why it costs less to run than storage heaters, oil-filled radiators or a fan heater.",
+            "<strong>We size every system from a survey of your rooms</strong>, not from a brochure. Too small and it runs flat out on the coldest nights. Too big and you paid for capacity you never use. Getting the size right is most of the job, so it is the first thing we do.",
+        ],
+        "included_title": "What's Included",
+        "included_sub": "From the survey to the first warm night, done by the same engineers.",
+        "included": [
+            ("Room survey", "We measure the rooms, check the walls and windows and plan where the indoor and outdoor units go."),
+            ("System sized to your home", "Capacity worked out for the size, insulation and use of each room."),
+            ("Neat installation", "Pipework routed and covered cleanly, outdoor unit mounted securely, mess cleared away."),
+            ("Commissioning and testing", "Pressure tested and run in heating mode before we leave, so you know it works."),
+            ("Set up to keep bills down", "We show you the controls and the settings that keep running costs low."),
+            ("Servicing after", "The same team services it every year, so it keeps heating like day one."),
+        ],
+        "cta_title": "Get a Price for Your Heat Pump",
+        "why": [
+            ("Local engineers", "We are based in West Horndon. Brentwood, Upminster and the rest of Essex are on our doorstep."),
+            ("Installed right, kept running", "The team that fits your heat pump services it next year. No handoffs."),
+            ("You speak to the engineer", "Call and you get the person who plans the job, not a call centre."),
+        ],
+        "faq": [
+            ("Does a heat pump work in a British winter?",
+             ["Yes. Modern air source units keep heating well below freezing. They are used across Scandinavia, where winters are far colder than Essex."]),
+            ("What is the difference between air to air and air source?",
+             ["An air to air heat pump heats the room directly through a wall-mounted indoor unit, and it can cool in summer too. An air to water system heats water for radiators or underfloor heating.",
+              "We will tell you at the survey which one suits your home."]),
+            ("Can a heat pump replace my storage heaters?",
+             ["Yes, and it is one of the best swaps you can make. Storage heaters charge overnight and often run out by the evening. A heat pump heats when you need it, and uses less electricity to do it."]),
+            ("How long does an installation take?",
+             ["Most single room air to air installs are done in a day. Whole-home systems take longer, and you get the timeline with your quote."]),
+            ("Do you service and repair heat pumps you didn't fit?",
+             ["Yes. We service and repair most makes. Tell us the make and model in the quote form if you have them."]),
+            ("Which areas do you cover?",
+             ["Essex, including Brentwood, Upminster, West Horndon, Hornchurch and Romford, plus East London. We are based in West Horndon."]),
+        ],
+        "areas": ["Essex", "Brentwood", "Upminster", "West Horndon", "Hornchurch", "Romford", "Billericay", "Basildon", "Thurrock", "East London"],
+        "area_title": "Heat Pumps Across Essex",
+        "area_text": "Based in West Horndon, so most of Essex is a short drive. Less time on the road, more of your quote in the job.",
+        "area_fine": "Not sure if you're in range? Put your postcode in the quote form and we'll tell you straight away.",
+        "gallery": [
+            ("aircon-install-residential.jpg", "Wall-mounted indoor unit of an air to air heat pump in a living room"),
+            ("aircon-maintenance.jpg", "Outdoor unit of a heat pump being serviced"),
+            ("hero-garden-aircon-summerhouse.jpg", "Outdoor unit fitted neatly on the back wall of a home"),
+        ],
+        "related": ["air-conditioning-installation", "air-conditioning-maintenance", "garden-rooms"],
     },
     {
         "slug": "air-conditioning-maintenance",
@@ -409,6 +472,10 @@ PAGES = [
 ]
 
 BY_SLUG = {p["slug"]: p for p in PAGES}
+# Real customer reviews only (Google, Checkatrade, WhatsApp with permission). Never invent one.
+# Key = page slug, or "ac" / "build" for every page of that trade. Each review: (quote, name, town, service).
+# The reviews section only appears on a page once it has at least one review.
+REVIEWS = {}
 # Town pages built by _build/areas.py; area pills on every page link to them.
 AREA_LINKS = {"Brentwood": "brentwood", "Upminster": "upminster", "Hornchurch": "hornchurch"}
 AC_SLUGS = [p["slug"] for p in PAGES if p["trade"] == "ac"]
@@ -480,7 +547,7 @@ def schema(p):
 
 def nav_links(current):
     items = [("Garden Rooms", "garden-rooms"), ("AC Installation", "air-conditioning-installation"),
-             ("AC Servicing", "air-conditioning-maintenance"), ("Extensions", "house-extensions")]
+             ("Heat Pumps", "heat-pumps"), ("AC Servicing", "air-conditioning-maintenance"), ("Extensions", "house-extensions")]
     out = []
     for label, slug in items:
         cur = ' aria-current="page"' if slug == current else ""
@@ -532,6 +599,43 @@ def page(p):
         "<details><summary>" + escape(q) + '</summary><div class="answer">'
         + "".join(f"<p>{escape(x)}</p>" for x in a) + "</div></details>"
         for q, a in p["faq"])
+    gallery = ""
+    if p.get("gallery"):
+        figs = "\n      ".join(
+            f'<figure><img loading="lazy" decoding="async" src="../assets/{f}" alt="{a}"><figcaption>{a}</figcaption></figure>'
+            for f, a in p["gallery"])
+        gallery = f"""<section class="gallery">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">In Your Home</span>
+      <h2>What It Looks Like</h2>
+    </div>
+    <div class="gallery-grid">
+      {figs}
+    </div>
+  </div>
+</section>
+
+"""
+    revs = REVIEWS.get(p["slug"], []) + REVIEWS.get(p["trade"], [])
+    reviews = ""
+    if revs:
+        cards = "\n      ".join(
+            f'<figure class="review-card"><div class="stars" aria-label="5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>{escape(q)}</blockquote><figcaption><strong>{escape(n)}</strong> &middot; {escape(t)}<span>{escape(sv)}</span></figcaption></figure>'
+            for q, n, t, sv in revs)
+        reviews = f"""<section class="reviews">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Reviews</span>
+      <h2>What Customers Say</h2>
+    </div>
+    <div class="review-grid">
+      {cards}
+    </div>
+  </div>
+</section>
+
+"""
     pills = "".join(f'<a href="../{AREA_LINKS[a]}/">{a}</a>' if a in AREA_LINKS and AREA_LINKS[a] != p["slug"] else f"<span>{a}</span>" for a in areas)
     related = "\n      ".join(
         f'<a class="related-card" href="../{s}/"><div class="img"><img loading="lazy" decoding="async" src="../assets/{BY_SLUG[s]["img"]}" alt="{BY_SLUG[s]["img_alt"]}"></div>'
@@ -608,7 +712,7 @@ def page(p):
       <p class="lead">{p['lead']}</p>
       <div class="hero-ctas">
         <a class="btn btn-red" href="{qh}">{ICON_MAIL}Get a Free Quote</a>
-        <a class="btn btn-ghost-ink" href="{mh}">Email Us</a>
+        <a class="btn btn-ghost-ink" href="tel:{PHONE_INTL}">{ICON_PHONE}Call {PHONE}</a>
       </div>
       <ul class="hero-facts">
           {facts}
@@ -631,7 +735,7 @@ def page(p):
   </div>
 </section>
 
-<section class="included">
+{gallery}<section class="included">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">{p['eyebrow']}</span>
@@ -668,7 +772,7 @@ def page(p):
   </div>
 </section>
 
-<section class="process">
+{reviews}<section class="process">
   <div class="container on-ink">
     <div class="section-head">
       <span class="eyebrow">How It Works</span>
@@ -765,7 +869,7 @@ def page(p):
 
 <div class="sticky-cta">
   <a class="btn btn-red" href="{qh}">{ICON_MAIL}Get a Free Quote</a>
-  <a class="btn btn-ghost-ink" href="{mh}" aria-label="Email OAK Group">Email</a>
+  <a class="btn btn-ghost-ink" href="tel:{PHONE_INTL}" aria-label="Call OAK Group">{ICON_PHONE}Call</a>
 </div>
 
 <script>

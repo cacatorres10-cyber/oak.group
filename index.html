@@ -904,6 +904,7 @@
       <fieldset class="qf-field">
         <legend>Service needed *</legend>
         <div class="qf-chips">
+          <label><input type="checkbox" name="service" value="Heat pump"><span>Heat pump</span></label>
           <label><input type="checkbox" name="service" value="Air conditioning – new installation"><span>AC installation</span></label>
           <label><input type="checkbox" name="service" value="Air conditioning – maintenance / service"><span>AC maintenance</span></label>
           <label><input type="checkbox" name="service" value="Air conditioning – repair / fault"><span>AC repair</span></label>
@@ -1323,6 +1324,7 @@
 
   // Service pages link here as ?service=garden-room(&property=...), so the right chip is already ticked
   var PREFILL = {
+    'heat-pump': 'Heat pump',
     'ac-install': 'Air conditioning – new installation',
     'ac-maintenance': 'Air conditioning – maintenance / service',
     'ac-repair': 'Air conditioning – repair / fault',
