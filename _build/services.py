@@ -30,454 +30,224 @@ PROCESS = [
     ("Aftercare", "Maintenance offered for AC. Snagging handled directly for building work."),
 ]
 
-PAGES = [
-    {
-        "slug": "garden-rooms",
-        "trade": "build",
-        "nav": "Garden Rooms",
-        "service_param": "garden-room",
-        "title": "Garden Rooms in Essex &amp; East London | OAK Group",
-        "description": "Insulated, cedar-clad garden rooms and summer houses built to measure in Essex and East London. Wired for power, with AC that heats in winter. Fixed quote after a site visit.",
-        "schema_name": "Garden rooms and summer houses",
-        "eyebrow": "Garden Rooms &amp; Summer Houses",
-        "h1": "Garden Rooms in <em>Essex</em> &amp; East London",
-        "lead": "Insulated, cedar-clad and wired for power. Built to measure for your garden, and warm enough to use in January, not just July.",
-        "facts": ["Built to measure", "Insulated &amp; wired", "AC that heats, fitted by us"],
-        "img": "summerhouse.jpg",
-        "img_alt": "Insulated cedar-clad garden room built in an Essex back garden",
-        "tag": "Most requested",
-        "kicker": "Most garden rooms get used four months a year. Ours are built for <mark>all twelve</mark>.",
-        "intro": [
-            "A garden room is only worth the money if you actually use it. That comes down to what you can't see: the base, the insulation, the wiring and how it's heated.",
-            "<strong>We build the room and fit the air conditioning ourselves.</strong> The split system cools it in summer and heats it in winter, so the office, gym or studio works all year. One company, one quote, one phone number.",
-        ],
-        "included_title": "What's Included",
-        "included_sub": "Every room is specified for your plot and how you'll use it.",
-        "included": [
-            ("Proper base", "A solid base chosen for your ground, so the room stays level for years."),
-            ("Insulated walls, floor and roof", "Insulated all round, so the room holds heat in winter and stays cool in summer."),
-            ("Cedar cladding", "Cedar outside, built to measure, with doors and windows placed where you want the light."),
-            ("Electrics and lighting", "Wired for power, sockets, lighting and data, ready for a desk, gym kit or TV."),
-            ("Air conditioning that heats", "A split system fitted by our own engineers. Cools in summer, heats in winter."),
-            ("One team start to finish", "Groundwork, build, electrics and AC handled by one crew. No chasing four trades."),
-        ],
-        "why": [
-            ("Built and heated by one company", "We build the room and fit the AC. Nobody blames someone else's work."),
-            ("Based where we work", "We're in West Horndon. Less time on the road, more of your quote in the room."),
-            ("The price quoted is the price paid", "We see the garden before we price it, so the quote doesn't move."),
-        ],
-        "faq": [
-            ("Do I need planning permission for a garden room?",
-             ["Usually not. In England most garden rooms count as permitted development if they sit behind the house, cover no more than half the garden, and stay under 2.5m tall when within 2m of a boundary.",
-              "Listed buildings, flats and conservation areas have tighter rules. We check this at the site visit, before you pay anything."]),
-            ("Do I need building regulations approval?",
-             ["Rooms under 15m² of floor space that nobody sleeps in usually don't. Between 15m² and 30m² they're usually exempt if they sit at least 1m from the boundary. We'll tell you which applies to yours."]),
-            ("Can I use it in winter?",
-             ["Yes. That's the point of the insulation and the AC. A split system heats as well as cools, so the room stays comfortable in January."]),
-            ("How long does a build take?",
-             ["It depends on the size and the base. You get an agreed start date and a clear timeline with your quote, not a rough window."]),
-            ("Do you build in my area?",
-             ["We build in East London and Essex, including Brentwood, Havering and Thurrock. Residential only."]),
-        ],
-        "related": ["air-conditioning-installation", "landscaping", "house-extensions"],
-    },
-    {
-        "slug": "air-conditioning-installation",
-        "trade": "ac",
-        "nav": "AC Installation",
-        "service_param": "ac-install",
-        "title": "Air Conditioning Installation in London &amp; Essex | OAK Group",
-        "description": "Split system air conditioning that cools in summer and heats in winter. Sized from a proper survey, most homes fitted in a day. London, Essex and the Home Counties. Free quote.",
-        "schema_name": "Air conditioning installation",
-        "eyebrow": "Air Conditioning Installation",
-        "h1": "Air Conditioning Installation in <em>London</em> &amp; Essex",
-        "lead": "Split systems that cool in summer and heat in winter. Sized from a proper survey, and most homes are fitted in a day.",
-        "facts": ["Cools and heats", "Most installs in a day", "Homes and businesses"],
-        "img": "aircon-install-residential.jpg",
-        "img_alt": "Engineer installing a wall-mounted split air conditioning unit in a British living room",
-        "tag": "Residential",
-        "kicker": "AC isn't just for heatwaves. The same unit <mark>heats your room</mark> all winter.",
-        "intro": [
-            "A modern split system is a heat pump. It moves heat out of the room in summer and into the room in winter, so one unit replaces a fan and a heater.",
-            "<strong>We size every system from a survey of the room</strong>, not from a brochure. A unit that's too small runs flat out and never catches up. One that's too big wastes money. Getting it right is most of the job.",
-        ],
-        "included_title": "What's Included",
-        "included_sub": "From the survey to the handover, done by the same engineers.",
-        "included": [
-            ("Room survey", "We measure the room, check the walls and plan where the indoor and outdoor units go."),
-            ("System sized to the room", "Capacity chosen for the size, windows and use of the room, not the biggest unit on the van."),
-            ("Neat installation", "Pipework routed and covered cleanly, outdoor unit mounted securely, mess cleared away."),
-            ("Commissioning and testing", "Pressure tested, checked on cooling and heating, and shown working before we leave."),
-            ("How to use it", "We show you the remote and the settings that keep running costs down."),
-            ("Servicing after", "The same team can service it every year, so it keeps running like day one."),
-        ],
-        "why": [
-            ("Certified to handle refrigerant", "Refrigerant handling is a legal requirement. Our engineers hold the licence."),
-            ("Installed right, kept running", "The team that fits your unit services it next year. No handoffs."),
-            ("You call David, not a script", "You speak to the person who schedules the work, not a call centre."),
-        ],
-        "faq": [
-            ("Can air conditioning heat my home in winter?",
-             ["Yes. A split system works as an air to air heat pump. In heating mode it pulls heat from the outside air, even on cold days, and puts it into the room."]),
-            ("How long does an installation take?",
-             ["Most single room installs in a home are done in a day. Multi room systems take longer, and we give you the timeline with your quote."]),
-            ("Do I need planning permission for an AC unit?",
-             ["It depends on the property. Flats, listed buildings and conservation areas can need consent. We check this at the survey before you commit to anything."]),
-            ("Is it noisy?",
-             ["Modern indoor units are quiet enough for bedrooms. We place the outdoor unit with you and your neighbours in mind."]),
-            ("Which areas do you cover?",
-             ["London and the Home Counties for homes, and further for larger commercial projects. We're based in West Horndon, Essex."]),
-        ],
-        "related": ["air-conditioning-maintenance", "commercial-air-conditioning", "garden-rooms"],
-    },
-    {
-        "slug": "heat-pumps",
-        "trade": "ac",
-        "nav": "Heat Pumps",
-        "service_param": "heat-pump",
-        "title": "Heat Pump Installation in Essex | Air Source &amp; Air to Air | OAK Group",
-        "description": "Air source and air to air heat pumps installed and serviced in Essex, Brentwood, Upminster and West Horndon. Sized from a survey of your rooms. Swap storage heaters for heat that works.",
-        "schema_name": "Heat pump installation and servicing",
-        "eyebrow": "Heat Pumps &middot; Installation &amp; Service",
-        "h1": "Heat Pump Installation in <em>Essex</em>",
-        "lead": "A warm home all winter without the storage heater bill. Air source and air to air heat pumps, sized from a survey of your rooms and fitted by local engineers from West Horndon.",
-        "facts": ["Air source &amp; air to air", "Survey before any price", "Service and repairs too"],
-        "img": "aircon-maintenance.jpg",
-        "img_alt": "OAK engineer working on the outdoor unit of a heat pump",
-        "tag": "Winter heating",
-        "kicker": "A heater makes heat. A heat pump <mark>moves it in from outside</mark>, so the same electricity goes about three times further.",
-        "intro": [
-            "Even on a freezing morning there is heat in the outside air. A heat pump collects it and moves it into your rooms. For every unit of electricity it uses, a modern unit delivers roughly three units of heat. That is why it costs less to run than storage heaters, oil-filled radiators or a fan heater.",
-            "<strong>We size every system from a survey of your rooms</strong>, not from a brochure. Too small and it runs flat out on the coldest nights. Too big and you paid for capacity you never use. Getting the size right is most of the job, so it is the first thing we do.",
-        ],
-        "included_title": "What's Included",
-        "included_sub": "From the survey to the first warm night, done by the same engineers.",
-        "included": [
-            ("Room survey", "We measure the rooms, check the walls and windows and plan where the indoor and outdoor units go."),
-            ("System sized to your home", "Capacity worked out for the size, insulation and use of each room."),
-            ("Neat installation", "Pipework routed and covered cleanly, outdoor unit mounted securely, mess cleared away."),
-            ("Commissioning and testing", "Pressure tested and run in heating mode before we leave, so you know it works."),
-            ("Set up to keep bills down", "We show you the controls and the settings that keep running costs low."),
-            ("Servicing after", "The same team services it every year, so it keeps heating like day one."),
-        ],
-        "cta_title": "Get a Price for Your Heat Pump",
-        "why": [
-            ("Local engineers", "We are based in West Horndon. Brentwood, Upminster and the rest of Essex are on our doorstep."),
-            ("Installed right, kept running", "The team that fits your heat pump services it next year. No handoffs."),
-            ("You speak to the engineer", "Call and you get the person who plans the job, not a call centre."),
-        ],
-        "faq": [
-            ("Does a heat pump work in a British winter?",
-             ["Yes. Modern air source units keep heating well below freezing. They are used across Scandinavia, where winters are far colder than Essex."]),
-            ("What is the difference between air to air and air source?",
-             ["An air to air heat pump heats the room directly through a wall-mounted indoor unit, and it can cool in summer too. An air to water system heats water for radiators or underfloor heating.",
-              "We will tell you at the survey which one suits your home."]),
-            ("Can a heat pump replace my storage heaters?",
-             ["Yes, and it is one of the best swaps you can make. Storage heaters charge overnight and often run out by the evening. A heat pump heats when you need it, and uses less electricity to do it."]),
-            ("How long does an installation take?",
-             ["Most single room air to air installs are done in a day. Whole-home systems take longer, and you get the timeline with your quote."]),
-            ("Do you service and repair heat pumps you didn't fit?",
-             ["Yes. We service and repair most makes. Tell us the make and model in the quote form if you have them."]),
-            ("Which areas do you cover?",
-             ["Essex, including Brentwood, Upminster, West Horndon, Hornchurch and Romford, plus East London. We are based in West Horndon."]),
-        ],
-        "areas": ["Essex", "Brentwood", "Upminster", "West Horndon", "Hornchurch", "Romford", "Billericay", "Basildon", "Thurrock", "East London"],
-        "area_title": "Heat Pumps Across Essex",
-        "area_text": "Based in West Horndon, so most of Essex is a short drive. Less time on the road, more of your quote in the job.",
-        "area_fine": "Not sure if you're in range? Put your postcode in the quote form and we'll tell you straight away.",
-        "gallery": [
-            ("aircon-install-residential.jpg", "Wall-mounted indoor unit of an air to air heat pump in a living room"),
-            ("aircon-maintenance.jpg", "Outdoor unit of a heat pump being serviced"),
-            ("hero-garden-aircon-summerhouse.jpg", "Outdoor unit fitted neatly on the back wall of a home"),
-        ],
-        "related": ["air-conditioning-installation", "air-conditioning-maintenance", "garden-rooms"],
-    },
-    {
-        "slug": "air-conditioning-maintenance",
-        "trade": "ac",
-        "nav": "AC Servicing",
-        "service_param": "ac-maintenance",
-        "title": "Air Conditioning Servicing &amp; Maintenance in London &amp; Essex | OAK Group",
-        "description": "Annual air conditioning servicing, maintenance contracts and repairs for homes and businesses in London, Essex and the Home Counties. Faults caught before the heatwave.",
-        "schema_name": "Air conditioning maintenance and servicing",
-        "eyebrow": "Servicing, Maintenance &amp; Repairs",
-        "h1": "Air Conditioning <em>Servicing</em> &amp; Maintenance",
-        "lead": "One scheduled visit a year keeps your system efficient and catches faults before the first hot day, when every engineer is booked up.",
-        "facts": ["Annual service visits", "Maintenance contracts", "Repairs and faults"],
-        "img": "aircon-maintenance.jpg",
-        "img_alt": "HVAC engineer servicing an outdoor air conditioning condenser unit",
-        "tag": "Ongoing",
-        "kicker": "Serviced units outlast neglected ones. And they <mark>cost less to run</mark>.",
-        "intro": [
-            "Dirty filters and coils make a system work harder for the same result. That shows up on the electricity bill, then as a breakdown in the middle of summer.",
-            "<strong>A yearly service stops that.</strong> We clean it, test it and fix small problems while they're still small. For businesses, a maintenance contract puts every unit on a schedule so nothing gets missed.",
-        ],
-        "included_title": "What a Service Covers",
-        "included_sub": "The same checklist on every visit, so nothing is left to memory.",
-        "included": [
-            ("Filters cleaned", "Filters cleaned or replaced so air flows freely and the air in the room stays clean."),
-            ("Coils and fans checked", "Indoor and outdoor coils cleaned, fans checked for wear and balance."),
-            ("Refrigerant and pressures", "System pressures checked by a certified engineer, leaks traced if something's off."),
-            ("Drain and condensate", "Drain line cleared so there are no drips, smells or water damage."),
-            ("Electrical checks", "Connections and controls checked and tightened."),
-            ("Performance test", "Cooling and heating tested and logged, so you know it's running as it should."),
-        ],
-        "why": [
-            ("Faults caught before the heatwave", "We service ahead of the season, not in the July rush."),
-            ("Any make, homes and businesses", "We service systems we didn't fit, for homes and commercial sites."),
-            ("Repairs by the same team", "If the service finds a fault, the same engineers fix it."),
-        ],
-        "faq": [
-            ("How often should air conditioning be serviced?",
-             ["Once a year for most homes. Busy commercial sites, like kitchens and pubs, can need more."]),
-            ("Do you service systems you didn't install?",
-             ["Yes. We service and repair most makes, for homes and businesses."]),
-            ("My AC isn't cooling or heating properly. Can you fix it?",
-             ["Usually, yes. Tell us what it's doing in the quote form, and add the make and model if you have them. We'll book a visit to find the cause."]),
-            ("What's a maintenance contract?",
-             ["A scheduled service plan for one or more units. You don't have to remember to book, and faults get picked up early. It's popular with pubs, restaurants and offices."]),
-        ],
-        "related": ["air-conditioning-installation", "commercial-air-conditioning", "garden-rooms"],
-    },
-    {
-        "slug": "commercial-air-conditioning",
-        "trade": "ac",
-        "nav": "Commercial AC",
-        "service_param": "ac-install",
-        "property_param": "Pub / restaurant / hotel",
-        "title": "Commercial Air Conditioning for Pubs, Restaurants &amp; Hotels | OAK Group",
-        "description": "Commercial air conditioning installation and maintenance for pubs, restaurants, hotels, offices and shops across London and the Home Counties. Fitted around your opening hours.",
-        "schema_name": "Commercial air conditioning",
-        "eyebrow": "Commercial Air Conditioning",
-        "h1": "Commercial AC for <em>Pubs</em>, Restaurants &amp; Hotels",
-        "lead": "Installed around your opening hours, so the kitchen stays cool and the doors stay open. Then serviced on a schedule, so it doesn't fail on your busiest night.",
-        "facts": ["Fitted around service times", "Maintenance contracts", "London, Home Counties and further"],
-        "img": "aircon-commercial-pub.jpg",
-        "img_alt": "Commercial air conditioning condenser units outside an East London pub",
-        "tag": "Commercial",
-        "kicker": "Every hour your doors are shut costs money. So we <mark>work around your hours</mark>.",
-        "intro": [
-            "A hot dining room empties fast, and a kitchen without cooling is a hard place to keep staff. Commercial AC has to be planned around the business, not the other way round.",
-            "<strong>We plan the install around your service times</strong>, then keep every unit on a maintenance schedule. One company for the fit and the upkeep.",
-        ],
-        "included_title": "What We Do",
-        "included_sub": "Hospitality and small business sites, from one unit to a full fit-out.",
-        "included": [
-            ("Site survey", "We walk the site, check the loads and plan unit positions with you."),
-            ("System designed for the space", "Capacity sized for dining rooms, kitchens, bars, guest rooms or offices."),
-            ("Install around opening hours", "Work scheduled early, late or between services, so you keep trading."),
-            ("Commissioning", "Every unit tested, controls set up and staff shown how to use them."),
-            ("Maintenance contract", "Scheduled servicing for every unit, logged so nothing gets missed."),
-            ("Repairs", "Faults handled by the engineers who know your system."),
-        ],
-        "why": [
-            ("Fitted around service times", "Kitchen stays cool, doors stay open, trade carries on."),
-            ("One company for fit and upkeep", "The team that installs it services it. No handoffs."),
-            ("Further for larger projects", "London and the Home Counties, and further for bigger jobs."),
-        ],
-        "faq": [
-            ("Can you work outside our opening hours?",
-             ["Yes. We plan the install around your service times, including early starts and late finishes where needed."]),
-            ("Do you cover businesses outside London?",
-             ["Yes. London and the Home Counties are our main area, and we travel further for larger commercial projects."]),
-            ("Do you offer maintenance contracts for multiple units?",
-             ["Yes. Every unit goes on a schedule, so filters, drains and pressures are checked before problems start."]),
-            ("What types of business do you work with?",
-             ["Pubs, restaurants, hotels, offices and shops. Tell us about your site in the quote form and we'll say honestly if it's a fit."]),
-        ],
-        "related": ["air-conditioning-maintenance", "air-conditioning-installation", "refurbishments"],
-    },
-    {
-        "slug": "house-extensions",
-        "trade": "build",
-        "nav": "Extensions",
-        "service_param": "extension",
-        "title": "House Extensions in Essex &amp; East London | OAK Group",
-        "description": "Single-storey rear and side extensions in Essex and East London, fully project-managed from foundation to plaster. Fixed quote after a site visit. Based in West Horndon.",
-        "schema_name": "House extensions",
-        "eyebrow": "House Extensions",
-        "h1": "House Extensions in <em>Essex</em> &amp; East London",
-        "lead": "Foundation to plaster, fully project-managed by one team. We price it after seeing the house, so the quote doesn't move.",
-        "facts": ["Fully project-managed", "Fixed quote", "Residential only"],
-        "img": "extension.jpg",
-        "img_alt": "Single-storey rear extension nearing completion with bi-fold doors",
-        "tag": "Extensions",
-        "kicker": "The worst part of most extensions is the bill <mark>going up halfway</mark>. Ours doesn't.",
-        "intro": [
-            "Extensions go over budget when the price is guessed from photos and the surprises turn up once the ground is open.",
-            "<strong>We look at the job properly before we price it</strong>, then manage every stage ourselves. You deal with one company, from the foundations to the final coat of paint.",
-        ],
-        "included_title": "What's Included",
-        "included_sub": "Every stage handled by one team, so nothing falls between trades.",
-        "included": [
-            ("Site visit and fixed quote", "We see the house before we price it. The number doesn't move."),
-            ("Groundwork and foundations", "Dug, poured and inspected properly, the part nobody sees and everything depends on."),
-            ("Structure and roof", "Walls, steels, roof and openings, including bi-fold or sliding doors."),
-            ("First and second fix", "Electrics, plumbing, plastering and finishing, coordinated by us."),
-            ("Heating and cooling", "AC that heats and cools can be fitted by our own engineers."),
-            ("Snagging", "Snags handled directly by us, not passed around."),
-        ],
-        "why": [
-            ("The price quoted is the price paid", "We see the job before pricing it, so the quote doesn't move."),
-            ("One point of contact", "One phone number from start to finish, not four trades."),
-            ("Based where we work", "We're in West Horndon, Essex. Close enough to be on site when it matters."),
-        ],
-        "faq": [
-            ("Do I need planning permission for an extension?",
-             ["Many single-storey rear extensions fall under permitted development, but it depends on the house, its size and its history. We check this with you at the site visit."]),
-            ("Do you manage building regulations?",
-             ["Extensions need building regulations sign-off. We build to the regulations and work with the inspector through each stage."]),
-            ("Will the price change once work starts?",
-             ["No. We price after seeing the job, and the quote is fixed for the work agreed."]),
-            ("Which areas do you cover?",
-             ["East London and Essex, including Brentwood, Havering and Thurrock. Residential only."]),
-        ],
-        "related": ["refurbishments", "garden-rooms", "media-walls"],
-    },
-    {
-        "slug": "refurbishments",
-        "trade": "build",
-        "nav": "Refurbishments",
-        "service_param": "refurbishment",
-        "title": "Kitchen &amp; Bathroom Refurbishments in Essex &amp; East London | OAK Group",
-        "description": "Kitchen, bathroom and full home refurbishments in Essex and East London. One point of contact from strip-out to finish. Fixed quote after a site visit.",
-        "schema_name": "Kitchen and bathroom refurbishments",
-        "eyebrow": "Refurbishments",
-        "h1": "Kitchen &amp; Bathroom <em>Refurbishments</em>",
-        "lead": "Kitchens, bathrooms and full refits across Essex and East London. One phone number from strip-out to finish, not four different trades.",
-        "facts": ["Kitchens and bathrooms", "Full home refits", "One point of contact"],
-        "img": "refurbishment.jpg",
-        "img_alt": "British kitchen mid refurbishment with new cabinets being fitted",
-        "tag": "Refurbishments",
-        "kicker": "A refit goes wrong in the gaps <mark>between trades</mark>. We close the gaps.",
-        "intro": [
-            "When the plumber, electrician, plasterer and fitter all work for different people, every delay is somebody else's fault and you end up managing the job yourself.",
-            "<strong>We run the whole refurbishment.</strong> One team, one schedule and one person to call, from the strip-out to the last tile.",
-        ],
-        "included_title": "What's Included",
-        "included_sub": "Planned and run by one team from the first visit.",
-        "included": [
-            ("Site visit and fixed quote", "We see the room before pricing it, so the number holds."),
-            ("Strip-out and prep", "Old fittings removed, walls and floors made good."),
-            ("Plumbing and electrics", "Moved or upgraded where the new layout needs it."),
-            ("Plastering and finishing", "Walls, ceilings and floors finished properly before anything is fitted."),
-            ("Fitting", "Kitchens, bathrooms, tiling and joinery fitted by our team."),
-            ("Snagging", "Anything not right is handled by us directly."),
-        ],
-        "why": [
-            ("One point of contact", "One phone number, start to finish."),
-            ("The price quoted is the price paid", "Priced after a site visit. The quote doesn't move."),
-            ("Two trades under one roof", "Need AC in the new room? Our own engineers fit it."),
-        ],
-        "faq": [
-            ("Do you supply the kitchen or bathroom, or just fit it?",
-             ["Either. You can choose your own units and fittings, or we can source them as part of the quote."]),
-            ("Can I stay at home during the work?",
-             ["Usually, yes. We plan the order of work so you keep as much of the house usable as possible, and we tell you upfront if there are days without water or power."]),
-            ("Which areas do you cover?",
-             ["East London and Essex, including Brentwood, Havering and Thurrock. Residential only."]),
-        ],
-        "related": ["house-extensions", "media-walls", "air-conditioning-installation"],
-    },
-    {
-        "slug": "landscaping",
-        "trade": "build",
-        "nav": "Landscaping",
-        "service_param": "landscaping",
-        "title": "Garden Landscaping in Essex &amp; East London | OAK Group",
-        "description": "Garden landscaping in Essex and East London: patios, paving, decking, fencing and planting specified for your plot. Pairs with a garden room. Fixed quote after a site visit.",
-        "schema_name": "Garden landscaping",
-        "eyebrow": "Landscaping",
-        "h1": "Garden <em>Landscaping</em> in Essex &amp; East London",
-        "lead": "Paving, decking and planting chosen for your garden, not the yard's leftovers. Specified for the plot, then built by our own team.",
-        "facts": ["Patios and paving", "Decking and fencing", "Planting"],
-        "img": "landscaping.jpg",
-        "img_alt": "Completed garden landscaping with patio, decking and planting in Essex",
-        "tag": "Landscaping",
-        "kicker": "A good garden starts with <mark>drainage and levels</mark>, not the paving catalogue.",
-        "intro": [
-            "Patios crack and lawns flood when the ground underneath is rushed. The part you walk on only lasts if the part you don't see was done properly.",
-            "<strong>We specify every garden for its plot</strong>: the soil, the slope, the light and how you use it. Building a garden room too? We plan both together.",
-        ],
-        "included_title": "What We Build",
-        "included_sub": "Hard and soft landscaping, planned as one design.",
-        "included": [
-            ("Patios and paving", "Laid on a proper sub-base with the right falls, so water runs away from the house."),
-            ("Decking", "Built to last, on a frame that stays level."),
-            ("Fencing and boundaries", "Fences, gates and walls that suit the garden and the house."),
-            ("Lawns and planting", "Turf and planting chosen for your soil and light."),
-            ("Paths and edging", "Clean edges and paths that connect the garden."),
-            ("Garden room ready", "Base, paths and power planned in if a garden room is going in."),
-        ],
-        "why": [
-            ("Specified for the plot", "Chosen for your garden, not whatever's left in the yard."),
-            ("Garden and garden room together", "One team plans the room and the garden around it."),
-            ("Based where we work", "We're in West Horndon, Essex. More of your quote goes into the garden."),
-        ],
-        "faq": [
-            ("Can you landscape the garden around a new garden room?",
-             ["Yes, and it's better planned together. Paths, levels and power for the room are designed in from the start."]),
-            ("Do you do small jobs, like just a patio?",
-             ["Yes. Tell us what you need in the quote form and we'll say honestly if it's a job for us."]),
-            ("Which areas do you cover?",
-             ["East London and Essex, including Brentwood, Havering and Thurrock. Residential only."]),
-        ],
-        "related": ["garden-rooms", "house-extensions", "refurbishments"],
-    },
-    {
-        "slug": "media-walls",
-        "trade": "build",
-        "nav": "Media Walls",
-        "service_param": "media-wall",
-        "title": "Media Walls in Essex &amp; East London | OAK Group",
-        "description": "Built-in media walls with the TV and electric fire recessed flush into the wall, cables hidden. Designed and built in Essex and East London. Fixed quote.",
-        "schema_name": "Media walls",
-        "eyebrow": "Media Walls",
-        "h1": "Media Walls in <em>Essex</em> &amp; East London",
-        "lead": "TV and electric fire recessed flush into the wall, cables hidden, finish clean. Built in, not bolted on.",
-        "facts": ["Recessed TV and fire", "Hidden cables", "Shelving and lighting"],
-        "img": "media-wall.jpg",
-        "img_alt": "Built-in media wall with recessed TV and electric fireplace in a living room",
-        "tag": "Media Walls",
-        "kicker": "A media wall should look like it was <mark>always part of the room</mark>.",
-        "intro": [
-            "A TV on a bracket with cables down the wall is the first thing you notice in a room. A media wall hides all of it and gives the room a focal point.",
-            "<strong>We build the wall around your TV and fire</strong>, with power, sockets and cable routes planned before the first board goes up.",
-        ],
-        "included_title": "What's Included",
-        "included_sub": "Designed around your room, your TV and how you use the space.",
-        "included": [
-            ("Design to your room", "Sized for the wall, the TV and the fire you choose."),
-            ("Recessed TV and fire", "Both set flush into the wall for a clean finish."),
-            ("Hidden cables and power", "Sockets and cable routes built in, so nothing shows."),
-            ("Shelving and storage", "Alcoves, shelves or cupboards if you want them."),
-            ("Lighting", "LED lighting built into the wall if you want it."),
-            ("Plastered and finished", "Taped, plastered and ready to paint, or painted by us."),
-        ],
-        "why": [
-            ("Recessed, not bolted on", "TV and fire flush with the wall, cables hidden."),
-            ("One team does it all", "Framing, electrics and plastering by one crew."),
-            ("Fixed quote", "We see the room before pricing it. The quote doesn't move."),
-        ],
-        "faq": [
-            ("Can you fit my existing TV and fire?",
-             ["Yes. We design the wall around the TV and fire you have or plan to buy, so share the models in the quote form."]),
-            ("How long does a media wall take?",
-             ["Most take a few days, depending on size, shelving and finish. You'll get the timeline with your quote."]),
-            ("Which areas do you cover?",
-             ["East London and Essex, including Brentwood, Havering and Thurrock. Residential only."]),
-        ],
-        "related": ["refurbishments", "house-extensions", "air-conditioning-installation"],
-    },
-]
+PAGES = [{'slug': 'air-conditioning',
+  'trade': 'ac',
+  'nav': 'Air Conditioning',
+  'service_param': 'ac-install',
+  'title': 'Air Conditioning &amp; Heat Pumps in Essex | Install, Service, Repair | OAK Group',
+  'description': 'Air conditioning and heat pumps that heat in winter and cool in summer. Installation, servicing and repairs for homes '
+                 'and businesses in Brentwood, Upminster, West Horndon and across Essex.',
+  'schema_name': 'Air conditioning and heat pump installation, servicing and repair',
+  'eyebrow': 'Air Conditioning &middot; Heat Pumps &middot; Servicing',
+  'h1': 'Air Conditioning &amp; Heat Pumps in <em>Essex</em>',
+  'lead': 'We install, service and repair air conditioning and heat pumps that heat your home in winter and cool it in summer. Homes and '
+          'businesses in Brentwood, Upminster, West Horndon, Hornchurch, Romford, Billericay and across Essex and East London.',
+  'facts': ['Installation', 'Heating &amp; heat pumps', 'Servicing &amp; repairs', 'Homes and businesses'],
+  'img': 'aircon-install-residential.jpg',
+  'img_alt': 'Engineer installing a wall-mounted air conditioning unit in a British living room',
+  'gallery': [('aircon-install-residential.jpg', 'Wall-mounted unit being fitted in a living room'),
+              ('aircon-maintenance.jpg', 'Outdoor unit being serviced'),
+              ('hero-garden-aircon-summerhouse.jpg', 'Outdoor unit on the back wall of an Essex home'),
+              ('aircon-commercial-pub.jpg', 'Commercial units behind a pub')],
+  'kicker': 'One unit, all year. It <mark>heats your home in winter</mark> and cools it in summer.',
+  'intro': ['A modern split air conditioner is a heat pump. In winter it pulls heat from the outside air, even on frosty mornings, and '
+            'moves it into the room. In summer it does the reverse. For every unit of electricity it uses, it delivers roughly three units '
+            'of heat, which is why it costs less to run than storage heaters or a fan heater.',
+            '<strong>We size every system from a survey of your rooms</strong>, fit it neatly, and service it every year after. '
+            'Installation, heating, servicing and repairs, all from the same local team.'],
+  'included_title': 'What We Do',
+  'included_sub': 'Everything to do with air conditioning and heat pumps, from one team.',
+  'included': [('Air conditioning installation',
+                'Split and multi-split systems for bedrooms, living rooms, lofts, offices and garden rooms. Most single rooms fitted in a '
+                'day.'),
+               ('Heating with AC and heat pumps',
+                'Air to air and air source heat pumps that keep your home warm all winter. A smart swap for old storage heaters.'),
+               ('Servicing', 'A yearly visit: filters, coils, drains, pressures and a full heating and cooling test.'),
+               ('Repairs and faults', 'Not heating, not cooling, leaking or noisy? We find the cause and fix it, on most makes.'),
+               ('Commercial', 'Pubs, restaurants, offices and shops. Fitted around your opening hours, then kept on a service plan.'),
+               ('Survey before any price', "We look at the rooms first, so the system is the right size and the quote doesn't move.")],
+  'cta_title': 'Get a Price for Your Air Conditioning',
+  'why': [('Local engineers', 'Based in West Horndon. Brentwood, Upminster and the rest of Essex are on our doorstep.'),
+          ('Installed right, kept running', 'The team that fits your system services it next year. No handoffs.'),
+          ('You speak to the engineer', 'Call and you get the person who plans the job, not a call centre.')],
+  'faq': [('Can air conditioning heat my home in winter?',
+           ['Yes. A split system works as an air to air heat pump. In heating mode it pulls heat from the outside air, even below '
+            'freezing, and puts it into the room.']),
+          ('What is the difference between air to air and air source heat pumps?',
+           ['Air to air heats the room directly through a wall-mounted unit, and cools in summer too. Air to water heats water for '
+            'radiators or underfloor heating. We tell you at the survey which suits your home.']),
+          ('Can it replace my storage heaters?',
+           ['Yes, and it is one of the best swaps you can make. Storage heaters charge overnight and often run out by the evening. A heat '
+            'pump heats when you need it, using less electricity.']),
+          ('How long does an installation take?',
+           ['Most single room installs are done in a day. Multi-room systems take longer, and you get the timeline with your quote.']),
+          ('How often should it be serviced?',
+           ['Once a year for most homes. Busy commercial sites, like kitchens and pubs, can need more.']),
+          ("Do you service and repair systems you didn't fit?",
+           ['Yes. We service and repair most makes. Add the make and model in the quote form if you have them.']),
+          ('Which areas do you cover?',
+           ['Brentwood, Upminster, West Horndon, Hornchurch, Romford, Billericay and across Essex and East London. We are based in West '
+            'Horndon.'])],
+  'areas': ['Brentwood',
+            'Upminster',
+            'West Horndon',
+            'Hornchurch',
+            'Romford',
+            'Billericay',
+            'Basildon',
+            'Thurrock',
+            'Essex',
+            'East London'],
+  'area_title': 'Air Conditioning Across Essex',
+  'area_text': 'Based in West Horndon, so most of Essex is a short drive. Less time on the road, more of your quote in the job.',
+  'area_fine': "Not sure if you're in range? Put your postcode in the quote form and we'll tell you straight away.",
+  'related': ['garden-rooms', 'building-works', 'landscaping']},
+ {'slug': 'garden-rooms',
+  'trade': 'build',
+  'nav': 'Garden Rooms',
+  'service_param': 'garden-room',
+  'title': 'Garden Rooms in Essex &amp; East London | OAK Group',
+  'description': 'Insulated, cedar-clad garden rooms and summer houses built to measure in Essex and East London. Wired for power, with AC '
+                 'that heats in winter. Fixed quote after a site visit.',
+  'schema_name': 'Garden rooms and summer houses',
+  'eyebrow': 'Garden Rooms &amp; Summer Houses',
+  'h1': 'Garden Rooms in <em>Essex</em> &amp; East London',
+  'lead': 'We build insulated, cedar-clad garden rooms and summer houses, wired for power and fitted with AC that heats in winter. Homes '
+          'in Brentwood, Upminster, West Horndon, Hornchurch, Romford, Billericay and across Essex and East London.',
+  'facts': ['Built to measure', 'Insulated &amp; wired', 'AC that heats, fitted by us'],
+  'img': 'summerhouse.jpg',
+  'img_alt': 'Insulated cedar-clad garden room built in an Essex back garden',
+  'kicker': 'Most garden rooms get used four months a year. Ours are built for <mark>all twelve</mark>.',
+  'intro': ["A garden room is only worth the money if you actually use it. That comes down to what you can't see: the base, the "
+            "insulation, the wiring and how it's heated.",
+            '<strong>We build the room and fit the air conditioning ourselves.</strong> The split system cools it in summer and heats it '
+            'in winter, so the office, gym or studio works all year. One company, one quote, one phone number.'],
+  'included_title': "What's Included",
+  'included_sub': "Every room is specified for your plot and how you'll use it.",
+  'included': [('Proper base', 'A solid base chosen for your ground, so the room stays level for years.'),
+               ('Insulated walls, floor and roof', 'Insulated all round, so the room holds heat in winter and stays cool in summer.'),
+               ('Cedar cladding', 'Cedar outside, built to measure, with doors and windows placed where you want the light.'),
+               ('Electrics and lighting', 'Wired for power, sockets, lighting and data, ready for a desk, gym kit or TV.'),
+               ('Air conditioning that heats', 'A split system fitted by our own engineers. Cools in summer, heats in winter.'),
+               ('One team start to finish', 'Groundwork, build, electrics and AC handled by one crew. No chasing four trades.')],
+  'why': [('Built and heated by one company', "We build the room and fit the AC. Nobody blames someone else's work."),
+          ('Based where we work', "We're in West Horndon. Less time on the road, more of your quote in the room."),
+          ('The price quoted is the price paid', "We see the garden before we price it, so the quote doesn't move.")],
+  'faq': [('Do I need planning permission for a garden room?',
+           ['Usually not. In England most garden rooms count as permitted development if they sit behind the house, cover no more than '
+            'half the garden, and stay under 2.5m tall when within 2m of a boundary.',
+            'Listed buildings, flats and conservation areas have tighter rules. We check this at the site visit, before you pay '
+            'anything.']),
+          ('Do I need building regulations approval?',
+           ["Rooms under 15m² of floor space that nobody sleeps in usually don't. Between 15m² and 30m² they're usually exempt if they sit "
+            "at least 1m from the boundary. We'll tell you which applies to yours."]),
+          ('Can I use it in winter?',
+           ["Yes. That's the point of the insulation and the AC. A split system heats as well as cools, so the room stays comfortable in "
+            'January.']),
+          ('How long does a build take?',
+           ['It depends on the size and the base. You get an agreed start date and a clear timeline with your quote, not a rough window.']),
+          ('Do you build in my area?',
+           ['We build in East London and Essex, including Brentwood, Havering and Thurrock. Residential only.'])],
+  'related': ['air-conditioning', 'landscaping', 'building-works'],
+  'gallery': [('summerhouse.jpg', 'Cedar-clad garden room in an Essex garden'),
+              ('hero-garden-aircon-summerhouse.jpg', 'Garden room at the end of a back garden'),
+              ('landscaping.jpg', 'Landscaped garden around a new build')]},
+ {'slug': 'building-works',
+  'trade': 'build',
+  'nav': 'Extensions &amp; Refurbs',
+  'service_param': 'extension',
+  'title': 'Extensions, Refurbishments &amp; Media Walls in Essex | OAK Group',
+  'description': 'House extensions, kitchen and bathroom refurbishments and media walls in Brentwood, Upminster, West Horndon and across '
+                 'Essex and East London. One team, fixed quote after a site visit.',
+  'schema_name': 'House extensions, refurbishments and media walls',
+  'eyebrow': 'Extensions &middot; Refurbishments &middot; Media Walls',
+  'h1': 'Extensions &amp; Refurbishments in <em>Essex</em>',
+  'lead': 'We build house extensions, refit kitchens and bathrooms and build media walls, fully managed by one team. Homes in Brentwood, '
+          'Upminster, West Horndon, Hornchurch, Romford, Billericay and across Essex and East London.',
+  'facts': ['Extensions', 'Kitchens &amp; bathrooms', 'Media walls', 'Fixed quote after a site visit'],
+  'img': 'extension.jpg',
+  'img_alt': 'Single-storey rear extension on an Essex home',
+  'gallery': [('extension.jpg', 'Rear extension on an Essex home'),
+              ('refurbishment.jpg', 'Refitted kitchen'),
+              ('media-wall.jpg', 'Media wall with fire and shelving')],
+  'kicker': 'One phone number from strip-out to finish, <mark>not four different trades</mark>.',
+  'intro': ['Most building jobs go wrong in the gaps between trades: the builder blames the plumber, the plumber blames the electrician, '
+            'and you chase all of them.',
+            "<strong>We manage the whole job with one team</strong>, and we price it after seeing the house, so the quote doesn't move."],
+  'included_title': 'What We Do',
+  'included_sub': 'Residential building work, managed start to finish.',
+  'included': [('House extensions', 'Single-storey and kitchen extensions, from drawings and approvals to the finished room.'),
+               ('Kitchen refits', 'Strip-out, plumbing, electrics, plastering and fitting by one crew.'),
+               ('Bathroom refits', 'Full bathrooms and en-suites, tiled and finished.'),
+               ('Media walls', 'Built around your TV and fire, with shelving and lighting.'),
+               ('Full refurbishments', 'Whole-room and whole-house refits, planned around you.'),
+               ('Site visit and fixed quote', "We see the job before pricing it. The number doesn't move.")],
+  'cta_title': 'Get a Price for Your Project',
+  'why': [('The price quoted is the price paid', "We see the job before pricing it, so the quote doesn't move."),
+          ('One point of contact', 'One phone number from start to finish, not four trades.'),
+          ('Based where we work', "We're in West Horndon, Essex. Close enough to be on site when it matters.")],
+  'faq': [('Do I need planning permission for an extension?',
+           ['Many single-storey rear extensions fall under permitted development, but it depends on the house, its size and its history. '
+            'We check this with you at the site visit.']),
+          ('Do you manage building regulations?',
+           ['Extensions need building regulations sign-off. We build to the regulations and work with the inspector through each stage.']),
+          ('Will the price change once work starts?', ['No. We price after seeing the job, and the quote is fixed for the work agreed.']),
+          ('Do you supply the kitchen or bathroom, or just fit it?',
+           ['Either. You can choose your own units and fittings, or we can source them as part of the quote.']),
+          ('Can I stay at home during the work?',
+           ['Usually, yes. We plan the order of work so you keep as much of the house usable as possible, and we tell you upfront if there '
+            'are days without water or power.']),
+          ('Can you fit my existing TV and fire?',
+           ['Yes. We design the wall around the TV and fire you have or plan to buy, so share the models in the quote form.'])],
+  'areas': ['Brentwood', 'Upminster', 'West Horndon', 'Hornchurch', 'Romford', 'Billericay', 'Basildon', 'Thurrock', 'East London'],
+  'related': ['garden-rooms', 'landscaping', 'air-conditioning']},
+ {'slug': 'landscaping',
+  'trade': 'build',
+  'nav': 'Landscaping',
+  'service_param': 'landscaping',
+  'title': 'Garden Landscaping in Essex &amp; East London | OAK Group',
+  'description': 'Garden landscaping in Essex and East London: patios, paving, decking, fencing and planting specified for your plot. '
+                 'Pairs with a garden room. Fixed quote after a site visit.',
+  'schema_name': 'Garden landscaping',
+  'eyebrow': 'Landscaping',
+  'h1': 'Garden <em>Landscaping</em> in Essex &amp; East London',
+  'lead': 'We design and build patios, paths, decking, fencing and planting, often alongside a garden room. Homes in Brentwood, Upminster, '
+          'West Horndon, Hornchurch, Romford, Billericay and across Essex and East London.',
+  'facts': ['Patios and paving', 'Decking and fencing', 'Planting'],
+  'img': 'landscaping.jpg',
+  'img_alt': 'Completed garden landscaping with patio, decking and planting in Essex',
+  'kicker': 'A good garden starts with <mark>drainage and levels</mark>, not the paving catalogue.',
+  'intro': ["Patios crack and lawns flood when the ground underneath is rushed. The part you walk on only lasts if the part you don't see "
+            'was done properly.',
+            '<strong>We specify every garden for its plot</strong>: the soil, the slope, the light and how you use it. Building a garden '
+            'room too? We plan both together.'],
+  'included_title': 'What We Build',
+  'included_sub': 'Hard and soft landscaping, planned as one design.',
+  'included': [('Patios and paving', 'Laid on a proper sub-base with the right falls, so water runs away from the house.'),
+               ('Decking', 'Built to last, on a frame that stays level.'),
+               ('Fencing and boundaries', 'Fences, gates and walls that suit the garden and the house.'),
+               ('Lawns and planting', 'Turf and planting chosen for your soil and light.'),
+               ('Paths and edging', 'Clean edges and paths that connect the garden.'),
+               ('Garden room ready', 'Base, paths and power planned in if a garden room is going in.')],
+  'why': [('Specified for the plot', "Chosen for your garden, not whatever's left in the yard."),
+          ('Garden and garden room together', 'One team plans the room and the garden around it.'),
+          ('Based where we work', "We're in West Horndon, Essex. More of your quote goes into the garden.")],
+  'faq': [('Can you landscape the garden around a new garden room?',
+           ["Yes, and it's better planned together. Paths, levels and power for the room are designed in from the start."]),
+          ('Do you do small jobs, like just a patio?',
+           ["Yes. Tell us what you need in the quote form and we'll say honestly if it's a job for us."]),
+          ('Which areas do you cover?', ['East London and Essex, including Brentwood, Havering and Thurrock. Residential only.'])],
+  'related': ['garden-rooms', 'building-works', 'air-conditioning'],
+  'gallery': [('landscaping.jpg', 'Landscaped garden with paving and planting'),
+              ('summerhouse.jpg', 'Garden room with new paving'),
+              ('hero-garden-aircon-summerhouse.jpg', 'Finished back garden in Essex')]}]
 
 BY_SLUG = {p["slug"]: p for p in PAGES}
 # Real customer reviews only (Google, Checkatrade, WhatsApp with permission). Never invent one.
 # Key = page slug, or "ac" / "build" for every page of that trade. Each review: (quote, name, town, service).
 # The reviews section only appears on a page once it has at least one review.
 REVIEWS = {}
-# Town pages built by _build/areas.py; area pills on every page link to them.
-AREA_LINKS = {"Brentwood": "brentwood", "Upminster": "upminster", "Hornchurch": "hornchurch"}
+AREA_LINKS = {}  # no town pages: the towns are named in each page's subheadline
 AC_SLUGS = [p["slug"] for p in PAGES if p["trade"] == "ac"]
 BUILD_SLUGS = [p["slug"] for p in PAGES if p["trade"] == "build"]
 
@@ -546,12 +316,10 @@ def schema(p):
 
 
 def nav_links(current):
-    items = [("Garden Rooms", "garden-rooms"), ("AC Installation", "air-conditioning-installation"),
-             ("Heat Pumps", "heat-pumps"), ("AC Servicing", "air-conditioning-maintenance"), ("Extensions", "house-extensions")]
     out = []
-    for label, slug in items:
-        cur = ' aria-current="page"' if slug == current else ""
-        out.append(f'<a href="../{slug}/"{cur}>{label}</a>')
+    for p in PAGES:
+        cur = ' aria-current="page"' if p["slug"] == current else ""
+        out.append(f'<a href="../{p["slug"]}/"{cur}>{p["nav"]}</a>')
     out.append('<a href="../#work">Our Work</a>')
     return "\n      ".join(out)
 
@@ -562,7 +330,7 @@ def mobile_links():
 
 
 def area_col():
-    return "\n        ".join(f'<a href="../{slug}/">{town}</a>' for town, slug in AREA_LINKS.items())
+    return "\n        ".join(f"<span>{t}</span>" for t in ["Brentwood", "Upminster", "West Horndon", "Hornchurch", "Romford", "Essex"])
 
 
 def footer_col(slugs):
@@ -599,24 +367,10 @@ def page(p):
         "<details><summary>" + escape(q) + '</summary><div class="answer">'
         + "".join(f"<p>{escape(x)}</p>" for x in a) + "</div></details>"
         for q, a in p["faq"])
-    gallery = ""
-    if p.get("gallery"):
-        figs = "\n      ".join(
-            f'<figure><img loading="lazy" decoding="async" src="../assets/{f}" alt="{a}"><figcaption>{a}</figcaption></figure>'
-            for f, a in p["gallery"])
-        gallery = f"""<section class="gallery">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">In Your Home</span>
-      <h2>What It Looks Like</h2>
-    </div>
-    <div class="gallery-grid">
-      {figs}
-    </div>
-  </div>
-</section>
-
-"""
+    shots = p.get("gallery") or [(p["img"], p["img_alt"])]
+    slides = "\n        ".join(
+        f'<figure class="slide"><img {"fetchpriority=\"high\"" if i == 0 else "loading=\"lazy\""} decoding="async" src="../assets/{f}" alt="{a}"><figcaption>{a}</figcaption></figure>'
+        for i, (f, a) in enumerate(shots))
     revs = REVIEWS.get(p["slug"], []) + REVIEWS.get(p["trade"], [])
     reviews = ""
     if revs:
@@ -704,9 +458,8 @@ def page(p):
 </div>
 
 <header class="svc-hero">
-  <div class="container svc-hero-grid">
-    <div>
-      <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Home</a><span>/</span><span aria-current="page">{p['nav']}</span></nav>
+  <div class="container">
+    <div class="svc-hero-text">
       <span class="eyebrow">{p['eyebrow']}</span>
       <h1>{p['h1']}</h1>
       <p class="lead">{p['lead']}</p>
@@ -718,9 +471,10 @@ def page(p):
           {facts}
       </ul>
     </div>
-    <div class="svc-hero-media">
-      <span class="tag">{p['tag']}</span>
-      <img fetchpriority="high" decoding="async" width="1600" height="893" src="../assets/{p['img']}" alt="{p['img_alt']}">
+    <div class="hero-carousel" aria-label="Photos">
+      <div class="track">
+        {slides}
+      </div>
     </div>
   </div>
 </header>
@@ -735,7 +489,7 @@ def page(p):
   </div>
 </section>
 
-{gallery}<section class="included">
+<section class="included" id="services">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">{p['eyebrow']}</span>
@@ -787,7 +541,7 @@ def page(p):
   </div>
 </section>
 
-<section>
+<section id="faq">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Questions</span>
@@ -799,7 +553,7 @@ def page(p):
   </div>
 </section>
 
-<section class="areas">
+<section class="areas" id="areas">
   <div class="container areas-row">
     <div class="section-head" style="margin-bottom:0;">
       <span class="eyebrow">Areas We Cover</span>
@@ -885,6 +639,19 @@ def page(p):
     iconClose.style.display = open ? 'block' : 'none';
   }}
   burger.addEventListener('click', function(){{ setOpen(!menu.classList.contains('is-open')); }});
+  // Photo carousel: slides on its own, pauses while the visitor is touching or hovering it
+  var track = document.querySelector('.hero-carousel .track');
+  if(track && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){{
+    var paused = false;
+    ['mouseenter','touchstart','focusin'].forEach(function(ev){{ track.addEventListener(ev, function(){{ paused = true; }}, {{passive:true}}); }});
+    ['mouseleave','touchend','focusout'].forEach(function(ev){{ track.addEventListener(ev, function(){{ setTimeout(function(){{ paused = false; }}, 2500); }}, {{passive:true}}); }});
+    setInterval(function(){{
+      if(paused || track.scrollWidth <= track.clientWidth) return;
+      var step = track.querySelector('.slide').getBoundingClientRect().width + 12;
+      var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      track.scrollTo({{left: atEnd ? 0 : track.scrollLeft + step, behavior: 'smooth'}});
+    }}, 3500);
+  }}
   menu.querySelectorAll('a').forEach(function(a){{ a.addEventListener('click', function(){{ setOpen(false); }}); }});
 }})();
 </script>

@@ -1,3 +1,55 @@
 {
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/air-conditioning-installation/",
+      "destination": "/air-conditioning/",
+      "permanent": true
+    },
+    {
+      "source": "/air-conditioning-maintenance/",
+      "destination": "/air-conditioning/",
+      "permanent": true
+    },
+    {
+      "source": "/commercial-air-conditioning/",
+      "destination": "/air-conditioning/",
+      "permanent": true
+    },
+    {
+      "source": "/heat-pumps/",
+      "destination": "/air-conditioning/",
+      "permanent": true
+    },
+    {
+      "source": "/house-extensions/",
+      "destination": "/building-works/",
+      "permanent": true
+    },
+    {
+      "source": "/refurbishments/",
+      "destination": "/building-works/",
+      "permanent": true
+    },
+    {
+      "source": "/media-walls/",
+      "destination": "/building-works/",
+      "permanent": true
+    },
+    {
+      "source": "/brentwood/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/upminster/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/hornchurch/",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
 }
