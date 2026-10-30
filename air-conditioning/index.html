@@ -227,8 +227,8 @@
   <div class="container">
     <div class="svc-hero-text">
       <span class="eyebrow">Air Conditioning &middot; Heat Pumps &middot; Servicing</span>
-      <h1>Air Conditioning &amp; Heat Pumps in <em>Essex</em></h1>
-      <p class="lead">We install, service and repair air conditioning and heat pumps that heat your home in winter and cool it in summer. Homes and businesses in Brentwood, Upminster, West Horndon, Hornchurch, Romford, Billericay and across Essex and East London.</p>
+      <h1>Air Conditioning &amp; <em>Heat Pumps</em></h1>
+      <p class="lead">We install, service and repair air conditioning and heat pumps that cool your home in summer and heat it in winter. Homes and businesses in Brentwood, Upminster, West Horndon, Hornchurch, Romford, Billericay and across Essex and East London.</p>
       <div class="hero-ctas">
         <a class="btn btn-red" href="../?service=ac-install#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>Get a Free Quote</a>
         <a class="btn btn-ghost-ink" href="tel:+447413965823"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call 07413 965823</a>
@@ -240,18 +240,20 @@
           <li>Homes and businesses</li>
       </ul>
     </div>
-    <div class="hero-carousel" aria-label="Photos">
-      <div class="track">
-        <figure class="slide"><img fetchpriority="high" decoding="async" src="../assets/ac-living-room-winter.jpg" alt="Wall-mounted unit heating a living room on a winter evening"><figcaption>Wall-mounted unit heating a living room on a winter evening</figcaption></figure>
-        <figure class="slide"><img loading="lazy" decoding="async" src="../assets/heat-pump-outdoor-frost.jpg" alt="Outdoor unit on a frosty morning in Essex"><figcaption>Outdoor unit on a frosty morning in Essex</figcaption></figure>
-        <figure class="slide"><img loading="lazy" decoding="async" src="../assets/ac-install-bedroom.jpg" alt="Installing a split unit in a bedroom"><figcaption>Installing a split unit in a bedroom</figcaption></figure>
-        <figure class="slide"><img loading="lazy" decoding="async" src="../assets/heat-pump-install.jpg" alt="Connecting a heat pump outdoor unit"><figcaption>Connecting a heat pump outdoor unit</figcaption></figure>
-        <figure class="slide"><img loading="lazy" decoding="async" src="../assets/ac-service-gauges.jpg" alt="Checking pressures on a yearly service"><figcaption>Checking pressures on a yearly service</figcaption></figure>
-        <figure class="slide"><img loading="lazy" decoding="async" src="../assets/ac-handover-kitchen.jpg" alt="Showing the homeowner the controls"><figcaption>Showing the homeowner the controls</figcaption></figure>
-        <figure class="slide"><img loading="lazy" decoding="async" src="../assets/ac-home-office.jpg" alt="Split unit in a home office"><figcaption>Split unit in a home office</figcaption></figure>
-        <figure class="slide"><img loading="lazy" decoding="async" src="../assets/ac-commercial-pub.jpg" alt="Ceiling cassettes in a pub dining room"><figcaption>Ceiling cassettes in a pub dining room</figcaption></figure>
-        <figure class="slide"><img loading="lazy" decoding="async" src="../assets/ac-commercial-roof.jpg" alt="Commercial condensers on a flat roof"><figcaption>Commercial condensers on a flat roof</figcaption></figure>
+    <div class="cf-wrap">
+      <div class="cf-frame" id="cfFrame" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Photos">
+        <div class="cf-stage" id="cfStage"></div>
       </div>
+      <div class="cf-caption">
+        <p class="cf-title" id="cfTitle"></p>
+        <p class="cf-sub" id="cfSub"></p>
+      </div>
+      <div class="cf-nav">
+        <button id="cfPrev" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="cf-dots" id="cfDots"></div>
+        <button id="cfNext" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+      <p class="cf-hint">Drag the photos or use the arrows</p>
     </div>
   </div>
 </header>
@@ -442,21 +444,10 @@
     iconClose.style.display = open ? 'block' : 'none';
   }
   burger.addEventListener('click', function(){ setOpen(!menu.classList.contains('is-open')); });
-  // Photo carousel: slides on its own, pauses while the visitor is touching or hovering it
-  var track = document.querySelector('.hero-carousel .track');
-  if(track && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    var paused = false;
-    ['mouseenter','touchstart','focusin'].forEach(function(ev){ track.addEventListener(ev, function(){ paused = true; }, {passive:true}); });
-    ['mouseleave','touchend','focusout'].forEach(function(ev){ track.addEventListener(ev, function(){ setTimeout(function(){ paused = false; }, 2500); }, {passive:true}); });
-    setInterval(function(){
-      if(paused || track.scrollWidth <= track.clientWidth) return;
-      var step = track.querySelector('.slide').getBoundingClientRect().width + 12;
-      var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-      track.scrollTo({left: atEnd ? 0 : track.scrollLeft + step, behavior: 'smooth'});
-    }, 3500);
-  }
   menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
 })();
 </script>
+<script>window.CF_SLIDES = [{"src": "../assets/ac-living-room-winter.jpg", "title": "Wall-mounted unit heating a living room on a winter evening", "sub": ""}, {"src": "../assets/heat-pump-outdoor-frost.jpg", "title": "Outdoor unit on a frosty morning in Essex", "sub": ""}, {"src": "../assets/ac-install-bedroom.jpg", "title": "Installing a split unit in a bedroom", "sub": ""}, {"src": "../assets/heat-pump-install.jpg", "title": "Connecting a heat pump outdoor unit", "sub": ""}, {"src": "../assets/ac-service-gauges.jpg", "title": "Checking pressures on a yearly service", "sub": ""}, {"src": "../assets/ac-handover-kitchen.jpg", "title": "Showing the homeowner the controls", "sub": ""}, {"src": "../assets/ac-home-office.jpg", "title": "Split unit in a home office", "sub": ""}, {"src": "../assets/ac-commercial-pub.jpg", "title": "Ceiling cassettes in a pub dining room", "sub": ""}, {"src": "../assets/ac-commercial-roof.jpg", "title": "Commercial condensers on a flat roof", "sub": ""}];</script>
+<script src="../assets/coverflow.js"></script>
 </body>
 </html>

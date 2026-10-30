@@ -39,8 +39,8 @@ PAGES = [{'slug': 'air-conditioning',
                  'and businesses in Brentwood, Upminster, West Horndon and across Essex.',
   'schema_name': 'Air conditioning and heat pump installation, servicing and repair',
   'eyebrow': 'Air Conditioning &middot; Heat Pumps &middot; Servicing',
-  'h1': 'Air Conditioning &amp; Heat Pumps in <em>Essex</em>',
-  'lead': 'We install, service and repair air conditioning and heat pumps that heat your home in winter and cool it in summer. Homes and '
+  'h1': 'Air Conditioning &amp; <em>Heat Pumps</em>',
+  'lead': 'We install, service and repair air conditioning and heat pumps that cool your home in summer and heat it in winter. Homes and '
           'businesses in Brentwood, Upminster, West Horndon, Hornchurch, Romford, Billericay and across Essex and East London.',
   'facts': ['Installation', 'Heating &amp; heat pumps', 'Servicing &amp; repairs', 'Homes and businesses'],
   'img': 'ac-living-room-winter.jpg',
@@ -108,7 +108,7 @@ PAGES = [{'slug': 'air-conditioning',
                  'that heats in winter. Fixed quote after a site visit.',
   'schema_name': 'Garden rooms and summer houses',
   'eyebrow': 'Garden Rooms &amp; Summer Houses',
-  'h1': 'Garden Rooms in <em>Essex</em> &amp; East London',
+  'h1': 'Garden <em>Rooms</em>',
   'lead': 'We build insulated, cedar-clad garden rooms and summer houses, wired for power and fitted with AC that heats in winter. Homes '
           'in Brentwood, Upminster, West Horndon, Hornchurch, Romford, Billericay and across Essex and East London.',
   'facts': ['Built to measure', 'Insulated &amp; wired', 'AC that heats, fitted by us'],
@@ -156,7 +156,7 @@ PAGES = [{'slug': 'air-conditioning',
                  'Essex and East London. One team, fixed quote after a site visit.',
   'schema_name': 'House extensions, refurbishments and media walls',
   'eyebrow': 'Extensions &middot; Refurbishments &middot; Media Walls',
-  'h1': 'Extensions &amp; Refurbishments in <em>Essex</em>',
+  'h1': 'Extensions &amp; <em>Refurbishments</em>',
   'lead': 'We build house extensions, refit kitchens and bathrooms and build media walls, fully managed by one team. Homes in Brentwood, '
           'Upminster, West Horndon, Hornchurch, Romford, Billericay and across Essex and East London.',
   'facts': ['Extensions', 'Kitchens &amp; bathrooms', 'Media walls', 'Fixed quote after a site visit'],
@@ -203,7 +203,7 @@ PAGES = [{'slug': 'air-conditioning',
                  'Pairs with a garden room. Fixed quote after a site visit.',
   'schema_name': 'Garden landscaping',
   'eyebrow': 'Landscaping',
-  'h1': 'Garden <em>Landscaping</em> in Essex &amp; East London',
+  'h1': 'Garden <em>Landscaping</em>',
   'lead': 'We design and build patios, paths, decking, fencing and planting, often alongside a garden room. Homes in Brentwood, Upminster, '
           'West Horndon, Hornchurch, Romford, Billericay and across Essex and East London.',
   'facts': ['Patios and paving', 'Decking and fencing', 'Planting'],
@@ -359,9 +359,7 @@ def page(p):
         + "".join(f"<p>{escape(x)}</p>" for x in a) + "</div></details>"
         for q, a in p["faq"])
     shots = p.get("gallery") or [(p["img"], p["img_alt"])]
-    slides = "\n        ".join(
-        f'<figure class="slide"><img {"fetchpriority=\"high\"" if i == 0 else "loading=\"lazy\""} decoding="async" src="../assets/{f}" alt="{a}"><figcaption>{a}</figcaption></figure>'
-        for i, (f, a) in enumerate(shots))
+    cf_slides = json.dumps([{"src": "../assets/" + f, "title": plain(a), "sub": ""} for f, a in shots])
     revs = REVIEWS.get(p["slug"], []) + REVIEWS.get(p["trade"], [])
     reviews = ""
     if revs:
@@ -462,10 +460,20 @@ def page(p):
           {facts}
       </ul>
     </div>
-    <div class="hero-carousel" aria-label="Photos">
-      <div class="track">
-        {slides}
+    <div class="cf-wrap">
+      <div class="cf-frame" id="cfFrame" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Photos">
+        <div class="cf-stage" id="cfStage"></div>
       </div>
+      <div class="cf-caption">
+        <p class="cf-title" id="cfTitle"></p>
+        <p class="cf-sub" id="cfSub"></p>
+      </div>
+      <div class="cf-nav">
+        <button id="cfPrev" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="cf-dots" id="cfDots"></div>
+        <button id="cfNext" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+      <p class="cf-hint">Drag the photos or use the arrows</p>
     </div>
   </div>
 </header>
@@ -630,22 +638,11 @@ def page(p):
     iconClose.style.display = open ? 'block' : 'none';
   }}
   burger.addEventListener('click', function(){{ setOpen(!menu.classList.contains('is-open')); }});
-  // Photo carousel: slides on its own, pauses while the visitor is touching or hovering it
-  var track = document.querySelector('.hero-carousel .track');
-  if(track && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){{
-    var paused = false;
-    ['mouseenter','touchstart','focusin'].forEach(function(ev){{ track.addEventListener(ev, function(){{ paused = true; }}, {{passive:true}}); }});
-    ['mouseleave','touchend','focusout'].forEach(function(ev){{ track.addEventListener(ev, function(){{ setTimeout(function(){{ paused = false; }}, 2500); }}, {{passive:true}}); }});
-    setInterval(function(){{
-      if(paused || track.scrollWidth <= track.clientWidth) return;
-      var step = track.querySelector('.slide').getBoundingClientRect().width + 12;
-      var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-      track.scrollTo({{left: atEnd ? 0 : track.scrollLeft + step, behavior: 'smooth'}});
-    }}, 3500);
-  }}
   menu.querySelectorAll('a').forEach(function(a){{ a.addEventListener('click', function(){{ setOpen(false); }}); }});
 }})();
 </script>
+<script>window.CF_SLIDES = {cf_slides};</script>
+<script src="../assets/coverflow.js"></script>
 </body>
 </html>
 """

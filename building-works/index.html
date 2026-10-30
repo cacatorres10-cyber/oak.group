@@ -215,7 +215,7 @@
   <div class="container">
     <div class="svc-hero-text">
       <span class="eyebrow">Extensions &middot; Refurbishments &middot; Media Walls</span>
-      <h1>Extensions &amp; Refurbishments in <em>Essex</em></h1>
+      <h1>Extensions &amp; <em>Refurbishments</em></h1>
       <p class="lead">We build house extensions, refit kitchens and bathrooms and build media walls, fully managed by one team. Homes in Brentwood, Upminster, West Horndon, Hornchurch, Romford, Billericay and across Essex and East London.</p>
       <div class="hero-ctas">
         <a class="btn btn-red" href="../?service=extension#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>Get a Free Quote</a>
@@ -228,13 +228,20 @@
           <li>Fixed quote after a site visit</li>
       </ul>
     </div>
-    <div class="hero-carousel" aria-label="Photos">
-      <div class="track">
-        <figure class="slide"><img fetchpriority="high" decoding="async" src="../assets/extension-rear.jpg" alt="Single-storey rear extension with roof lantern"><figcaption>Single-storey rear extension with roof lantern</figcaption></figure>
-        <figure class="slide"><img loading="lazy" decoding="async" src="../assets/kitchen-refit.jpg" alt="Refitted shaker kitchen"><figcaption>Refitted shaker kitchen</figcaption></figure>
-        <figure class="slide"><img loading="lazy" decoding="async" src="../assets/media-wall-evening.jpg" alt="Media wall with fire and shelving"><figcaption>Media wall with fire and shelving</figcaption></figure>
-        <figure class="slide"><img loading="lazy" decoding="async" src="../assets/extension.jpg" alt="Extension on an Essex home"><figcaption>Extension on an Essex home</figcaption></figure>
+    <div class="cf-wrap">
+      <div class="cf-frame" id="cfFrame" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Photos">
+        <div class="cf-stage" id="cfStage"></div>
       </div>
+      <div class="cf-caption">
+        <p class="cf-title" id="cfTitle"></p>
+        <p class="cf-sub" id="cfSub"></p>
+      </div>
+      <div class="cf-nav">
+        <button id="cfPrev" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="cf-dots" id="cfDots"></div>
+        <button id="cfNext" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+      <p class="cf-hint">Drag the photos or use the arrows</p>
     </div>
   </div>
 </header>
@@ -424,21 +431,10 @@
     iconClose.style.display = open ? 'block' : 'none';
   }
   burger.addEventListener('click', function(){ setOpen(!menu.classList.contains('is-open')); });
-  // Photo carousel: slides on its own, pauses while the visitor is touching or hovering it
-  var track = document.querySelector('.hero-carousel .track');
-  if(track && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    var paused = false;
-    ['mouseenter','touchstart','focusin'].forEach(function(ev){ track.addEventListener(ev, function(){ paused = true; }, {passive:true}); });
-    ['mouseleave','touchend','focusout'].forEach(function(ev){ track.addEventListener(ev, function(){ setTimeout(function(){ paused = false; }, 2500); }, {passive:true}); });
-    setInterval(function(){
-      if(paused || track.scrollWidth <= track.clientWidth) return;
-      var step = track.querySelector('.slide').getBoundingClientRect().width + 12;
-      var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-      track.scrollTo({left: atEnd ? 0 : track.scrollLeft + step, behavior: 'smooth'});
-    }, 3500);
-  }
   menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
 })();
 </script>
+<script>window.CF_SLIDES = [{"src": "../assets/extension-rear.jpg", "title": "Single-storey rear extension with roof lantern", "sub": ""}, {"src": "../assets/kitchen-refit.jpg", "title": "Refitted shaker kitchen", "sub": ""}, {"src": "../assets/media-wall-evening.jpg", "title": "Media wall with fire and shelving", "sub": ""}, {"src": "../assets/extension.jpg", "title": "Extension on an Essex home", "sub": ""}];</script>
+<script src="../assets/coverflow.js"></script>
 </body>
 </html>
