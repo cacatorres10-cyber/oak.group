@@ -508,10 +508,11 @@
       </span>
     </a>
     <div class="nav-links">
-      <a href="#air-conditioning">Air Conditioning</a>
-      <a href="#construction">Construction</a>
+      <a href="air-conditioning-installation/">Air Conditioning</a>
+      <a href="heat-pumps/">Heat Pumps</a>
+      <a href="garden-rooms/">Garden Rooms</a>
+      <a href="house-extensions/">Extensions</a>
       <a href="#work">Our Work</a>
-      <a href="#coverage">Areas We Cover</a>
       <a href="#contact">Contact</a>
     </div>
     <div class="nav-actions">
@@ -525,10 +526,16 @@
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#air-conditioning">Air Conditioning</a>
-  <a href="#construction">Construction</a>
+  <a href="air-conditioning-installation/">AC Installation</a>
+  <a href="heat-pumps/">Heat Pumps</a>
+  <a href="air-conditioning-maintenance/">AC Servicing</a>
+  <a href="commercial-air-conditioning/">Commercial AC</a>
+  <a href="garden-rooms/">Garden Rooms</a>
+  <a href="house-extensions/">Extensions</a>
+  <a href="refurbishments/">Refurbishments</a>
+  <a href="landscaping/">Landscaping</a>
+  <a href="media-walls/">Media Walls</a>
   <a href="#work">Our Work</a>
-  <a href="#coverage">Areas We Cover</a>
   <a href="#contact">Contact</a>
   <a class="btn btn-red" href="#contact">Get a Quote</a>
 </div>
@@ -595,7 +602,7 @@
         </ul>
         <div class="pillar-foot">
           <span class="pillar-area">London &middot; Home Counties &middot; Nationwide*</span>
-          <a class="pillar-link" href="#air-conditioning">Full details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="pillar-link" href="air-conditioning-installation/">Air conditioning in detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
       <div class="pillar pillar-build">
@@ -610,7 +617,7 @@
         </ul>
         <div class="pillar-foot">
           <span class="pillar-area">East London &amp; Essex &middot; Residential only</span>
-          <a class="pillar-link" href="#construction">Full details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="pillar-link" href="garden-rooms/">Garden rooms in detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </div>
@@ -660,6 +667,16 @@
           <h4>Serviced Before It Fails, Not After</h4>
           <p>One scheduled visit a year. Serviced units outlast neglected ones.</p>
           <a class="pillar-link svc-more" href="air-conditioning-maintenance/">Servicing in detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
+      <div class="svc-row reverse reveal">
+        <div class="svc-media"><span class="svc-tag">04 &middot; Winter Heating</span><img loading="lazy" decoding="async" width="1600" height="893" src="assets/hero-garden-aircon-summerhouse.jpg" alt="Heat pump outdoor unit on the back wall of an Essex home"></div>
+        <div class="svc-text">
+          <span class="svc-num">Heat Pumps &amp; AC That Heats</span>
+          <h4>A Warm Home Without the Storage Heater Bill</h4>
+          <p>Air source and air to air heat pumps. Heat in winter, cool in summer, sized from a survey.</p>
+          <a class="pillar-link svc-more" href="heat-pumps/">Heat pumps in detail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </div>
@@ -1448,6 +1465,18 @@
   });
 
 })();
+</script>
+<script>
+// Whole service row opens its page, not just the "in detail" link
+document.querySelectorAll('.svc-row').forEach(function(row){
+  var link = row.querySelector('a.svc-more');
+  if(!link) return;
+  row.style.cursor = 'pointer';
+  row.addEventListener('click', function(e){
+    if(e.target.closest('a')) return;
+    window.location.href = link.getAttribute('href');
+  });
+});
 </script>
 </body>
 </html>
