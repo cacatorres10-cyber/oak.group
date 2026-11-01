@@ -463,6 +463,7 @@
   .final-cta .quote-form .qf-head p,.final-cta .quote-form .qf-alt{color:var(--text-muted);}
   .final-cta .quote-form .qf-error{color:var(--red);font-weight:500;}
   .final-cta .qf-submit{width:100%;margin-top:6px;}
+  .qf-email{background:none;border:0;padding:0;margin:-4px auto 0;color:var(--text-muted);font-size:.86rem;text-decoration:underline;cursor:pointer;}
   .qf-done{background:var(--red-tint);border-left:3px solid var(--red);padding:14px 16px;font-size:.92rem;display:flex;flex-direction:column;gap:6px;}
   .qf-alt{color:var(--text-muted);}
   .qf-alt a,.qf-alt button{color:var(--red);font-weight:600;cursor:pointer;background:none;border:0;padding:0;text-decoration:underline;font-size:inherit;}
@@ -879,11 +880,11 @@
       <h2 class="reveal">Get a Straight Answer on Price</h2>
       <p class="reveal">Tell us what needs doing and where. We'll tell you honestly whether it's a job for us, and what it costs.</p>
       <ol class="quote-how reveal">
-        <li><span>01</span><span class="qh-t">Fill in the form with as much detail as you can.</span></li>
-        <li><span>02</span><span class="qh-t">Your email opens in a new tab with the message already written.</span></li>
-        <li><span>03</span><span class="qh-t">Just press <b>Send</b>. We reply within one working day.</span></li>
+        <li><span>01</span><span class="qh-t">Fill in 4 quick fields. Takes 30 seconds.</span></li>
+        <li><span>02</span><span class="qh-t">WhatsApp opens with your message already written.</span></li>
+        <li><span>03</span><span class="qh-t">Press <b>Send</b>. Add photos if you like. We reply within 24 hours.</span></li>
       </ol>
-      <p class="fine reveal"><a href="tel:+447413965823" style="color:inherit;">07413 965823</a> &middot; info@oakgroup.ltd &middot; usually answered within one working day</p>
+      <p class="fine reveal"><a href="tel:+447413965823" style="color:inherit;">07413 965823</a> &middot; info@oakgroup.ltd &middot; we reply within 24 hours</p>
     </div>
 
     <form class="quote-form reveal" id="quoteForm" novalidate>
@@ -894,24 +895,18 @@
 
       <div class="qf-row">
         <div class="qf-field">
-          <label for="qName">Full name *</label>
+          <label for="qName">Name *</label>
           <input id="qName" name="name" type="text" autocomplete="name" required>
         </div>
         <div class="qf-field">
           <label for="qPhone">Phone *</label>
-          <input id="qPhone" name="phone" type="tel" autocomplete="tel" required>
+          <input id="qPhone" name="phone" type="tel" autocomplete="tel" placeholder="WhatsApp is fine" required>
         </div>
       </div>
 
-      <div class="qf-row">
-        <div class="qf-field">
-          <label for="qEmail">Email *</label>
-          <input id="qEmail" name="email" type="email" autocomplete="email" required>
-        </div>
-        <div class="qf-field">
-          <label for="qPostcode">Postcode / town *</label>
-          <input id="qPostcode" name="postcode" type="text" autocomplete="postal-code" placeholder="e.g. RM14, Brentwood" required>
-        </div>
+      <div class="qf-field">
+        <label for="qPostcode">Postcode / town *</label>
+        <input id="qPostcode" name="postcode" type="text" autocomplete="postal-code" placeholder="e.g. RM14, Brentwood" required>
       </div>
 
       <fieldset class="qf-field">
@@ -930,75 +925,18 @@
         </div>
       </fieldset>
 
-      <div class="qf-row">
-        <div class="qf-field">
-          <label for="qProperty">Property type *</label>
-          <select id="qProperty" name="property" required>
-            <option value="">Select…</option>
-            <option>House</option>
-            <option>Flat / apartment</option>
-            <option>Pub / restaurant / hotel</option>
-            <option>Office / shop</option>
-            <option>Other commercial</option>
-          </select>
-        </div>
-        <div class="qf-field">
-          <label for="qTimeframe">When do you need it? *</label>
-          <select id="qTimeframe" name="timeframe" required>
-            <option value="">Select…</option>
-            <option>As soon as possible</option>
-            <option>Within 1 month</option>
-            <option>1–3 months</option>
-            <option>3+ months</option>
-            <option>Just getting prices</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="qf-row">
-        <div class="qf-field">
-          <label for="qSize">Size / quantity</label>
-          <input id="qSize" name="size" type="text" placeholder="e.g. 3 bedrooms, 4m × 3m garden room">
-        </div>
-        <div class="qf-field">
-          <label for="qBudget">Rough budget</label>
-          <select id="qBudget" name="budget">
-            <option value="">Prefer not to say</option>
-            <option>Under £2,000</option>
-            <option>£2,000 – £5,000</option>
-            <option>£5,000 – £15,000</option>
-            <option>£15,000 – £40,000</option>
-            <option>£40,000+</option>
-          </select>
-        </div>
-      </div>
-
       <div class="qf-field">
-        <label for="qDetails">Describe the job *</label>
-        <textarea id="qDetails" name="details" rows="5" required placeholder="What needs doing, what's there now, any access issues, photos you can send after, etc."></textarea>
-      </div>
-
-      <div class="qf-row">
-        <div class="qf-field">
-          <label for="qContact">Best way to reach you</label>
-          <select id="qContact" name="contact">
-            <option>Phone call</option>
-            <option>Email</option>
-            <option>WhatsApp / text</option>
-          </select>
-        </div>
-        <div class="qf-field">
-          <label for="qVisit">Best time for a site visit</label>
-          <input id="qVisit" name="visit" type="text" placeholder="e.g. weekday mornings">
-        </div>
+        <label for="qDetails">Anything we should know? (optional)</label>
+        <textarea id="qDetails" name="details" rows="3" placeholder="e.g. 2 bedrooms, replacing storage heaters"></textarea>
       </div>
 
       <p class="qf-error" id="qfError" role="alert" hidden></p>
 
-      <button class="btn btn-red qf-submit" type="submit">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>
-        <span class="qf-label">Open My Email &amp; Send</span>
+      <button class="btn btn-red qf-submit" type="submit" value="whatsapp">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.6-4.8A8.5 8.5 0 1 1 8 19.6z"/></svg>
+        <span class="qf-label">Send on WhatsApp</span>
       </button>
+      <button class="qf-email" type="submit" value="email">Prefer email? Send it by email instead</button>
 
       <div class="qf-done" id="qfDone" role="status" hidden>
         <p><b id="qfDoneTitle">Your email is ready.</b> <span id="qfDoneText">Check the tab that just opened and press <b>Send</b>.</span></p>
@@ -1313,6 +1251,7 @@
 
   /* ---------- QUOTE FORM -> OPENS THE VISITOR'S WEBMAIL WITH THE MESSAGE WRITTEN ---------- */
   var QUOTE_TO = 'info@oakgroup.ltd';
+  var QUOTE_WA = '447413965823';
   var WEBMAIL = {
     gmail:   ['gmail.com','googlemail.com'],
     outlook: ['outlook.com','hotmail.com','hotmail.co.uk','live.com','live.co.uk','msn.com','outlook.co.uk','windowslive.com'],
@@ -1353,10 +1292,6 @@
     if(chip){
       form.querySelectorAll('input[name="service"]').forEach(function(c){ if(c.value === chip) c.checked = true; });
     }
-    var prop = params.get('property');
-    if(prop){
-      Array.prototype.forEach.call(form.elements.property.options, function(o){ if(o.text === prop) form.elements.property.value = o.text; });
-    }
   } catch(err){}
 
   function val(name){ var el = form.elements[name]; return el ? String(el.value || '').trim() : ''; }
@@ -1367,11 +1302,10 @@
 
     var services = Array.prototype.slice.call(form.querySelectorAll('input[name="service"]:checked')).map(function(c){ return c.value; });
     var missing = [];
-    ['name','phone','email','postcode','property','timeframe','details'].forEach(function(n){
+    ['name','phone','postcode'].forEach(function(n){
       var el = form.elements[n];
       if(!val(n)){ el.classList.add('is-invalid'); missing.push(el); }
     });
-    if(val('email') && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val('email'))){ form.elements.email.classList.add('is-invalid'); missing.push(form.elements.email); }
     var serviceSet = form.querySelector('fieldset.qf-field');
     serviceSet.classList.toggle('is-invalid', services.length === 0);
 
@@ -1384,39 +1318,31 @@
     errEl.hidden = true;
 
     var subject = 'Quote Request – ' + services.join(', ') + ' – ' + val('postcode');
-    // Each field on its own line with a bullet and a blank line between sections.
-    // CRLF line breaks: some phone mail apps (Gmail app) drop plain \n from mailto links;
-    // the bullets keep it readable even if an app still merges the lines.
-    var SEP = '━━━━━━━━━━━━━━━━━━';
+    // CRLF line breaks: some phone mail apps (Gmail app) drop plain \n from mailto links
     var lines = [
-      'Hello OAK Group,',
+      "Hi OAK Group, I'd like a free quote.",
       '',
-      "I'd like to request a quote for the following work.",
-      '',
-      SEP,
-      '🔧 THE JOB',
-      SEP,
-      '• Service(s): ' + services.join(', '),
-      '• Property type: ' + val('property'),
+      '• Service: ' + services.join(', '),
       '• Location: ' + val('postcode'),
-      '• Timeframe: ' + val('timeframe')
-    ];
-    if(val('size')) lines.push('• Size / quantity: ' + val('size'));
-    if(val('budget')) lines.push('• Rough budget: ' + val('budget'));
-    lines.push('', SEP, '📝 DETAILS', SEP, val('details'), '',
-      SEP, '📞 MY CONTACT', SEP,
       '• Name: ' + val('name'),
-      '• Phone: ' + val('phone'),
-      '• Email: ' + val('email'),
-      '• Best way to reach me: ' + val('contact'));
-    if(val('visit')) lines.push('• Best time for a site visit: ' + val('visit'));
-    lines.push('', 'Thanks,', val('name'));
+      '• Phone: ' + val('phone')
+    ];
+    if(val('details')) lines.push('• Details: ' + val('details'));
 
     var body = lines.join('\r\n');
     lastBody = body;
 
+    // Main path: WhatsApp with the message written (photos can be added in the chat)
+    var via = (e.submitter && e.submitter.value) || 'whatsapp';
+    if(via === 'whatsapp'){
+      var wa = 'https://wa.me/' + QUOTE_WA + '?text=' + encodeURIComponent(lines.join('\n'));
+      var w = window.open(wa, '_blank');
+      if(w) w.opener = null; else window.location.href = wa;
+      return;
+    }
+
     var s = encodeURIComponent(subject), b = encodeURIComponent(body);
-    var from = val('email');
+    var from = '';
     document.getElementById('qfGmail').href   = composeUrl('gmail', s, b, from);
     document.getElementById('qfOutlook').href = composeUrl('outlook', s, b);
     document.getElementById('qfOffice').href  = composeUrl('office', s, b);
