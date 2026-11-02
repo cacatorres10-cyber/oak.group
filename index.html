@@ -881,8 +881,8 @@
       <p class="reveal">Tell us what needs doing and where. We'll tell you honestly whether it's a job for us, and what it costs.</p>
       <ol class="quote-how reveal">
         <li><span>01</span><span class="qh-t">Fill in 4 quick fields. Takes 30 seconds.</span></li>
-        <li><span>02</span><span class="qh-t">WhatsApp opens with your message already written.</span></li>
-        <li><span>03</span><span class="qh-t">Press <b>Send</b>. Add photos if you like. We reply within 24 hours.</span></li>
+        <li><span>02</span><span class="qh-t">Your email opens with the message already written.</span></li>
+        <li><span>03</span><span class="qh-t">Just press <b>Send</b>. We reply within 24 hours.</span></li>
       </ol>
       <p class="fine reveal"><a href="tel:+447413965823" style="color:inherit;">07413 965823</a> &middot; info@oakgroup.ltd &middot; we reply within 24 hours</p>
     </div>
@@ -900,7 +900,7 @@
         </div>
         <div class="qf-field">
           <label for="qPhone">Phone *</label>
-          <input id="qPhone" name="phone" type="tel" autocomplete="tel" placeholder="WhatsApp is fine" required>
+          <input id="qPhone" name="phone" type="tel" autocomplete="tel" required>
         </div>
       </div>
 
@@ -932,11 +932,10 @@
 
       <p class="qf-error" id="qfError" role="alert" hidden></p>
 
-      <button class="btn btn-red qf-submit" type="submit" value="whatsapp">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.6-4.8A8.5 8.5 0 1 1 8 19.6z"/></svg>
-        <span class="qf-label">Send on WhatsApp</span>
+      <button class="btn btn-red qf-submit" type="submit">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>
+        <span class="qf-label">Send by Email</span>
       </button>
-      <button class="qf-email" type="submit" value="email">Prefer email? Send it by email instead</button>
 
       <div class="qf-done" id="qfDone" role="status" hidden>
         <p><b id="qfDoneTitle">Your email is ready.</b> <span id="qfDoneText">Check the tab that just opened and press <b>Send</b>.</span></p>
@@ -1251,7 +1250,6 @@
 
   /* ---------- QUOTE FORM -> OPENS THE VISITOR'S WEBMAIL WITH THE MESSAGE WRITTEN ---------- */
   var QUOTE_TO = 'info@oakgroup.ltd';
-  var QUOTE_WA = '447413965823';
   var WEBMAIL = {
     gmail:   ['gmail.com','googlemail.com'],
     outlook: ['outlook.com','hotmail.com','hotmail.co.uk','live.com','live.co.uk','msn.com','outlook.co.uk','windowslive.com'],
@@ -1331,15 +1329,6 @@
 
     var body = lines.join('\r\n');
     lastBody = body;
-
-    // Main path: WhatsApp with the message written (photos can be added in the chat)
-    var via = (e.submitter && e.submitter.value) || 'whatsapp';
-    if(via === 'whatsapp'){
-      var wa = 'https://wa.me/' + QUOTE_WA + '?text=' + encodeURIComponent(lines.join('\n'));
-      var w = window.open(wa, '_blank');
-      if(w) w.opener = null; else window.location.href = wa;
-      return;
-    }
 
     var s = encodeURIComponent(subject), b = encodeURIComponent(body);
     var from = '';
