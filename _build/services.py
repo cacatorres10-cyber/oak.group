@@ -434,7 +434,7 @@ def page(p):
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18524409646"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){{dataLayer.push(arguments);}}
   gtag('js', new Date());
   gtag('config', 'AW-18524409646');
 </script>
