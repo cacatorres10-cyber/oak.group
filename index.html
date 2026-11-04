@@ -465,6 +465,7 @@
   .final-cta .quote-form p{color:var(--text);max-width:none;margin:0;font-size:.92rem;}
   .final-cta .quote-form .qf-head p,.final-cta .quote-form .qf-alt{color:var(--text-muted);}
   .final-cta .quote-form .qf-error{color:var(--red);font-weight:500;}
+  #quoteForm{scroll-margin-top:calc(76px + env(safe-area-inset-top,0px));}
   .final-cta .quote-form .qf-send-lead{font-family:'IBM Plex Mono';font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);font-weight:500;margin-top:4px;}
   .qf-send{display:grid;grid-template-columns:1fr;gap:10px;}
   @media (min-width:480px){ .qf-send{grid-template-columns:repeat(3,1fr);} }
@@ -1314,6 +1315,23 @@
     }
   } catch(err){}
 
+  // Phones: "Get a Quote" lands on the form itself, not on the intro text above it
+  function isNarrow(){ return window.matchMedia('(max-width: 959px)').matches; }
+  function showForm(smooth){
+    form.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href="#contact"]');
+    if(!a || !isNarrow()) return;
+    e.preventDefault();
+    if(history.replaceState) history.replaceState(null, '', '#contact');
+    setTimeout(function(){ showForm(true); }, 60);
+  });
+  if(window.location.hash === '#contact' && isNarrow()){
+    setTimeout(function(){ showForm(false); }, 150);
+    window.addEventListener('load', function(){ showForm(false); });
+  }
+
   function val(name){ var el = form.elements[name]; return el ? String(el.value || '').trim() : ''; }
 
   form.addEventListener('submit', function(e){
@@ -1354,7 +1372,13 @@
 
     if(e.submitter && e.submitter.value === 'whatsapp'){
       doneEl.hidden = true;
-      var waText = encodeURIComponent(lines.join('\n'));
+      var waLines = [
+        "Hi OAK Group! I found you on your website and I'd like a quote for " + services.join(', ').toLowerCase() + " in " + val('postcode') + ".",
+        '',
+        'My name is ' + val('name') + ' and my number is ' + val('phone') + '.'
+      ];
+      if(val('details')) waLines.push('', 'A bit more about the job: ' + val('details'));
+      var waText = encodeURIComponent(waLines.join('\n'));
       var waWin = window.open('https://wa.me/447413965823?text=' + waText, '_blank');
       if(waWin){ waWin.opener = null; } else { window.location.href = 'https://wa.me/447413965823?text=' + waText; }
       if(window.gtag) gtag('event', 'whatsapp_quote');

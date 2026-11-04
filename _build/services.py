@@ -21,6 +21,14 @@ BUILD_AREAS = ["West Horndon", "Brentwood", "Upminster", "Hornchurch", "Romford"
 
 ICON_MAIL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>'
 ICON_PHONE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>'
+ICON_WA = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg>'
+WA_NUMBER = "447413965823"
+WA_SERVICE = {
+    "air-conditioning": "air conditioning / a heat pump",
+    "garden-rooms": "a garden room",
+    "building-works": "building work (extension / refurbishment)",
+    "landscaping": "landscaping",
+}
 ICON_ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 
 PROCESS = [
@@ -264,6 +272,16 @@ def mail_href(p):
     return "mailto:" + EMAIL + "?subject=" + quote("Quote request: " + plain(p["schema_name"]))
 
 
+def wa_href(p):
+    from urllib.parse import quote
+    what = WA_SERVICE.get(p["slug"], plain(p["schema_name"]).lower())
+    nl = chr(10)
+    text = ("Hi OAK Group! I found you on your website and I'd like a quote for " + what + "." + nl + nl
+            + "My area / postcode: " + nl
+            + "What I need: ")
+    return "https://wa.me/" + WA_NUMBER + "?text=" + quote(text)
+
+
 def schema(p):
     url = f"{SITE}/{p['slug']}/"
     areas = p.get("areas") or (AC_AREAS if p["trade"] == "ac" else BUILD_AREAS)
@@ -331,6 +349,7 @@ def footer_col(slugs):
 def page(p):
     qh = quote_href(p)
     mh = mail_href(p)
+    wh = wa_href(p)
     areas = p.get("areas") or (AC_AREAS if p["trade"] == "ac" else BUILD_AREAS)
     if p.get("area_title"):
         area_title, area_text, area_fine = p["area_title"], p["area_text"], p["area_fine"]
@@ -457,6 +476,7 @@ def page(p):
       <p class="lead">{p['lead']}</p>
       <div class="hero-ctas">
         <a class="btn btn-red" href="{qh}">{ICON_MAIL}Get a Free Quote</a>
+        <a class="btn btn-wa" href="{wh}" target="_blank" rel="noopener">{ICON_WA}WhatsApp</a>
         <a class="btn btn-ghost-ink" href="tel:{PHONE_INTL}">{ICON_PHONE}Call {PHONE}</a>
       </div>
       <ul class="hero-facts">
@@ -586,10 +606,13 @@ def page(p):
     <span class="eyebrow">Get Started</span>
     <h2>Get a Straight Answer on Price</h2>
     <p>Tell us what needs doing and where. We'll tell you honestly whether it's a job for us, and what it costs.</p>
+    <p class="btns-lead">Pick how you'd like to get in touch:</p>
     <div class="btns">
-      <a class="btn btn-white" href="{qh}">{ICON_MAIL}Get a Free Quote</a>
-      <a class="btn btn-ghost-white" href="{mh}">Email {EMAIL}</a>
+      <a class="btn btn-wa" href="{wh}" target="_blank" rel="noopener">{ICON_WA}WhatsApp</a>
+      <a class="btn btn-white" href="{mh}">{ICON_MAIL}Email</a>
+      <a class="btn btn-ghost-white" href="tel:{PHONE_INTL}">{ICON_PHONE}Call {PHONE}</a>
     </div>
+    <p class="fine"><a href="{qh}" style="color:inherit;text-decoration:underline;">Prefer a form? Fill in the quote form (30 seconds)</a></p>
     <p class="fine"><a href="tel:{PHONE_INTL}" style="color:inherit;">{PHONE}</a> &middot; usually answered within one working day</p>
   </div>
 </section>
@@ -624,7 +647,8 @@ def page(p):
 </footer>
 
 <div class="sticky-cta">
-  <a class="btn btn-red" href="{qh}">{ICON_MAIL}Get a Free Quote</a>
+  <a class="btn btn-red" href="{qh}">{ICON_MAIL}Free Quote</a>
+  <a class="btn btn-wa" href="{wh}" target="_blank" rel="noopener" aria-label="WhatsApp OAK Group">{ICON_WA}WhatsApp</a>
   <a class="btn btn-ghost-ink" href="tel:{PHONE_INTL}" aria-label="Call OAK Group">{ICON_PHONE}Call</a>
 </div>
 
