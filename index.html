@@ -23,6 +23,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png">
 <link rel="manifest" href="/site.webmanifest">
+<script src="/assets/oak-source.js"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1358,7 +1359,7 @@
     var subject = 'Quote Request – ' + services.join(', ') + ' – ' + val('postcode');
     // CRLF line breaks: some phone mail apps (Gmail app) drop plain \n from mailto links
     var lines = [
-      "Hi OAK Group, I'd like a free quote.",
+      "Hi OAK Group, I found you " + (window.oakFoundVia ? oakFoundVia() : 'on your website') + " and I'd like a free quote.",
       '',
       '• Service: ' + services.join(', '),
       '• Location: ' + val('postcode'),
@@ -1373,7 +1374,7 @@
     if(e.submitter && e.submitter.value === 'whatsapp'){
       doneEl.hidden = true;
       var waLines = [
-        "Hi OAK Group! I found you on your website and I'd like a quote for " + services.join(', ').toLowerCase() + " in " + val('postcode') + ".",
+        "Hi OAK Group! I found you " + (window.oakFoundVia ? oakFoundVia() : 'on your website') + " and I'd like a quote for " + services.join(', ').toLowerCase() + " in " + val('postcode') + ".",
         '',
         'My name is ' + val('name') + ' and my number is ' + val('phone') + '.'
       ];
