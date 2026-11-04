@@ -18,6 +18,24 @@
   window.oakSourceLabel = function(){
     return { google_ads: 'Google (ad)', google: 'Google (search)' }[src] || (src ? src : 'Website');
   };
+  // Google Ads conversions: WhatsApp, email and call clicks
+  var CONV = {
+    whatsapp: 'AW-18524409646/RoJhCOWW27EdEK6ekIFF',
+    email:    'AW-18524409646/Z9vbCM6d27EdEK6ekIFF',
+    call:     'AW-18524409646/jRY_CNGd27EdEK6ekIFF'
+  };
+  window.oakConv = function(kind){
+    try { if(window.gtag && CONV[kind]) gtag('event', 'conversion', { send_to: CONV[kind], value: 1.0, currency: 'GBP' }); } catch(e){}
+  };
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href]');
+    if(!a) return;
+    var h = a.getAttribute('href') || '';
+    if(h.indexOf('https://wa.me/') === 0) window.oakConv('whatsapp');
+    else if(h.indexOf('tel:') === 0) window.oakConv('call');
+    else if(h.indexOf('mailto:') === 0 || /mail\.google\.com|outlook\.(live|office)\.com|mail\.yahoo\.com/.test(h)) window.oakConv('email');
+  }, true);
+
   // Static WhatsApp links on the service pages
   function fixLinks(){
     if(window.oakFoundVia() === 'on your website') return;

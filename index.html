@@ -1390,10 +1390,11 @@
       var waText = encodeURIComponent(waLines.join('\n'));
       var waWin = window.open('https://wa.me/447413965823?text=' + waText, '_blank');
       if(waWin){ waWin.opener = null; } else { window.location.href = 'https://wa.me/447413965823?text=' + waText; }
-      if(window.gtag) gtag('event', 'whatsapp_quote');
+      if(window.oakConv) oakConv('whatsapp');
       return;
     }
 
+    if(window.oakConv) oakConv('email');
     var s = encodeURIComponent(subject), b = encodeURIComponent(body);
     var from = '';
     document.getElementById('qfGmail').href   = composeUrl('gmail', s, b, from);
