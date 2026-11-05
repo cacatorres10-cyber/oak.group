@@ -34,7 +34,6 @@ PROCESS = [
 PAGES = [{'slug': 'air-conditioning',
   'trade': 'ac',
   'nav': 'Air Conditioning',
-  'service_param': 'ac-install',
   'title': 'Air Conditioning &amp; Heat Pumps in Essex | Install, Service, Repair | OAK Group',
   'description': 'Air conditioning and heat pumps that heat in winter and cool in summer. Installation, servicing and repairs for homes '
                  'and businesses in Brentwood, Upminster, West Horndon and across Essex.',
