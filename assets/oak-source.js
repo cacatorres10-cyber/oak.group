@@ -35,13 +35,4 @@
     else if(h.indexOf('tel:') === 0) window.oakConv('call');
     else if(h.indexOf('mailto:') === 0 || /mail\.google\.com|outlook\.(live|office)\.com|mail\.yahoo\.com/.test(h)) window.oakConv('email');
   }, true);
-
-  // Static WhatsApp links on the service pages
-  function fixLinks(){
-    if(window.oakFoundVia() === 'on your website') return;
-    document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(a){
-      a.href = a.href.replace('found%20you%20on%20your%20website', 'found%20you%20on%20Google');
-    });
-  }
-  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fixLinks); else fixLinks();
 })();
