@@ -1375,6 +1375,8 @@
       '• Phone: ' + val('phone')
     ];
     if(val('details')) lines.push('• Details: ' + val('details'));
+    var ref = window.oakRef ? oakRef() : '';
+    if(ref) lines.push('', 'Ref: ' + ref);
 
     var body = lines.join('\r\n');
     lastBody = body;
@@ -1387,10 +1389,12 @@
         'My name is ' + val('name') + ' and my number is ' + val('phone') + '.'
       ];
       if(val('details')) waLines.push('', 'A bit more about the job: ' + val('details'));
+      if(ref) waLines.push('', 'Ref: ' + ref);
       var waText = encodeURIComponent(waLines.join('\n'));
+      // Count first: if the browser blocks the new tab, the fallback below leaves this page.
+      if(window.oakConv) oakConv('whatsapp');
       var waWin = window.open('https://wa.me/447413965823?text=' + waText, '_blank');
       if(waWin){ waWin.opener = null; } else { window.location.href = 'https://wa.me/447413965823?text=' + waText; }
-      if(window.oakConv) oakConv('whatsapp');
       return;
     }
 

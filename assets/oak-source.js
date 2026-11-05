@@ -18,6 +18,17 @@
   window.oakSourceLabel = function(){
     return { google_ads: 'Google (ad)', google: 'Google (search)' }[src] || (src ? src : 'Website');
   };
+  // Reference printed in each quote message: AD = Google ad, GO = Google search, WEB = anything else.
+  // Clicks are counted by Google Ads; messages carrying a Ref are the ones that really arrived.
+  var ref = '';
+  window.oakRef = function(){
+    if(!ref){
+      var chars = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789', code = '';
+      for(var i = 0; i < 4; i++) code += chars.charAt(Math.floor(Math.random() * chars.length));
+      ref = ({ google_ads: 'AD', google: 'GO' }[src] || 'WEB') + '-' + code;
+    }
+    return ref;
+  };
   // Google Ads conversions: WhatsApp, email and call clicks
   var CONV = {
     whatsapp: 'AW-18524409646/RoJhCOWW27EdEK6ekIFF',
