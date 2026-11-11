@@ -42,7 +42,15 @@
     var a = e.target.closest && e.target.closest('a[href]');
     if(!a) return;
     var h = a.getAttribute('href') || '';
-    if(h.indexOf('https://wa.me/') === 0) window.oakConv('whatsapp');
+    if(h.indexOf('https://wa.me/') === 0){
+      // Direct WhatsApp links on the service pages: say where they found us and add the Ref code.
+      if(h.indexOf('Ref%3A') === -1){
+        if(window.oakFoundVia() !== 'on your website') h = h.replace('found%20you%20on%20your%20website', 'found%20you%20on%20Google');
+        if(h.indexOf('?text=') > -1) h += encodeURIComponent('\n\nRef: ' + window.oakRef());
+        a.setAttribute('href', h);
+      }
+      window.oakConv('whatsapp');
+    }
     else if(h.indexOf('tel:') === 0) window.oakConv('call');
     else if(h.indexOf('mailto:') === 0 || /mail\.google\.com|outlook\.(live|office)\.com|mail\.yahoo\.com/.test(h)) window.oakConv('email');
   }, true);
