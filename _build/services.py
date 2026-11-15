@@ -45,11 +45,13 @@ PAGES = [{'slug': 'air-conditioning',
   'description': 'Air conditioning and heat pumps that heat in winter and cool in summer. Installation, servicing and repairs for homes '
                  'and businesses in Brentwood, Upminster, West Horndon and across Essex.',
   'schema_name': 'Air conditioning and heat pump installation, servicing and repair',
-  'eyebrow': 'Air Conditioning &middot; Heat Pumps &middot; Servicing',
-  'h1': 'Air Conditioning &amp; <em>Heat Pumps</em>',
-  'lead': 'We install, service and repair air conditioning and heat pumps that cool your home in summer and heat it in winter. Homes and '
-          'businesses in Brentwood, Upminster, West Horndon, Hornchurch, Romford, Billericay and across Essex and East London.',
-  'facts': ['Installation', 'Heating &amp; heat pumps', 'Servicing &amp; repairs', 'Homes and businesses'],
+  'eyebrow': 'Air Conditioning &amp; Heat Pump Installers &middot; Essex',
+  'h1': 'A warm home this winter. <em>A cool one next summer.</em>',
+  'h1_class': 'h1-promise',
+  'lead': 'One unit does both, with no new radiators. We install, service and repair air conditioning and heat pumps for homes and '
+          'businesses in Brentwood, Upminster, West Horndon, Hornchurch, Romford, Billericay and across Essex and East London. '
+          'You deal with the installer, not a call centre.',
+  'facts': ['30 years fitting', '1,000+ jobs done', 'Free quote within 24 hours', 'Homes and businesses'],
   'img': 'ac-living-room-winter.jpg',
   'img_alt': 'Engineer installing a wall-mounted air conditioning unit in a British living room',
   'gallery': [('ac-living-room-winter.jpg', 'Wall-mounted unit heating a living room on a winter evening'), ('heat-pump-outdoor-frost.jpg', 'Outdoor unit on a frosty morning in Essex'), ('ac-install-bedroom.jpg', 'Installing a split unit in a bedroom'), ('heat-pump-install.jpg', 'Connecting a heat pump outdoor unit'), ('ac-service-gauges.jpg', 'Checking pressures on a yearly service'), ('ac-handover-kitchen.jpg', 'Showing the homeowner the controls'), ('ac-home-office.jpg', 'Split unit in a home office'), ('ac-commercial-pub.jpg', 'Ceiling cassettes in a pub dining room'), ('ac-commercial-roof.jpg', 'Commercial condensers on a flat roof')],
@@ -474,7 +476,7 @@ def page(p):
   <div class="container">
     <div class="svc-hero-text">
       <span class="eyebrow">{p['eyebrow']}</span>
-      <h1>{p['h1']}</h1>
+      <h1{' class="' + p['h1_class'] + '"' if p.get('h1_class') else ''}>{p['h1']}</h1>
       <p class="lead">{p['lead']}</p>
       <div class="hero-ctas">
         <a class="btn btn-red" href="{qh}">{ICON_MAIL}Get a Free Quote</a>

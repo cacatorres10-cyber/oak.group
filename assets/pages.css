@@ -108,6 +108,8 @@ section{padding-block:64px;}
 .svc-hero .eyebrow{color:var(--red);display:block;margin-bottom:14px;}
 .svc-hero h1{color:#fff;font-size:clamp(2.6rem,6.4vw,5rem);line-height:.9;}
 .svc-hero h1 em{font-style:normal;color:var(--red);}
+.svc-hero h1.h1-promise{font-size:clamp(2.1rem,4.6vw,3.7rem);line-height:.96;}
+.svc-hero h1.h1-promise em{display:block;}
 .svc-hero .lead{margin-top:20px;color:#E4E4E6;font-size:1.1rem;max-width:52ch;}
 .hero-ctas{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap;}
 .hero-facts{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px 18px;font-family:'IBM Plex Mono';font-size:.76rem;color:var(--text-on-ink-muted);}
