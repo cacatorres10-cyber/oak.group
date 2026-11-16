@@ -24,7 +24,7 @@ ICON_PHONE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-
 ICON_WA = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg>'
 WA_NUMBER = "447413965823"
 WA_SERVICE = {
-    "air-conditioning": "air conditioning / a heat pump",
+    "air-conditioning": "air conditioning / heating",
     "garden-rooms": "a garden room",
     "building-works": "building work (extension / refurbishment)",
     "landscaping": "landscaping",
@@ -41,33 +41,33 @@ PROCESS = [
 PAGES = [{'slug': 'air-conditioning',
   'trade': 'ac',
   'nav': 'Air Conditioning',
-  'title': 'Air Conditioning &amp; Heat Pumps in Essex | Install, Service, Repair | OAK Group',
-  'description': 'Air conditioning and heat pumps that heat in winter and cool in summer. Installation, servicing and repairs for homes '
+  'title': 'Air Conditioning &amp; Heating in Essex | Install, Service, Repair | OAK Group',
+  'description': 'Air conditioning that heats in winter and cools in summer. Installation, servicing and repairs for homes '
                  'and businesses in Brentwood, Upminster, West Horndon and across Essex.',
-  'schema_name': 'Air conditioning and heat pump installation, servicing and repair',
-  'eyebrow': 'Air Conditioning &amp; Heat Pump Installers &middot; Essex',
+  'schema_name': 'Air conditioning and heating installation, servicing and repair',
+  'eyebrow': 'Air Conditioning &amp; Heating Installers &middot; Essex',
   'h1': 'A warm home this winter. <em>A cool one next summer.</em>',
   'h1_class': 'h1-promise',
-  'lead': 'One unit does both, with no new radiators. We install, service and repair air conditioning and heat pumps for homes and '
+  'lead': 'One unit does both, with no new radiators. We install, service and repair air conditioning and heating for homes and '
           'businesses in Brentwood, Upminster, West Horndon, Hornchurch, Romford, Billericay and across Essex and East London. '
           'You deal with the installer, not a call centre.',
   'facts': ['30 years fitting', '1,000+ jobs done', 'Free quote within 24 hours', 'Homes and businesses'],
   'img': 'ac-living-room-winter.jpg',
   'img_alt': 'Engineer installing a wall-mounted air conditioning unit in a British living room',
-  'gallery': [('ac-living-room-winter.jpg', 'Wall-mounted unit heating a living room on a winter evening'), ('heat-pump-outdoor-frost.jpg', 'Outdoor unit on a frosty morning in Essex'), ('ac-install-bedroom.jpg', 'Installing a split unit in a bedroom'), ('heat-pump-install.jpg', 'Connecting a heat pump outdoor unit'), ('ac-service-gauges.jpg', 'Checking pressures on a yearly service'), ('ac-handover-kitchen.jpg', 'Showing the homeowner the controls'), ('ac-home-office.jpg', 'Split unit in a home office'), ('ac-commercial-pub.jpg', 'Ceiling cassettes in a pub dining room'), ('ac-commercial-roof.jpg', 'Commercial condensers on a flat roof')],
+  'gallery': [('ac-living-room-winter.jpg', 'Wall-mounted unit heating a living room on a winter evening'), ('ac-outdoor-unit-frost.jpg', 'Outdoor unit on a frosty morning in Essex'), ('ac-install-bedroom.jpg', 'Installing a split unit in a bedroom'), ('ac-service-gauges.jpg', 'Checking pressures on a yearly service'), ('ac-handover-kitchen.jpg', 'Showing the homeowner the controls'), ('ac-home-office.jpg', 'Split unit in a home office'), ('ac-commercial-pub.jpg', 'Ceiling cassettes in a pub dining room'), ('ac-commercial-roof.jpg', 'Commercial condensers on a flat roof')],
   'kicker': 'One unit, all year. It <mark>heats your home in winter</mark> and cools it in summer.',
-  'intro': ['A modern split air conditioner is a heat pump. In winter it pulls heat from the outside air, even on frosty mornings, and '
+  'intro': ['A modern split air conditioner is also a heater. In winter it pulls heat from the outside air, even on frosty mornings, and '
             'moves it into the room. In summer it does the reverse. For every unit of electricity it uses, it delivers roughly three units '
             'of heat, which is why it costs less to run than storage heaters or a fan heater.',
             '<strong>We size every system from a survey of your rooms</strong>, fit it neatly, and service it every year after. '
             'Installation, heating, servicing and repairs, all from the same local team.'],
   'included_title': 'What We Do',
-  'included_sub': 'Everything to do with air conditioning and heat pumps, from one team.',
+  'included_sub': 'Everything to do with air conditioning and heating, from one team.',
   'included': [('Air conditioning installation',
                 'Split and multi-split systems for bedrooms, living rooms, lofts, offices and garden rooms. Most single rooms fitted in a '
                 'day.'),
-               ('Heating with AC and heat pumps',
-                'Air to air and air source heat pumps that keep your home warm all winter. A smart swap for old storage heaters.'),
+               ('Heating with air conditioning',
+                'Wall-mounted units that keep your home warm all winter. A smart swap for old storage heaters.'),
                ('Servicing', 'A yearly visit: filters, coils, drains, pressures and a full heating and cooling test.'),
                ('Repairs and faults', 'Not heating, not cooling, leaking or noisy? We find the cause and fix it, on most makes.'),
                ('Commercial', 'Pubs, restaurants, offices and shops. Fitted around your opening hours, then kept on a service plan.'),
@@ -77,14 +77,11 @@ PAGES = [{'slug': 'air-conditioning',
           ('Installed right, kept running', 'The team that fits your system services it next year. No handoffs.'),
           ('You speak to the engineer', 'Call and you get the person who plans the job, not a call centre.')],
   'faq': [('Can air conditioning heat my home in winter?',
-           ['Yes. A split system works as an air to air heat pump. In heating mode it pulls heat from the outside air, even below '
+           ['Yes. A split system heats as well as cools. In heating mode it pulls heat from the outside air, even below '
             'freezing, and puts it into the room.']),
-          ('What is the difference between air to air and air source heat pumps?',
-           ['Air to air heats the room directly through a wall-mounted unit, and cools in summer too. Air to water heats water for '
-            'radiators or underfloor heating. We tell you at the survey which suits your home.']),
           ('Can it replace my storage heaters?',
-           ['Yes, and it is one of the best swaps you can make. Storage heaters charge overnight and often run out by the evening. A heat '
-            'pump heats when you need it, using less electricity.']),
+           ['Yes, and it is one of the best swaps you can make. Storage heaters charge overnight and often run out by the evening. Air '
+            'conditioning heats when you need it, using less electricity.']),
           ('How long does an installation take?',
            ['Most single room installs are done in a day. Multi-room systems take longer, and you get the timeline with your quote.']),
           ('How often should it be serviced?',
