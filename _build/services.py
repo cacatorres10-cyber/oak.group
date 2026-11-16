@@ -639,6 +639,14 @@ def page(p):
         {area_col()}
       </div>
     </div>
+    <div class="footer-map">
+      <iframe title="OAK Group on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?cid=7300669711752812014&amp;output=embed" allowfullscreen></iframe>
+      <div class="footer-map-info">
+        <span class="footer-map-label">Find Us</span>
+        <p>OAK Group<br>Station Road, West Horndon,<br>Brentwood CM13 3XL</p>
+        <a class="footer-map-btn" href="https://www.google.com/maps?cid=7300669711752812014" target="_blank" rel="noopener">Open in Google Maps <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
     <div class="footer-bottom">
       <span>&copy; 2026 OAK Construction &amp; Project Management Limited, trading as OAK Group</span>
       <a href="mailto:{EMAIL}">{EMAIL}</a>

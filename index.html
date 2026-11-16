@@ -502,6 +502,14 @@
   .footer-col a{display:block;color:var(--text-on-ink-muted);text-decoration:none;font-size:.92rem;padding-block:6px;}
   .footer-col a:hover{color:var(--red);}
   .footer-col span{display:block;color:var(--text-on-ink-muted);font-size:.92rem;padding-block:6px;}
+  .footer-map{display:grid;gap:22px;margin-bottom:44px;padding-top:36px;border-top:1px solid var(--border-on-ink);}
+  @media (min-width:768px){ .footer-map{grid-template-columns:1.7fr 1fr;gap:40px;align-items:center;} }
+  .footer-map iframe{display:block;width:100%;height:280px;border:0;background:#1a1a1a;}
+  .footer-map-label{display:block;font-family:'IBM Plex Mono';font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:14px;}
+  .footer-map-info p{font-size:.95rem;line-height:1.6;color:var(--text-on-ink-muted);margin:0 0 18px;}
+  .footer-map-btn{display:inline-flex;align-items:center;gap:10px;background:var(--red);color:#fff;text-decoration:none;font-weight:600;font-size:.92rem;padding:13px 20px;min-height:44px;}
+  .footer-map-btn:hover{filter:brightness(1.1);}
+  .footer-map-btn svg{width:18px;height:18px;}
   .footer-bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;padding-top:24px;border-top:1px solid var(--border-on-ink);font-family:'IBM Plex Mono';font-size:.74rem;}
   .footer-bottom a:hover{color:var(--red);}
 
@@ -1012,6 +1020,14 @@
         <span>Brentwood</span>
         <span>Upminster</span>
         <span>Hornchurch</span>
+      </div>
+    </div>
+    <div class="footer-map">
+      <iframe title="OAK Group on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?cid=7300669711752812014&amp;output=embed" allowfullscreen></iframe>
+      <div class="footer-map-info">
+        <span class="footer-map-label">Find Us</span>
+        <p>OAK Group<br>Station Road, West Horndon,<br>Brentwood CM13 3XL</p>
+        <a class="footer-map-btn" href="https://www.google.com/maps?cid=7300669711752812014" target="_blank" rel="noopener">Open in Google Maps <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
     <div class="footer-bottom">
